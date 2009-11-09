@@ -1,4 +1,4 @@
-class LoginFilter < AbstractWidget
+class LoginFilter < Erector::Component
 
   def initialize(assigns = {}, &block)
     @counter = 1
