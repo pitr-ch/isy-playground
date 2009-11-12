@@ -1,5 +1,5 @@
-module Erector
-  class Layout < Widgets::Page
+module Isy
+  class Layout < Erector::Widgets::Page
 
     def initialize(root_component, assigns = {}, &block)
       super(assigns, &block)
@@ -9,7 +9,6 @@ module Erector
     def body_content
       widget @root_component
     end
-
 
   end
 end

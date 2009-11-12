@@ -1,4 +1,4 @@
-class AppLayout < Erector::Layout
+class AppLayout < Isy::Layout
 
   def page_title
     "Akce"

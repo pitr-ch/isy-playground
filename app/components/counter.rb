@@ -1,4 +1,4 @@
-class Counter < Erector::Component
+class Counter < Isy::Components::Component
 
   def initialize(assigns = {}, &block)
     @counter = 0
