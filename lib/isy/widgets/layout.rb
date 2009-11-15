@@ -1,13 +1,12 @@
 module Isy
   class Layout < Erector::Widgets::Page
 
-    def initialize(root_component, assigns = {}, &block)
-      super(assigns, &block)
+    def initialize(root_component)
       @root_component = root_component
     end
 
     def body_content
-      widget @root_component
+      widget @root_component.widget
     end
 
   end

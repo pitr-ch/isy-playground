@@ -10,8 +10,8 @@ module Isy
         @contexts[id]
       end
 
-      def new_context(id, layout, root_component)
-        @contexts[id] = Context.new(id, layout, root_component)
+      def new_context(id, root_component)
+        @contexts[id] = Context.new(id, root_component)
       end
       
     end

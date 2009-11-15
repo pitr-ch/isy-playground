@@ -8,9 +8,10 @@ module Isy
       end
 
       def call
-        puts "exetuing action #{id} in #{component.class} returning:"
-        puts \
-            component.send(:instance_eval, &block)
+        #        puts "exetuing action #{id} in #{component.class} returning:"
+        #        puts \
+#        component.send(:instance_eval, &block)
+        block.call
       end
     end
   end

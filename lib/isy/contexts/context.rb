@@ -5,15 +5,14 @@ module Isy
       attr_reader :id, :layout, :root_component
 
       # id, layout class, root_component class
-      def initialize(id, layout_class, root_component_class)
+      def initialize(id, root_component_class)
         @id = id
-        @layout = layout_class.new(@root_component = root_component_class.new)
-        @root_component.app_context = self
+        @root_component = root_component_class.new(nil, self)
         @actions = {}
       end
 
       def to_s
-        @layout.to_s
+        @root_component.to_s
       end
 
       def register_action(component, &block)
