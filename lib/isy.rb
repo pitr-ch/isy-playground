@@ -3,6 +3,9 @@ require 'uuid'
 require 'pp'
 require 'active_support'
 
+require 'erector'
+Erector::Widget.prettyprint_default = true
+
 
 module Isy
   def self.root
@@ -15,11 +18,12 @@ module Isy
 end
 
 require 'isy/application'
-require 'isy/widgets'
-require 'isy/components'
+#require 'isy/components'
+#require 'isy/widgets'
 require 'isy/contexts'
 
 ActiveSupport::Dependencies.load_paths += [
+  "#{Isy.root}/lib",
   "#{Isy.root}/app/components",
   "#{Isy.root}/app/widgets",
   "#{Isy.root}/app/models",

@@ -1,12 +1,11 @@
 module Isy
-  module Components
-    class Array < Component
+  module Widgets
+    class Collection < Base
 
-      def initialize(components)
+      def initialize(component, components)
+        super component
         @components = components
       end
-
-      # TODO delegate to components manipulate methods
 
       def content
         before

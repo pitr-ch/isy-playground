@@ -1,4 +1,4 @@
-class AppLayout < Isy::Layout
+class AppLayout < Isy::Widgets::Layout
 
   def page_title
     "Akce"

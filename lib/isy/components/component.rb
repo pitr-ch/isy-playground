@@ -2,7 +2,7 @@ module Isy
   module Components
     class Component
 
-      attr_reader :parent, :context
+      attr_reader :parent, :context, :children
 
       def initialize(parent, context)
 #        case
@@ -12,6 +12,7 @@ module Isy
 #        end
         @children = []
         @parent, @context = parent, context
+        initial_state
       end
 
       def new_component(klass, *args, &block)
@@ -22,21 +23,31 @@ module Isy
       end
 
       def widget
-        @widget ||= widget_class.new(*widget_args)
+        @widget ||= self.class.widget_class.new(*widget_args)
       end
 
-      class_inheritable_accessor :widget_class
+      class_inheritable_accessor :widget_class, :instance_writer => false, :instance_reader => false
       self.widget_class = Isy::Widgets::ComponentInspector
 
       def to_s
-        widget.to_s
+        (root? ? layout : widget).to_s
       end
 
       def root?
         parent == nil
       end
 
+      class_inheritable_accessor :layout_class, :instance_writer => false, :instance_reader => false
+
+      def layout
+        raise RuntimeError, 'i am not root' unless root?
+        @layout ||= layout_class.new(self)
+      end
+
       protected
+
+      def initial_state
+      end
 
       def widget_class
         self.class.widget_class
