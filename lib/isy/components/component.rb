@@ -2,32 +2,23 @@ module Isy
   module Components
     class Component
 
-      attr_reader :parent, :context, :children
+      attr_reader :parent, :children, :context
 
-      def initialize(parent, context)
-#        case
-#        when parent_or_layout.kind_of?(Component) then @parent = parent_or_layout
-#        when parent_or_layout < Isy::Widgets::Layout then @layout = parent_or_layout
-#        else raise
-#        end
+      def initialize(parent_or_context)
+        case
+        when parent_or_context.kind_of?(Isy::Contexts::Context)
+          @parent, @context = nil, parent_or_context
+        when parent_or_context.kind_of?(Isy::Components::Component)
+          @parent, @context = parent_or_context, parent_or_context.context
+        else
+          raise(ArgumentError, "parent_or_context is not component or context")
+        end
+
         @children = []
-        @parent, @context = parent, context
+        parent.children << self if parent
+        
         initial_state
       end
-
-      def new_component(klass, *args, &block)
-        @children << begin
-          component = klass.new(self, context, *args, &block)
-        end
-        component
-      end
-
-      def widget
-        @widget ||= self.class.widget_class.new(*widget_args)
-      end
-
-      class_inheritable_accessor :widget_class, :instance_writer => false, :instance_reader => false
-      self.widget_class = Isy::Widgets::ComponentInspector
 
       def to_s
         (root? ? layout : widget).to_s
@@ -37,14 +28,32 @@ module Isy
         parent == nil
       end
 
-      class_inheritable_accessor :layout_class, :instance_writer => false, :instance_reader => false
+      def widget
+        @widget ||= self.class.widget_class.new(*widget_args)
+      end
 
       def layout
         raise RuntimeError, 'i am not root' unless root?
-        @layout ||= layout_class.new(self)
+        @layout ||= self.class.layout_class.new(self)
       end
 
       protected
+      
+      def self.widget_class
+        self._widget_class || @widget_class ||= begin
+          "#{self.to_s}::Widget".constantize
+        rescue NameError
+          "#{self.to_s}Widget".constantize
+        end
+      end
+      
+      def self.layout_class
+        self._layout_class || @layout_class ||= begin
+          "#{self.to_s}::Layout".constantize
+        rescue NameError
+          "#{self.to_s}Layout".constantize
+        end
+      end
 
       def initial_state
       end
@@ -57,35 +66,19 @@ module Isy
         [self]
       end
 
+      private
 
-      #      def initialize(app_context)
-      #        @app_context = app_context
-      #      end
-      #
-      #      attr_accessor :app_context
-      #
-      #      def a(action_block, *args, &block)
-      #        uuid = register_action(action_block)
-      #
-      #        url = { :href => "/do-action/#{uuid}" }
-      #        if args.last.is_a?(Hash)
-      #          args.last.merge url
-      #        else
-      #          args.push url
-      #        end
-      #
-      #        super(*args, &block)
-      #      end
-      #
-      #      def app_context
-      #        @app_context ||= parent.app_context
-      #      end
-      #
-      #      private
-      #
-      #      def register_action(block)
-      #        app_context.register_action(self, &block)
-      #      end
+      class_inheritable_accessor :_widget_class, :instance_writer => false, :instance_reader => false
+      class_inheritable_accessor :_layout_class, :instance_writer => false, :instance_reader => false
+
+      def self.set_widget_class(klass)
+        self._widget_class = klass
+      end
+
+      def self.set_layout_class(klass)
+        self._layout_class = klass
+      end
+
     end
   end
 end

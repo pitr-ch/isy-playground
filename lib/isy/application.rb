@@ -21,21 +21,32 @@ module Isy
       session[:contexts] ||= Contexts::Container.new
     end
 
-    def run_action(action_id)
-      @context = contexts[1] || contexts.new_context(1, Testicek)
-      @context.run_action action_id
+    def context
+      contexts[params[:context_id]]
     end
 
-    get '/' do
-      run_action(nil)
-      @context.to_s
+    def run_action
+      context && context.run_action(params[:action_id])
     end
 
-    require 'pp'
+    before do
+      if self.class.development?
+        Isy.logger.info("Holding #{contexts.size} contexts")
+      end
+    end
 
-    get '/do-action/:action_id' do |action_id|
-      run_action(action_id)
-      @context.to_s
+    before do
+      run_action
+    end
+
+    def self.state_on(path, klass, opts={}, &block)
+      get path, opts do
+        if context
+          context.to_s
+        else
+          contexts.new_context(klass).to_s
+        end
+      end
     end
 
   end

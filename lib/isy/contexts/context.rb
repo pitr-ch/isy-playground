@@ -7,8 +7,8 @@ module Isy
       # id, layout class, root_component class
       def initialize(id, root_component_class)
         @id = id
-        @root_component = root_component_class.new(nil, self)
-        @actions = {}
+        @root_component = root_component_class.new(self)
+        clear_actions
       end
 
       def to_s
@@ -22,9 +22,13 @@ module Isy
       end
 
       def run_action(id)
-        @actions[id] && begin
-          @actions[id].call
-        end
+        (action = @actions[id]) && action.call
+        clear_actions
+      end
+
+      private
+
+      def clear_actions
         @actions = {}
       end
 

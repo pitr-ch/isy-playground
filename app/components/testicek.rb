@@ -1,14 +1,13 @@
 class Testicek < Isy::Components::Component
 
-  self.layout_class = AppLayout
+  set_layout_class AppLayout
+  set_widget_class Isy::Widgets::Collection
 
   def initial_state
-    new_component(Counter)
-    new_component(Counter)
+    Counter.new(self)
+    Counter.new(self)
   end
 
-  self.widget_class = Isy::Widgets::Collection
-  
   def widget_args
     super << children
   end
