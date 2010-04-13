@@ -1,9 +1,10 @@
 require 'rubygems'
-require 'uuid'
 require 'pp'
-require 'active_support'
 
+require 'uuid'
+require 'activesupport'
 require 'erector'
+
 Erector::Widget.prettyprint_default = true
 
 
@@ -17,10 +18,7 @@ module Isy
   end
 end
 
-require 'isy/application'
-#require 'isy/components'
-#require 'isy/widgets'
-require 'isy/contexts'
+$LOAD_PATH << "#{Isy.root}/lib"
 
 ActiveSupport::Dependencies.load_paths += [
   "#{Isy.root}/lib",
@@ -30,6 +28,7 @@ ActiveSupport::Dependencies.load_paths += [
   "#{Isy.root}/app/layouts"
 ]
 
-
-#ActiveSupport::Dependencies.log_activity = true
-#ActiveSupport::Dependencies.logger = Isy.logger
+require 'isy/application'
+#require 'isy/components'
+#require 'isy/widgets'
+require 'isy/contexts'

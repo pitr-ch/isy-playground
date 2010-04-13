@@ -19,9 +19,11 @@ class Counter < Isy::Components::Component
       h3 'Counter'
       p do
         text("Value is #{component.counter} ")
-        action 'Plus' do plus end
+        action('Plus') { plus }
         text ' '
-        action 'Minus' do minus end
+        action('Minus') { minus }
+        text ' '
+        action('Remove') { remove }
       end
     end
   end

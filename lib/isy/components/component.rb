@@ -37,6 +37,10 @@ module Isy
         @layout ||= self.class.layout_class.new(self)
       end
 
+      def remove
+        @parent.children.delete self
+      end
+
       protected
       
       def self.widget_class
