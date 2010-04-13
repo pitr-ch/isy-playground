@@ -3,3 +3,5 @@
 requires gems: uuid, activesupport, erector, thin, sinatra
 runs on Ruby 1.9
 start with ./isy_run.rb
+
+little more at http://isyruby.wordpress.com/2010/04/13/isy-basic-tests/
