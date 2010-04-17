@@ -1,15 +1,14 @@
-require 'sinatra'
-
-set :run, false # don't start server
+require 'sinatra/base'
 
 module Isy
-  class Application < Sinatra::Default
+  class Application < Sinatra::Base
 
     use Rack::Session::Pool
 
     set(
       :root => Isy.root,
-      :public => "#{Isy.root}/public"
+      :public => "#{Isy.root}/public",
+      :logging => true
     )
 
     def self.run!(options={})
@@ -27,12 +26,6 @@ module Isy
 
     def run_action
       context && context.run_action(params[:action_id])
-    end
-
-    before do
-      if self.class.development?
-        Isy.logger.info("Holding #{contexts.size} contexts")
-      end
     end
 
     before do

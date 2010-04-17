@@ -2,7 +2,7 @@ require 'rubygems'
 require 'pp'
 
 require 'uuid'
-require 'activesupport'
+require 'active_support'
 require 'erector'
 
 Erector::Widget.prettyprint_default = true
@@ -13,9 +13,9 @@ module Isy
     @root ||= File.expand_path("#{File.dirname(__FILE__)}/..")
   end
 
-  def self.logger
-    @logger ||= ActiveSupport::BufferedLogger.new($stderr)
-  end
+  #  def self.logger
+  #    @logger ||= ActiveSupport::BufferedLogger.new($stdout)
+  #  end
 end
 
 $LOAD_PATH << "#{Isy.root}/lib"
@@ -32,3 +32,6 @@ require 'isy/application'
 #require 'isy/components'
 #require 'isy/widgets'
 require 'isy/contexts'
+
+require 'datamapper'
+require "#{Isy.root}/lib/setup_db.rb"

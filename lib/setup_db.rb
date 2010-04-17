@@ -1,5 +1,5 @@
-DataMapper.setup(:default, 'postgres://postgres:postgres@localhost/akce_development')
+DataMapper.setup(:default, 'sqlite3://memory')
 
-Person
+Work
 
 DataMapper.auto_migrate!
