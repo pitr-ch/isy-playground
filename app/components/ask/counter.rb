@@ -1,13 +1,18 @@
-module Ask
-  class Counter < ::Counter
+class Ask::Counter < ::Counter
 
-    class Widget < superclass.widget_class
+  def initialize(context, number = 0)
+    super(context)
+    @counter = number
+  end
 
-      def actions
-        link_to('Add number') { answer!(counter) }
-        link_to('Cancel') { answer! }
-      end
+  class Widget < superclass.widget_class
+    
+    # adds links to answer the number (counter) or
+    # to answer nothing.
+    # Everything else is as we need.
+    def actions
+      link_to('Add number') { answer!(counter) }
+      link_to('Cancel') { answer! }
     end
-
   end
 end

@@ -1,16 +1,19 @@
 class Counters::Counter < Counter
 
-  attr_reader :counters_base 
+  # we need to store @counters_collection to know where to delete itself
+  attr_reader :counters_collection
 
-  def initialize(context, counters_base)
+  def initialize(context, counters_collection)
     super(context)
-    @counters_base = counters_base
+    @counters_collection = counters_collection
   end
 
+  # we could use ::Counter::Widget but this si much nore flexible
   class Widget < superclass.widget_class
 
+    # here we overwrite actions and to add Remove link
     def actions
-      link_to('Remove') { @counters_base.remove(self) }
+      link_to('Remove') { @counters_collection.remove(self) }
     end
   end
 end

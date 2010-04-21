@@ -6,26 +6,18 @@ class Counter < Isy::Components::Component
     @counter = 0
   end
 
-  def plus
-    @counter += 1
-  end
-
-  def minus
-    @counter -= 1
-  end
-
   class Widget < Isy::Widgets::Base
     def content
       h3 'Counter'
       p do
         text("Value is #{component.counter} ")
-        link_to('Plus') { plus }
-        link_to('Minus') { minus }
+        link_to('Increase') { @counter += 1 }
+        link_to('Decrease') { @counter -= 1 }
         actions
       end
     end
 
-    def actions      
+    def actions
     end
   end
 
