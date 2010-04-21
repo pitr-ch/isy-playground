@@ -2,7 +2,6 @@ require 'sinatra/base'
 
 module Isy
   class Application < Sinatra::Base
-
     use Rack::Session::Pool
 
     set(
@@ -32,14 +31,14 @@ module Isy
       run_action
     end
 
-    def self.state_on(path, klass, opts={}, &block)
-      get path, opts do
-        if context
-          context.to_s
-        else
-          contexts.new_context(klass).to_s
-        end
-      end
+    class_inheritable_accessor(:root_component)
+
+    get '/' do      
+      if context
+        context.to_s
+      else
+        contexts.new_context(self.class.root_component).to_s
+      end      
     end
 
   end

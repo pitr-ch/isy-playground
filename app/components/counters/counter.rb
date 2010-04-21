@@ -19,11 +19,11 @@ class Counters::Counter < Isy::Components::Component
       h3 'Counter'
       p do
         text("Value is #{component.counter} ")
-        action('Plus') { plus }
+        link_to('Plus') { plus }
         text ' '
-        action('Minus') { minus }
+        link_to('Minus') { minus }
         text ' '
-        action('Remove') { remove }
+        link_to('Remove') { remove }
       end
     end
   end

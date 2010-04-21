@@ -1,8 +1,6 @@
 module Counters
   class Base < Isy::Components::Component
 
-    set_layout_class CountersLayout
-
     attr_reader :counters
 
     def initial_state
@@ -19,7 +17,7 @@ module Counters
 
     class Widget < Isy::Widgets::Collection
       def after
-        action("Add counter") { add }
+        link_to("Add counter") { add }
       end
     end
 

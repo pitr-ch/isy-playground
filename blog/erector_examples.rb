@@ -89,3 +89,34 @@ puts List.new(
     Person.new('Thomas Smith')
   ]
 ).to_s(:prettyprint => true)
+
+
+class Person
+#  css do
+#    strong { text_decoration 'underline' }
+#  end
+end
+
+class PersonOneLine < Person
+#  css do
+#    class!(:email) { font_style 'italic' }
+#  end
+
+  def content
+    strong "#{name}: "
+    emails.each {|email| widget Email, email }
+  end
+end
+
+puts List.new(
+  [ Person.new('John Smith', ['john.smith@example.com', 'jsmith@example.com']),
+    Person.new('Peter Smith', ['peter.smith@example.com']),
+    Person.new('Thomas Smith')
+  ]
+).to_s(:prettyprint => true)
+puts List.new(
+  [ PersonOneLine.new('John Smith', ['john.smith@example.com', 'jsmith@example.com']),
+    PersonOneLine.new('Peter Smith', ['peter.smith@example.com']),
+    PersonOneLine.new('Thomas Smith')
+  ]
+).to_s(:prettyprint => true)

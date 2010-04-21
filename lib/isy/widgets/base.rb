@@ -12,7 +12,7 @@ module Isy
         super(target.kind_of?(Isy::Components::Component) ? target.widget : target, assigns, &block)
       end
 
-      def action(text, &block)
+      def link_to(text, &block)
         uuid = register_action(&block)
         url = { :href => "?context_id=#{component.context.id}&action_id=#{uuid}" }
         a text, url

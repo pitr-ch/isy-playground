@@ -41,6 +41,19 @@ module Isy
         @parent.children.delete self
       end
 
+      def ask(component, &block)
+        component.answering!(self, &block)
+        component
+      end
+
+      def answering!(to_whom, &block)
+        @asker, @askers_callback = to_whom, block
+      end
+
+      def answer!(answer = nil)
+        @asker.instance_exec answer, &@askers_callback
+      end
+
       protected
       
       def self.widget_class
