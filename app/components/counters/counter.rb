@@ -20,11 +20,13 @@ class Counters::Counter < Isy::Components::Component
       p do
         text("Value is #{component.counter} ")
         link_to('Plus') { plus }
-        text ' '
         link_to('Minus') { minus }
-        text ' '
-        link_to('Remove') { remove }
+        actions
       end
+    end
+
+    def actions      
+      link_to('Remove') { remove }
     end
   end
 

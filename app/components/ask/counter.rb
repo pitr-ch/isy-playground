@@ -3,14 +3,9 @@ module Ask
 
     class Widget < superclass.widget_class
 
-      def content
-        super
-        p do
-          link_to('Add') { answer!(counter) }
-          text ' '
-          link_to('Cancel') { answer! }
-        end
-
+      def actions
+        link_to('Add number') { answer!(counter) }
+        link_to('Cancel') { answer! }
       end
     end
 
