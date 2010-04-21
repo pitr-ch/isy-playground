@@ -2,46 +2,27 @@ module Isy
   module Components
     class Component
 
-      attr_reader :parent, :children, :context
+      attr_reader :context
 
-      def initialize(parent_or_context)
-        case
-        when parent_or_context.kind_of?(Isy::Contexts::Context)
-          @parent, @context = nil, parent_or_context
-        when parent_or_context.kind_of?(Isy::Components::Component)
-          @parent, @context = parent_or_context, parent_or_context.context
-        else
-          raise(ArgumentError, "parent_or_context is not component or context")
-        end
-
-        @children = []
-        parent.children << self if parent
-        
+      def initialize(context)
+        @context = context
         initial_state
+      end
+
+      def new(klass, *args)
+        klass.new(context, *args)
       end
 
       def to_s
         (root? ? layout : widget).to_s
       end
 
-      def root?
-        parent == nil
-      end
-
       def widget
         @widget ||= self.class.widget_class.new(*widget_args)
       end
 
-      def layout
-        raise RuntimeError, 'i am not root' unless root?
-        @layout ||= self.class.layout_class.new(self)
-      end
-
-      def remove
-        @parent.children.delete self
-      end
-
-      def ask(component, &block)
+      def ask(component, *args, &block)
+        component = new(component, *args) if component.kind_of? Class
         component.answering!(self, &block)
         component
       end

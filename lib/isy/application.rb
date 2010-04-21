@@ -32,12 +32,15 @@ module Isy
     end
 
     class_inheritable_accessor(:root_component)
+    class_inheritable_accessor(:layout)
 
     get '/' do      
       if context
         context.to_s
       else
-        contexts.new_context(self.class.root_component).to_s
+        contexts.new_context(
+          self.class.layout,
+          self.class.root_component).to_s
       end      
     end
 

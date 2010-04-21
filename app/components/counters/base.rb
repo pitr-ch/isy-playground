@@ -4,15 +4,19 @@ module Counters
     attr_reader :counters
 
     def initial_state
-      @counters = [ Counter.new(self) ]
+      @counters = [ new(Counter, self) ]
     end
 
     def add
-      @counters << Counter.new(self)
+      @counters << new(Counter, self)
+    end
+
+    def remove(counter)
+      @counters.delete(counter)
     end
 
     def widget_args
-      super << children
+      super << counters
     end
 
     class Widget < Isy::Widgets::Collection

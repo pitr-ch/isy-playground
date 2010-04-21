@@ -10,9 +10,9 @@ module Isy
         @contexts[id]
       end
 
-      def new_context(root_component)
+      def new_context(layout, root_component)
         id = UUID.generate(:compact)
-        @contexts[id] = Context.new(id, root_component)
+        @contexts[id] = Context.new(id, layout, root_component)
       end
 
       def size

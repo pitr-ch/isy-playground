@@ -2,12 +2,12 @@ module Isy
   module Widgets
     class Layout < Erector::Widgets::Page
 
-      def initialize(root_component)
-        @root_component = root_component
+      def initialize(context)
+        @context = context
       end
 
       def body_content
-        widget @root_component.widget
+        widget @context.root_component.widget
       end
 
     end

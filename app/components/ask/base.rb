@@ -25,7 +25,7 @@ module Ask
           widget component.counter
         else
           link_to('Select Number') do
-            @counter = ask Ask::Counter.new(self) do |answer|
+            @counter = ask Ask::Counter do |answer|
               if answer
                 @numbers << answer
               end

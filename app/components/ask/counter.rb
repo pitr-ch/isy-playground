@@ -1,5 +1,5 @@
 module Ask
-  class Counter < Counters::Counter
+  class Counter < ::Counter
 
     class Widget < superclass.widget_class
 

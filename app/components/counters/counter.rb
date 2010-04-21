@@ -1,33 +1,16 @@
-class Counters::Counter < Isy::Components::Component
+class Counters::Counter < Counter
 
-  attr_reader :counter
+  attr_reader :counters_base 
 
-  def initial_state
-    @counter = 0
+  def initialize(context, counters_base)
+    super(context)
+    @counters_base = counters_base
   end
 
-  def plus
-    @counter += 1
-  end
+  class Widget < superclass.widget_class
 
-  def minus
-    @counter -= 1
-  end
-
-  class Widget < Isy::Widgets::Base
-    def content
-      h3 'Counter'
-      p do
-        text("Value is #{component.counter} ")
-        link_to('Plus') { plus }
-        link_to('Minus') { minus }
-        actions
-      end
-    end
-
-    def actions      
-      link_to('Remove') { remove }
+    def actions
+      link_to('Remove') { @counters_base.remove(self) }
     end
   end
-
 end

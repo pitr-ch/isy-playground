@@ -1,6 +1,5 @@
 class Examples < Isy::Components::Component
 
-  set_layout_class AppLayout
   attr_reader :example
 
   def initial_state
@@ -11,8 +10,8 @@ class Examples < Isy::Components::Component
     def content
       strong 'Examples:'
       ul do
-        li { link_to("Counters") { @example = Counters::Base.new(self) } }
-        li { link_to("#ask") { @example = Ask::Base.new(self) } }
+        li { link_to("Counters") { @example = new Counters::Base } }
+        li { link_to("#ask") { @example = new Ask::Base } }
         li { link_to("none") { @example = nil } }
       end
       
