@@ -11,7 +11,7 @@ module Times
     end
 
     def widget_args
-      super << unsaved_times
+      unsaved_times
     end
 
     class Widget < Isy::Widgets::Collection

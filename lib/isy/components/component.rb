@@ -18,7 +18,7 @@ module Isy
       end
 
       def widget
-        @widget ||= self.class.widget_class.new(*widget_args)
+        @widget ||= self.class.widget_class.new(self, *widget_args)
       end
 
       def ask(component, *args, &block)
@@ -61,7 +61,6 @@ module Isy
       end
 
       def widget_args
-        [self]
       end
 
       private

@@ -13,6 +13,10 @@ module Isy
     @root ||= File.expand_path("#{File.dirname(__FILE__)}/..")
   end
 
+  def self.generate_id
+     UUID.generate(:compact)
+  end
+
   #  def self.logger
   #    @logger ||= ActiveSupport::BufferedLogger.new($stdout)
   #  end

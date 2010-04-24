@@ -20,7 +20,7 @@ module Counters
 
     # params for widget that is used to render this component
     def widget_args
-      super << counters
+      counters
     end
 
     class Widget < Isy::Widgets::Collection

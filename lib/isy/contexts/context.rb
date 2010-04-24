@@ -17,7 +17,7 @@ module Isy
       end
 
       def register_action(component, &block)
-        uuid = UUID.generate(:compact)
+        uuid = Isy.generate_id
         @actions[uuid] = Action.new(uuid, component, block)
         return uuid
       end
