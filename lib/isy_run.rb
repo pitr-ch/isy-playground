@@ -1,6 +1,6 @@
 #!/usr/bin/ruby1.9.1
 
-require "#{File.dirname(__FILE__)}/lib/isy"
+require "#{File.dirname(__FILE__)}/isy"
 
 class IsyRun < Isy::Application
   self.root_component = Examples

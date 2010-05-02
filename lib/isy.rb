@@ -2,6 +2,7 @@ require 'rubygems'
 require 'pp'
 
 require 'uuid'
+gem 'activesupport', '2.3.5'
 require 'active_support'
 require 'erector'
 
@@ -14,7 +15,9 @@ module Isy
   end
 
   def self.generate_id
-     UUID.generate(:compact)
+    #    @last_id ||= 0
+    #    (@last_id += 1).to_s(36)
+    UUID.generate(:compact).to_i(16).to_s(36)
   end
 
   #  def self.logger
