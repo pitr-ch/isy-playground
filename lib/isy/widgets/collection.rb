@@ -4,6 +4,7 @@ module Isy
 
       def initialize(component, components)
         super component
+        raise ArgumentError unless components.kind_of?(Array)
         @components = components
       end
 

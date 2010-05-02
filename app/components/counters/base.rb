@@ -10,17 +10,17 @@ module Counters
 
     # adds new counter
     def add
-      @counters << new(Counter, self)
+      counters << new(Counter, self)
     end
 
     # removes a +counter+
     def remove(counter)
-      @counters.delete(counter)
+      counters.delete(counter)
     end
 
     # params for widget that is used to render this component
     def widget_args
-      counters
+      [counters]
     end
 
     class Widget < Isy::Widgets::Collection

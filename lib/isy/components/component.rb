@@ -45,19 +45,11 @@ module Isy
         end
       end
       
-      def self.layout_class
-        self._layout_class || @layout_class ||= begin
-          "#{self.to_s}::Layout".constantize
-        rescue NameError
-          "#{self.to_s}Layout".constantize
-        end
-      end
-
       def initial_state
       end
 
       def widget_class
-        self.class.widget_class
+        options[:widget_class] || self.class.widget_class
       end
 
       def widget_args
@@ -66,14 +58,9 @@ module Isy
       private
 
       class_inheritable_accessor :_widget_class, :instance_writer => false, :instance_reader => false
-      class_inheritable_accessor :_layout_class, :instance_writer => false, :instance_reader => false
 
       def self.set_widget_class(klass)
         self._widget_class = klass
-      end
-
-      def self.set_layout_class(klass)
-        self._layout_class = klass
       end
 
     end
