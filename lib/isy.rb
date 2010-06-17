@@ -1,10 +1,13 @@
 require 'rubygems'
+require 'bundler'
+Bundler.setup
+
 require 'pp'
 
 require 'uuid'
-gem 'activesupport', '2.3.5'
 require 'active_support'
 require 'erector'
+require 'sinatra/base'
 
 Erector::Widget.prettyprint_default = true
 
@@ -40,5 +43,5 @@ require 'isy/application'
 #require 'isy/widgets'
 require 'isy/contexts'
 
-require 'datamapper'
-require "#{Isy.root}/lib/setup_db.rb"
+#require 'datamapper'
+#require "#{Isy.root}/lib/setup_db.rb"

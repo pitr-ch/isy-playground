@@ -1,5 +1,3 @@
-require 'sinatra/base'
-
 module Isy
   class Application < Sinatra::Base
     use Rack::Session::Pool
