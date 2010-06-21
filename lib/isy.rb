@@ -3,14 +3,13 @@ require 'bundler'
 Bundler.setup
 
 require 'pp'
-
 require 'uuid'
-require 'active_support'
+require 'active_support/core_ext'
 require 'erector'
 require 'sinatra/base'
+require 'require_all'
 
 Erector::Widget.prettyprint_default = true
-
 
 module Isy
   def self.root
@@ -26,22 +25,15 @@ module Isy
   #  def self.logger
   #    @logger ||= ActiveSupport::BufferedLogger.new($stdout)
   #  end
+
+  $LOAD_PATH << "#{Isy.root}/lib"
+
+  require_all "#{Isy.root}/lib/isy/**/*.rb"
+  require_all "#{Isy.root}/app/**/*.rb"
+
 end
 
-$LOAD_PATH << "#{Isy.root}/lib"
-
-ActiveSupport::Dependencies.load_paths += [
-  "#{Isy.root}/lib",
-  "#{Isy.root}/app/components",
-  "#{Isy.root}/app/widgets",
-  "#{Isy.root}/app/models",
-  "#{Isy.root}/app/layouts"
-]
-
 require 'isy/application'
-#require 'isy/components'
-#require 'isy/widgets'
-require 'isy/contexts'
 
 #require 'datamapper'
 #require "#{Isy.root}/lib/setup_db.rb"
