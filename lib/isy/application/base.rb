@@ -7,7 +7,8 @@ module Isy
         :root => Isy.root,
         :public => "#{Isy.root}/public",
         :logging => false,
-        :server => %w[thin]
+        :server => %w[thin],
+        :dump_errors => false
 
       def self.run!(options={})
         puts '== Isy with:'
