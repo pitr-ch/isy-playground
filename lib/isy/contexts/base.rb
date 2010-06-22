@@ -1,7 +1,7 @@
 module Isy
-  module Contexts
+  module Context
 
-    class Context
+    class Base
       attr_reader :id, :layout, :root_component
 
       # id, layout class, root_component class

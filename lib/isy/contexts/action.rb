@@ -1,5 +1,5 @@
 module Isy
-  module Contexts
+  module Context
     class Action
       attr_reader :id, :component, :block
 
@@ -8,10 +8,8 @@ module Isy
       end
 
       def call
-        #        puts "exetuing action #{id} in #{component.class} returning:"
-        #        puts \
+        Isy.logger.info "component #{component.class} action #{block.source_location.join(':')}"
         component.send(:instance_eval, &block)
-        #        block.call
       end
     end
   end

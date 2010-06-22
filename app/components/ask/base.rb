@@ -1,5 +1,5 @@
 module Ask
-  class Base < Isy::Components::Component
+  class Base < Isy::Component::Base
 
     # +numbers+ - answered numbers
     # +counter+ is place where is counter stored or form would been
@@ -14,7 +14,7 @@ module Ask
       numbers.inject {|sum, num| sum + num }
     end
 
-    class Widget < Isy::Widgets::Base
+    class Widget < Isy::Widget::Base
 
       def content
         strong 'Numbers:'

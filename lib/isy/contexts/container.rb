@@ -1,5 +1,5 @@
 module Isy
-  module Contexts
+  module Context
     class Container
 
       def initialize()
@@ -12,7 +12,7 @@ module Isy
 
       def new_context(layout, root_component)
         id = Isy.generate_id
-        @contexts[id] = Context.new(id, layout, root_component)
+        @contexts[id] = Base.new(id, layout, root_component)
       end
 
       def size

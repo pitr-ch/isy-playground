@@ -1,4 +1,4 @@
-class Counter < Isy::Components::Component
+class Counter < Isy::Component::Base
 
   attr_reader :counter
 
@@ -6,7 +6,7 @@ class Counter < Isy::Components::Component
     @counter = 0
   end
 
-  class Widget < Isy::Widgets::Base
+  class Widget < Isy::Widget::Base
     def content
       h3 'Counter'
       p do

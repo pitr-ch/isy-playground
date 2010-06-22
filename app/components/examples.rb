@@ -1,4 +1,4 @@
-class Examples < Isy::Components::Component
+class Examples < Isy::Component::Base
 
   attr_reader :example
 
@@ -6,7 +6,7 @@ class Examples < Isy::Components::Component
     @example = nil
   end
 
-  class Widget < Isy::Widgets::Base
+  class Widget < Isy::Widget::Base
     def content
       strong 'Examples:'
       ul do

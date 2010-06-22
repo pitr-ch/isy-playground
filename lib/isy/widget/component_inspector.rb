@@ -1,5 +1,5 @@
 module Isy
-  module Widgets
+  module Widget
     class ComponentInspector < Base
 
       def content

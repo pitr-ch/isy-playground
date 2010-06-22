@@ -1,5 +1,5 @@
 module Counters
-  class Base < Isy::Components::Component
+  class Base < Isy::Component::Base
 
     attr_reader :counters
 
@@ -23,7 +23,7 @@ module Counters
       [counters]
     end
 
-    class Widget < Isy::Widgets::Collection
+    class Widget < Isy::Widget::Collection
       def after
         link_to("Add counter") { add }
       end

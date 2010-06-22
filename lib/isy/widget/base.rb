@@ -1,5 +1,5 @@
 module Isy
-  module Widgets
+  module Widget
     class Base < Erector::Widget
 
       attr_reader :component
@@ -9,7 +9,7 @@ module Isy
       end
 
       def widget(target, assigns = {}, &block)
-        super(target.kind_of?(Isy::Components::Component) ? target.widget : target, assigns, &block)
+        super(target.kind_of?(Isy::Component::Base) ? target.widget : target, assigns, &block)
       end
 
       def link_to(text, &block)

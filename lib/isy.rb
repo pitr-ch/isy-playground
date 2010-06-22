@@ -5,6 +5,7 @@ Bundler.setup
 require 'pp'
 require 'uuid'
 require 'active_support/core_ext'
+#require 'logger'
 require 'erector'
 require 'sinatra/base'
 require 'require_all'
@@ -22,9 +23,9 @@ module Isy
     UUID.generate(:compact).to_i(16).to_s(36)
   end
 
-  #  def self.logger
-  #    @logger ||= ActiveSupport::BufferedLogger.new($stdout)
-  #  end
+  def self.logger
+    @logger ||= Logger.new($stdout)
+  end
 
   $LOAD_PATH << "#{Isy.root}/lib"
 
@@ -33,7 +34,7 @@ module Isy
 
 end
 
-require 'isy/application'
-
-#require 'datamapper'
-#require "#{Isy.root}/lib/setup_db.rb"
+# require 'datamapper'
+# require "#{Isy.root}/lib/setup_db.rb"
+# DataMapper.setup(:default, 'sqlite3://memory')
+# DataMapper.auto_migrate!

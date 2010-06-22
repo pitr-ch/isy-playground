@@ -3,6 +3,7 @@
 to run call
   bundle install
 use Ruby 1.9.1
-and start server with lib/isy_run.rb
+and start server with
+  ruby bin/run.rb
 
-little more at http://isyruby.wordpress.com/2010/04/13/isy-basic-tests/
+little more at http://isyruby.wordpress.com

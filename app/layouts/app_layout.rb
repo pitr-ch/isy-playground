@@ -1,4 +1,4 @@
-class AppLayout < Isy::Widgets::Layout
+class AppLayout < Isy::Widget::Layout
 
   external :css, "basic.css"
 

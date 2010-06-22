@@ -1,5 +1,5 @@
 module Isy
-  module Widgets
+  module Widget
     class Layout < Erector::Widgets::Page
 
       def initialize(context)

@@ -1,6 +1,6 @@
 module Isy
-  module Components
-    class Component
+  module Component
+    class Base
 
       attr_reader :context
 

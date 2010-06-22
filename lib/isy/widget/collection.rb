@@ -1,5 +1,5 @@
 module Isy
-  module Widgets
+  module Widget
     class Collection < Base
 
       def initialize(component, components)

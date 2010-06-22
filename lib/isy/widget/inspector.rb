@@ -1,5 +1,5 @@
 module Isy
-  module Widgets
+  module Widget
     class Inspector < Erector::Widget
 
       def initialize(obj, method = :pp)
