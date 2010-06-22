@@ -11,7 +11,7 @@ namespace :yard do
         '--verbose' <<
         "--output-dir=./doc/yard/isy/" <<
         "--title=LocalYardoc"
-    yardoc.files << './lib/isy/**/*.rb'
+    yardoc.files << './lib/**/*.rb'
     yardoc.options << '--incremental' if File.exist? './.yardoc'
   end
 

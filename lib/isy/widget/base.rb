@@ -24,8 +24,7 @@ module Isy
       # @yield action block of code which will be evaluated inside {#component} after click on the link
       def link_to(label, &action)
         uuid = register_action(&action)
-        url = { :href => "?context_id=#{component.context.id}&action_id=#{uuid}" }
-        a label, url
+        a label, :href => "?context_id=#{component.context.id}&action_id=#{uuid}"
       end
 
       private
