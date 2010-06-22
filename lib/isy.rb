@@ -5,7 +5,6 @@ Bundler.setup
 require 'pp'
 require 'uuid'
 require 'active_support/core_ext'
-#require 'logger'
 require 'erector'
 require 'sinatra/base'
 require 'require_all'

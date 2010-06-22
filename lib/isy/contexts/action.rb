@@ -8,7 +8,7 @@ module Isy
       end
 
       def call
-        Isy.logger.info "component #{component.class} action #{block.source_location.join(':')}"
+        Isy.logger.debug "component #{component.class} action #{block.source_location.join(':')}"
         component.send(:instance_eval, &block)
       end
     end

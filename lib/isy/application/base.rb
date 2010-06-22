@@ -1,13 +1,12 @@
 module Isy
   module Application
     class Base < Sinatra::Base
-      use Rack::Reloader, 1
-      use CommonLogger, Isy.logger
       use Rack::Session::Pool
 
       set(
         :root => Isy.root,
-        :public => "#{Isy.root}/public"
+        :public => "#{Isy.root}/public",
+        :logging => false
       )
 
       def self.run!(options={})
@@ -25,6 +24,14 @@ module Isy
 
       def run_action
         context && context.run_action(params[:action_id])
+      end
+
+      def initialize(app=nil)
+        super(app)
+        after_initialize
+      end
+
+      def after_initialize      
       end
 
       before do

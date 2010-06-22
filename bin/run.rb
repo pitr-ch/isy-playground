@@ -2,7 +2,7 @@ raise "wrong ruby version #{RUBY_VERSION}" unless RUBY_VERSION =~ /1\.9/
 
 require "#{File.dirname(__FILE__)}/../lib/isy"
 
-class ExamplesApp < Isy::Application::Base
+class ExamplesApp < Isy::Application::Default
   self.root_component = Examples
   self.layout = AppLayout
 end
