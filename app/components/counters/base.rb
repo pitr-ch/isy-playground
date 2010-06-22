@@ -2,6 +2,7 @@ module Counters
   class Base < Isy::Component::Base
 
     attr_reader :counters
+    alias_method :collection, :counters
 
     # defines the state after new instance is created
     def initial_state
@@ -16,11 +17,6 @@ module Counters
     # removes a +counter+
     def remove(counter)
       counters.delete(counter)
-    end
-
-    # params for widget that is used to render this component
-    def widget_args
-      [counters]
     end
 
     class Widget < Isy::Widget::Collection

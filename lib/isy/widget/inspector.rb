@@ -1,3 +1,5 @@
+require 'pp'
+
 module Isy
   module Widget
     class Inspector < Erector::Widget
@@ -20,10 +22,8 @@ module Isy
 
       def get_dump
         case @method
-        when :pp
-          str = ''
-          PP.pp(@obj, str)
-          str
+        when :pp          
+          PP.pp(@obj, str = ''); str
         when :p
           @obj.inspect
         else

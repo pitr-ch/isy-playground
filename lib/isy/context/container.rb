@@ -18,7 +18,7 @@ module Isy
       def size
         @contexts.size
       end
-      
+
     end
   end
 end

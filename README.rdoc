@@ -6,4 +6,4 @@ use Ruby 1.9.1
 and start server with
   ruby bin/run.rb
 
-little more at http://isyruby.wordpress.com
+more at http://isyruby.wordpress.com

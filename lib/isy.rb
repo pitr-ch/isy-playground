@@ -2,7 +2,6 @@ require 'rubygems'
 require 'bundler'
 Bundler.setup
 
-require 'pp'
 require 'uuid'
 require 'active_support/core_ext'
 require 'erector'
@@ -30,7 +29,7 @@ module Isy
 
   require_all "#{Isy.root}/lib/isy/**/*.rb"
   require_all "#{Isy.root}/app/**/*.rb"
-
+  
 end
 
 # require 'datamapper'

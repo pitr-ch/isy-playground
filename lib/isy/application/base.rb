@@ -3,11 +3,11 @@ module Isy
     class Base < Sinatra::Base
       use Rack::Session::Pool
 
-      set(
+      set \
         :root => Isy.root,
         :public => "#{Isy.root}/public",
-        :logging => false
-      )
+        :logging => false,
+        :server => %w[thin]
 
       def self.run!(options={})
         puts '== Isy with:'
