@@ -4,7 +4,7 @@ module Isy
     # Abstract layout for Isy applications
     class Layout < Erector::Widgets::Page
 
-      # @param [Isy::Context::Base] context which is rendered with this layout
+      # @param [Context::Base] context which is rendered with this layout
       def initialize(context)
         @context = context
       end

@@ -6,4 +6,9 @@ use Ruby 1.9.1
 and start server with
   ruby bin/run.rb
 
-more at http://isyruby.wordpress.com
+== Links
+
+* github: http://github.com/isy-pitr/isy-playground
+* yardoc: http://isy-pitr.github.com/isy-playground
+* blog:   http://isyruby.wordpress.com
+* Pivotel Tracker: http://www.pivotaltracker.com/projects/23639

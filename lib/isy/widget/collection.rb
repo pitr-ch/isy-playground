@@ -8,13 +8,13 @@ module Isy
       #   @param [Component::Base] component which respond_to? #collection
       # @overload initialize(component, collection)
       #   @param [Component::Base] component
-      #   @param [Array<Erector::Widget, Isy::Component::Base>] collection
+      #   @param [Array<Erector::Widget, Component::Base>] collection
       def initialize(component, collection = nil)
         super component
         @collection = collection
       end
 
-      # @return [Array<Erector::Widget, Isy::Component::Base>, nil] obtained collection of widgets/components
+      # @return [Array<Erector::Widget, Component::Base>, nil] obtained collection of widgets/components
       def collection
         @collection || component.try(:collection) || raise(ArgumentError, "failed to obtain collection")
       end

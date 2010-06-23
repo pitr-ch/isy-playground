@@ -7,13 +7,13 @@ module Isy
       # component to be rendered
       attr_reader :component
 
-      # @param [Isy::Component::Base] component to be rendered
+      # @param [Component::Base] component to be rendered
       def initialize(component)
         @component = component
       end
 
       # adds ability to render component, preserves original behavior
-      # @param [Isy::Component::Base] target
+      # @param [Component::Base] target
       # @param (see Erector::Widget#widget)
       def widget(target, assigns = {}, &block)
         super(target.kind_of?(Isy::Component::Base) ? target.widget : target, assigns, &block)
