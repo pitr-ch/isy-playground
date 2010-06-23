@@ -79,7 +79,18 @@
 </dl>
 <div class="clear"></div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+represents context of user, each tab of browser has one of its own
+</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
 
   <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
   <ul class="summary">
@@ -192,7 +203,10 @@ Returns the value of attribute root_component.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+deletes all stored <tt><a href="Action.html" title="Isy::Context::Action (class)">Action</a></tt>-s.
+</p>
+</div></span>
   
 </li>
 
@@ -216,7 +230,7 @@ Returns the value of attribute root_component.
 
   
     <span class="summary_desc"><div class='inline'><p>
-id, layout class, root_component class.
+A new instance of Base.
 </p>
 </div></span>
   
@@ -226,7 +240,7 @@ id, layout class, root_component class.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#register_action-instance_method" title="#register_action (instance method)">- (Object) <strong>register_action</strong>(component, &amp;block) </a>
+      <a href="#register_action-instance_method" title="#register_action (instance method)">- (Object) <strong>register_action</strong>(component) { ... }</a>
     
 
     
@@ -239,7 +253,10 @@ id, layout class, root_component class.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+creates and stores action for later evaluation.
+</p>
+</div></span>
   
 </li>
 
@@ -260,7 +277,10 @@ id, layout class, root_component class.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+evaluates action with <tt>id</tt>.
+</p>
+</div></span>
   
 </li>
 
@@ -281,7 +301,10 @@ id, layout class, root_component class.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+renders html, similar to Erector::Widget#to_s.
+</p>
+</div></span>
   
 </li>
 
@@ -302,29 +325,78 @@ id, layout class, root_component class.
 </p><div class="docstring">
   <div class="discussion">
     <p>
-id, layout class, root_component class
+A new instance of Base
 </p>
 
 
   </div>
 </div>
 <div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
   
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>id</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+unique identification
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt><a href="../Widget/Layout.html" title="Isy::Widget::Layout (class)">Widget::Layout</a></tt>)</span>
+      
+      
+        <span class='name'>layout</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+is used to render page layout
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt><a href="../Component/Base.html" title="Isy::Component::Base (class)">Component::Base</a></tt>)</span>
+      
+      
+        <span class='name'>root_component</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-8
-9
-10
 11
 12
-13</pre>
+13
+14
+15
+16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/context/base.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/context/base.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id id'>id</span><span class='comma'>,</span> <span class='id layout'>layout</span><span class='comma'>,</span> <span class='id root_component_class'>root_component_class</span><span class='rparen'>)</span>
   <span class='ivar'>@id</span> <span class='op'>=</span> <span class='id id'>id</span>
@@ -369,12 +441,12 @@ Returns the value of attribute id
       <pre class="lines">
 
 
-5
 6
-7</pre>
+7
+8</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/context/base.rb', line 5</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/context/base.rb', line 6</span>
 
 <span class='kw'>def</span> <span class='id id'>id</span>
   <span class='ivar'>@id</span>
@@ -411,12 +483,12 @@ Returns the value of attribute layout
       <pre class="lines">
 
 
-5
 6
-7</pre>
+7
+8</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/context/base.rb', line 5</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/context/base.rb', line 6</span>
 
 <span class='kw'>def</span> <span class='id layout'>layout</span>
   <span class='ivar'>@layout</span>
@@ -453,12 +525,12 @@ Returns the value of attribute root_component
       <pre class="lines">
 
 
-5
 6
-7</pre>
+7
+8</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/context/base.rb', line 5</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/context/base.rb', line 6</span>
 
 <span class='kw'>def</span> <span class='id root_component'>root_component</span>
   <span class='ivar'>@root_component</span>
@@ -482,18 +554,29 @@ Returns the value of attribute root_component
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+deletes all stored <tt><a href="Action.html" title="Isy::Context::Action (class)">Isy::Context::Action</a></tt>-s
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-32
-33
-34</pre>
+42
+43
+44</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/context/base.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/context/base.rb', line 42</span>
 
 <span class='kw'>def</span> <span class='id clear_actions'>clear_actions</span>
   <span class='ivar'>@actions</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -506,24 +589,75 @@ Returns the value of attribute root_component
       <div class="method_details ">
   <p class="signature " id="register_action-instance_method">
   
-    - (<tt>Object</tt>) <strong>register_action</strong>(component, &amp;block) 
+    - (<tt>Object</tt>) <strong>register_action</strong>(component) { ... }
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+creates and stores action for later evaluation
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt><a href="../Component/Base.html" title="Isy::Component::Base (class)">Component::Base</a></tt>)</span>
+      
+      
+        <span class='name'>component</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+where action will be evaluated
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+        <span class='type'></span>
+      
+      
+      
+      
+        
+        <div class='inline'><p>
+the action
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-19
-20
-21
-22
-23</pre>
+26
+27
+28
+29
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/context/base.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/context/base.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='id register_action'>register_action</span><span class='lparen'>(</span><span class='id component'>component</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='id uuid'>uuid</span> <span class='op'>=</span> <span class='const'>Isy</span><span class='period'>.</span><span class='id generate_id'>generate_id</span>
@@ -542,19 +676,51 @@ Returns the value of attribute root_component
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+evaluates action with <tt>id</tt>
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>id</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+of a <tt><a href="Action.html" title="Isy::Context::Action (class)">Isy::Context::Action</a></tt>
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-25
-26
-27
-28</pre>
+34
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/context/base.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/context/base.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='id run_action'>run_action</span><span class='lparen'>(</span><span class='id id'>id</span><span class='rparen'>)</span>
   <span class='lparen'>(</span><span class='id action'>action</span> <span class='op'>=</span> <span class='ivar'>@actions</span><span class='lbracket'>[</span><span class='id id'>id</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id action'>action</span><span class='period'>.</span><span class='id call'>call</span>
@@ -572,18 +738,29 @@ Returns the value of attribute root_component
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+renders html, similar to Erector::Widget#to_s
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-15
-16
-17</pre>
+19
+20
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/context/base.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/context/base.rb', line 19</span>
 
 <span class='kw'>def</span> <span class='id to_s'>to_s</span>
   <span class='id layout'>layout</span><span class='period'>.</span><span class='id to_s'>to_s</span>
@@ -598,9 +775,9 @@ Returns the value of attribute root_component
 </div>
     
     <div id="footer">
-  Generated on Wed Jun 23 10:53:11 2010 by 
+  Generated on Wed Jun 23 11:53:42 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
-  0.5.7 (ruby-1.9.1).
+  0.5.8 (ruby-1.9.1).
 </div>
 
   </body>

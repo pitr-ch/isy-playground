@@ -191,11 +191,11 @@ A new instance of OptionableCollection
     <h3>Examples:</h3>
     
       <h4><div class='inline'></div></h4>
-      <pre class="example code">OCollection.new(users, nil,
-  :before =&gt; 'Users:',
-  :nothing =&gt; 'No users.',
-  :after =&gt; lambda {|w| w.p { text &quot;count: #{w.collection.count}&quot; }
-)</pre>
+      <pre class="example code"><span class='const'>OCollection</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id users'>users</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span>
+  <span class='symbol'>:before</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Users:</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:nothing</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>No users.</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:after</span> <span class='op'>=&gt;</span> <span class='id lambda'>lambda</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id w'>w</span><span class='op'>|</span> <span class='id w'>w</span><span class='period'>.</span><span class='id p'>p</span> <span class='lbrace'>{</span> <span class='id text'>text</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>count: </span><span class='embexpr_beg'>#{</span><span class='id w'>w</span><span class='period'>.</span><span class='id collection'>collection</span><span class='period'>.</span><span class='id count'>count</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='rbrace'>}</span>
+<span class='rparen'>)</span></pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -233,7 +233,7 @@ defines what will be rendered before, after, between or when nothing
     <ul class="option">
       
         <li>
-          <span class="type">(<tt>Erector::Widget</tt>, <tt><a href="../Component/Base.html" title="Isy::Component::Base (class)">Isy::Component::Base</a></tt>, <tt>String</tt>, <tt>Proc</tt>)</span>
+          <span class="type">(<tt>Erector::Widget</tt>, <tt><a href="../Component/Base.html" title="Isy::Component::Base (class)">Component::Base</a></tt>, <tt>String</tt>, <tt>Proc</tt>)</span>
           <span class="name">:before</span>
           <span class="default">
             
@@ -247,7 +247,7 @@ renders before collection
         </tr>
       
         <li>
-          <span class="type">(<tt>Erector::Widget</tt>, <tt><a href="../Component/Base.html" title="Isy::Component::Base (class)">Isy::Component::Base</a></tt>, <tt>String</tt>, <tt>Proc</tt>)</span>
+          <span class="type">(<tt>Erector::Widget</tt>, <tt><a href="../Component/Base.html" title="Isy::Component::Base (class)">Component::Base</a></tt>, <tt>String</tt>, <tt>Proc</tt>)</span>
           <span class="name">:after</span>
           <span class="default">
             
@@ -261,7 +261,7 @@ renders after collection
         </tr>
       
         <li>
-          <span class="type">(<tt>Erector::Widget</tt>, <tt><a href="../Component/Base.html" title="Isy::Component::Base (class)">Isy::Component::Base</a></tt>, <tt>String</tt>, <tt>Proc</tt>)</span>
+          <span class="type">(<tt>Erector::Widget</tt>, <tt><a href="../Component/Base.html" title="Isy::Component::Base (class)">Component::Base</a></tt>, <tt>String</tt>, <tt>Proc</tt>)</span>
           <span class="name">:between</span>
           <span class="default">
             
@@ -275,7 +275,7 @@ renders between collection&#8217;s elements
         </tr>
       
         <li>
-          <span class="type">(<tt>Erector::Widget</tt>, <tt><a href="../Component/Base.html" title="Isy::Component::Base (class)">Isy::Component::Base</a></tt>, <tt>String</tt>, <tt>Proc</tt>)</span>
+          <span class="type">(<tt>Erector::Widget</tt>, <tt><a href="../Component/Base.html" title="Isy::Component::Base (class)">Component::Base</a></tt>, <tt>String</tt>, <tt>Proc</tt>)</span>
           <span class="name">:nothing</span>
           <span class="default">
             
@@ -320,9 +320,9 @@ renders when collection is blank
 </div>
     
     <div id="footer">
-  Generated on Wed Jun 23 10:53:12 2010 by 
+  Generated on Wed Jun 23 11:53:43 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
-  0.5.7 (ruby-1.9.1).
+  0.5.8 (ruby-1.9.1).
 </div>
 
   </body>

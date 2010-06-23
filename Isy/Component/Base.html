@@ -79,7 +79,19 @@
 </dl>
 <div class="clear"></div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+represents component of a page. The basic logic building blocks of a
+application.
+</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
 
   <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
   <ul class="summary">
@@ -138,7 +150,10 @@ Returns the value of attribute context.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+sets widget class.
+</p>
+</div></span>
   
 </li>
 
@@ -146,7 +161,7 @@ Returns the value of attribute context.
         <li class="protected ">
   <span class="summary_signature">
     
-      <a href="#widget_class-class_method" title="widget_class (class method)">+ (Object) <strong>widget_class</strong> </a>
+      <a href="#widget_class-class_method" title="widget_class (class method)">+ (Class) <strong>widget_class</strong> </a>
     
 
     
@@ -159,7 +174,10 @@ Returns the value of attribute context.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Which is used to insatiate widget.
+</p>
+</div></span>
   
 </li>
 
@@ -189,7 +207,10 @@ Returns the value of attribute context.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+answer with <tt>answer</tt>.
+</p>
+</div></span>
   
 </li>
 
@@ -197,7 +218,7 @@ Returns the value of attribute context.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#answering%21-instance_method" title="#answering! (instance method)">- (Object) <strong>answering!</strong>(to_whom, &amp;block) </a>
+      <a href="#answering%21-instance_method" title="#answering! (instance method)">- (Object) <strong>answering!</strong>(to_whom) { ... }</a>
     
 
     
@@ -210,7 +231,10 @@ Returns the value of attribute context.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+sets component to answer <tt>to_whom</tt>.
+</p>
+</div></span>
   
 </li>
 
@@ -231,7 +255,11 @@ Returns the value of attribute context.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+asks a <tt>component</tt> for something and executes <tt>block</tt> when
+answer is obtained.
+</p>
+</div></span>
   
 </li>
 
@@ -252,7 +280,11 @@ Returns the value of attribute context.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+when <tt><a href="" title="Isy::Component::Base (class)">Base</a></tt> is initialized this method is called to setup initial state of
+the <tt><a href="" title="Isy::Component::Base (class)">Base</a></tt>.
+</p>
+</div></span>
   
 </li>
 
@@ -299,7 +331,10 @@ A new instance of Base.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+<tt><a href="" title="Isy::Component::Base (class)">Base</a></tt> factory method, it adds proper <tt><a href="../Context/Base.html" title="Isy::Context::Base (class)">Isy::Context::Base</a></tt> automatically.
+</p>
+</div></span>
   
 </li>
 
@@ -320,7 +355,10 @@ A new instance of Base.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+renders html.
+</p>
+</div></span>
   
 </li>
 
@@ -328,7 +366,7 @@ A new instance of Base.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#widget-instance_method" title="#widget (instance method)">- (Object) <strong>widget</strong> </a>
+      <a href="#widget-instance_method" title="#widget (instance method)">- (Widget::Base) <strong>widget</strong> </a>
     
 
     
@@ -341,7 +379,10 @@ A new instance of Base.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Return instantiated widget or creates one.
+</p>
+</div></span>
   
 </li>
 
@@ -370,7 +411,7 @@ A new instance of Base.
         <li class="protected ">
   <span class="summary_signature">
     
-      <a href="#widget_class-instance_method" title="#widget_class (instance method)">- (Object) <strong>widget_class</strong> </a>
+      <a href="#widget_class-instance_method" title="#widget_class (instance method)">- (Class) <strong>widget_class</strong> </a>
     
 
     
@@ -383,7 +424,10 @@ A new instance of Base.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Which is used to insatiate widget.
+</p>
+</div></span>
   
 </li>
 
@@ -411,20 +455,35 @@ A new instance of Base
   </div>
 </div>
 <div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
   
+    <li>
+      
+        <span class='type'>(<tt><a href="../Context/Base.html" title="Isy::Context::Base (class)">Context::Base</a></tt>)</span>
+      
+      
+        <span class='name'>context</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-7
-8
-9
-10</pre>
+10
+11
+12
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 7</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id context'>context</span><span class='rparen'>)</span>
   <span class='ivar'>@context</span> <span class='op'>=</span> <span class='id context'>context</span>
@@ -467,12 +526,12 @@ Returns the value of attribute context
       <pre class="lines">
 
 
-5
-6
-7</pre>
+7
+8
+9</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 5</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 7</span>
 
 <span class='kw'>def</span> <span class='id context'>context</span>
   <span class='ivar'>@context</span>
@@ -496,18 +555,53 @@ Returns the value of attribute context
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+sets widget class
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Class</tt>)</span>
+      
+      
+        <span class='name'>klass</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="#widget_class-instance_method" title="Isy::Component::Base#widget_class (method)">#widget_class</a></li>
+    
+      <li><a href="#widget_class-class_method" title="Isy::Component::Base.widget_class (method)">widget_class</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-62
-63
-64</pre>
+96
+97
+98</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 96</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id set_widget_class'>set_widget_class</span><span class='lparen'>(</span><span class='id klass'>klass</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id _widget_class'>_widget_class</span> <span class='op'>=</span> <span class='id klass'>klass</span>
@@ -520,26 +614,56 @@ Returns the value of attribute context
       <div class="method_details ">
   <p class="signature " id="widget_class-class_method">
   
-    + (<tt>Object</tt>) <strong>widget_class</strong>  <span class="extras">(protected)</span>
+    + (<tt>Class</tt>) <strong>widget_class</strong>  <span class="extras">(protected)</span>
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Which is used to insatiate widget
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Class</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+which is used to insatiate widget
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-40
-41
-42
-43
-44
-45
-46</pre>
+68
+69
+70
+71
+72
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 68</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id widget_class'>widget_class</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id _widget_class'>_widget_class</span> <span class='op'>||</span> <span class='ivar'>@widget_class</span> <span class='op'>||=</span> <span class='kw'>begin</span>
@@ -566,18 +690,59 @@ Returns the value of attribute context
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+answer with <tt>answer</tt>
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+        <span class='name'>answer</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>
+passed to stored block
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="#ask-instance_method" title="Isy::Component::Base#ask (method)">#ask</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-34
-35
-36</pre>
+61
+62
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 61</span>
 
 <span class='kw'>def</span> <span class='id answer!'>answer!</span><span class='lparen'>(</span><span class='id answer'>answer</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='ivar'>@asker</span><span class='period'>.</span><span class='id instance_exec'>instance_exec</span> <span class='id answer'>answer</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='ivar'>@askers_callback</span>
@@ -590,22 +755,74 @@ Returns the value of attribute context
       <div class="method_details ">
   <p class="signature " id="answering!-instance_method">
   
-    - (<tt>Object</tt>) <strong>answering!</strong>(to_whom, &amp;block) 
+    - (<tt>Object</tt>) <strong>answering!</strong>(to_whom) { ... }
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+sets component to answer <tt>to_whom</tt>
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt><a href="" title="Isy::Component::Base (class)">Base</a></tt>)</span>
+      
+      
+        <span class='name'>to_whom</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+        <span class='type'></span>
+      
+      
+      
+      
+        
+        <div class='inline'><p>
+block to execute after answer
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="#ask-instance_method" title="Isy::Component::Base#ask (method)">#ask</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-30
-31
-32</pre>
+54
+55
+56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 54</span>
 
 <span class='kw'>def</span> <span class='id answering!'>answering!</span><span class='lparen'>(</span><span class='id to_whom'>to_whom</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='ivar'>@asker</span><span class='comma'>,</span> <span class='ivar'>@askers_callback</span> <span class='op'>=</span> <span class='id to_whom'>to_whom</span><span class='comma'>,</span> <span class='id block'>block</span>
@@ -622,20 +839,92 @@ Returns the value of attribute context
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+asks a <tt>component</tt> for something and executes <tt>block</tt> when
+answer is obtained
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'><p>
+with a <tt><a href="" title="Isy::Component::Base (class)"></a></tt> class
+</p>
+</div></h4>
+      <pre class="example code"><span class='id ask'>ask</span> <span class='const'>Counter</span><span class='comma'>,</span> <span class='int'>0</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id answer'>answer</span><span class='op'>|</span>
+  <span class='id values'>values</span> <span class='op'>&lt;&lt;</span> <span class='id answer'>answer</span>
+<span class='kw'>end</span></pre>
+    
+      <h4><div class='inline'><p>
+with a <tt><a href="" title="Isy::Component::Base (class)"></a></tt> instance
+</p>
+</div></h4>
+      <pre class="example code"><span class='id ask'>ask</span> <span class='kw'>self</span><span class='period'>.</span><span class='id counter'>counter</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id answer'>answer</span><span class='op'>|</span>
+  <span class='id values'>values</span> <span class='op'>&lt;&lt;</span> <span class='id answer'>answer</span>
+<span class='kw'>end</span></pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Class</tt>, <tt><a href="" title="Isy::Component::Base (class)">Base</a></tt>)</span>
+      
+      
+        <span class='name'>component</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+which is asked
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'></span>
+      
+      
+        <span class='name'>[]</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+args for <tt><a href="" title="Isy::Component::Base (class)"></a></tt> constructor when a Class is passed to <tt>component</tt>
+yield [Object] answer block which is executed after answer is obtained
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-24
-25
-26
-27
-28</pre>
+44
+45
+46
+47
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id ask'>ask</span><span class='lparen'>(</span><span class='id component'>component</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='id component'>component</span> <span class='op'>=</span> <span class='id new'>new</span><span class='lparen'>(</span><span class='id component'>component</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id component'>component</span><span class='period'>.</span><span class='id kind_of?'>kind_of?</span> <span class='const'>Class</span>
@@ -654,17 +943,29 @@ Returns the value of attribute context
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+when <tt><a href="" title="Isy::Component::Base (class)"></a></tt> is initialized this method is called to setup initial state of
+the <tt><a href="" title="Isy::Component::Base (class)"></a></tt>
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-48
-49</pre>
+77
+78</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 77</span>
 
 <span class='kw'>def</span> <span class='id initial_state'>initial_state</span>
 <span class='kw'>end</span></pre>
@@ -680,18 +981,67 @@ Returns the value of attribute context
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+<tt><a href="" title="Isy::Component::Base (class)"></a></tt> factory method, it adds proper <tt><a href="../Context/Base.html" title="Isy::Context::Base (class)">Isy::Context::Base</a></tt> automatically
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'></span>
+      
+      
+        <span class='name'>[]</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+args are passed automatically to <tt>klass</tt>.new
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Class</tt>)</span>
+      
+      
+        <span class='name'>klass</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+which is used to create new <tt><a href="" title="Isy::Component::Base (class)"></a></tt> instance
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-12
-13
-14</pre>
+18
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id new'>new</span><span class='lparen'>(</span><span class='id klass'>klass</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='rparen'>)</span>
   <span class='id klass'>klass</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id context'>context</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='rparen'>)</span>
@@ -708,18 +1058,29 @@ Returns the value of attribute context
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+renders html
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-16
-17
-18</pre>
+23
+24
+25</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id to_s'>to_s</span>
   <span class='lparen'>(</span><span class='id root?'>root?</span> <span class='op'>?</span> <span class='id layout'>layout</span> <span class='op'>:</span> <span class='id widget'>widget</span><span class='rparen'>)</span><span class='period'>.</span><span class='id to_s'>to_s</span>
@@ -732,22 +1093,52 @@ Returns the value of attribute context
       <div class="method_details ">
   <p class="signature " id="widget-instance_method">
   
-    - (<tt>Object</tt>) <strong>widget</strong> 
+    - (<tt><a href="../Widget/Base.html" title="Isy::Widget::Base (class)">Widget::Base</a></tt>) <strong>widget</strong> 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Return instantiated widget or creates one
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><a href="../Widget/Base.html" title="Isy::Widget::Base (class)">Widget::Base</a></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+return instantiated widget or creates one
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-20
-21
-22</pre>
+28
+29
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 20</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id widget'>widget</span>
   <span class='ivar'>@widget</span> <span class='op'>||=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id widget_class'>widget_class</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='op'>*</span><span class='id widget_args'>widget_args</span><span class='rparen'>)</span>
@@ -770,11 +1161,11 @@ Returns the value of attribute context
       <pre class="lines">
 
 
-55
-56</pre>
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 85</span>
 
 <span class='kw'>def</span> <span class='id widget_args'>widget_args</span>
 <span class='kw'>end</span></pre>
@@ -786,22 +1177,52 @@ Returns the value of attribute context
       <div class="method_details ">
   <p class="signature " id="widget_class-instance_method">
   
-    - (<tt>Object</tt>) <strong>widget_class</strong>  <span class="extras">(protected)</span>
+    - (<tt>Class</tt>) <strong>widget_class</strong>  <span class="extras">(protected)</span>
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Which is used to insatiate widget
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Class</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+which is used to insatiate widget
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-51
-52
-53</pre>
+81
+82
+83</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 81</span>
 
 <span class='kw'>def</span> <span class='id widget_class'>widget_class</span>
   <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:widget_class</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id widget_class'>widget_class</span>
@@ -816,9 +1237,9 @@ Returns the value of attribute context
 </div>
     
     <div id="footer">
-  Generated on Wed Jun 23 10:53:11 2010 by 
+  Generated on Wed Jun 23 11:53:42 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
-  0.5.7 (ruby-1.9.1).
+  0.5.8 (ruby-1.9.1).
 </div>
 
   </body>
