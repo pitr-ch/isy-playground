@@ -4,34 +4,31 @@ require 'yard'
 
 namespace :doc do
 
+  options = %w[--protected --private --verbose]
+  output = "--output-dir=./yardoc/"
+  input = %w[./lib/**/*.rb - MIT-LICENSE] + Dir.glob('docs/**/*')
+  title = "--title=Isy Framework"
+  
+  YARD::Rake::YardocTask.new(:yard) do |yardoc|
+    yardoc.options.push(*options) << output << title
+    yardoc.files.push(*input)
+    yardoc.options << '--incremental' if File.exist? './.yardoc'
+  end
+
   namespace :yard do
 
-    YARD::Rake::YardocTask.new(:local) do |yardoc|
-      yardoc.options <<
-          '--protected' <<
-          '--private' <<
-          '--verbose' <<
-          "--output-dir=./doc/yard/" <<
-          "--title=Isy Framework (local)"
-      yardoc.files << './lib/**/*.rb'
-      yardoc.options << '--incremental' if File.exist? './.yardoc'
-    end
-
-    desc "clear yardoc"
-    task :clear do
-      FileUtils.rm_r ['./.yardoc', './doc/yard']
+    YARD::Rake::YardocTask.new(:regenerate) do |yardoc|
+      yardoc.options.push(*options) << output << title
+      yardoc.files.push(*input)
     end
 
     YARD::Rake::YardocTask.new(:'gh-pages') do |yardoc|
       commit = `git log -n 1`
       hash = /^commit +(\w+)$/.match(commit)[1]
-      yardoc.options <<
-          '--protected' <<
-          '--private' <<
-          '--verbose' <<
+      yardoc.options.push(*options) <<
           "--output-dir=./gh-pages/" <<
           "--title=Isy Framework | #{hash}"
-      yardoc.files << './lib/**/*.rb' << '-' << 'MIT-LICENSE'
+      yardoc.files.push(*input)
     end
   end
 end
