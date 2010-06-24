@@ -4,7 +4,7 @@ require 'yard'
 
 namespace :doc do
 
-  options = %w[--protected --private --verbose]
+  options = %w[--protected --private --verbose] # --main=HOMEPAGE.md]
   output = "--output-dir=./yardoc/"
   input = %w[./lib/**/*.rb - MIT-LICENSE] + Dir.glob('docs/**/*')
   title = "--title=Isy Framework"
@@ -28,6 +28,7 @@ namespace :doc do
       yardoc.options.push(*options) <<
           "--output-dir=./gh-pages/" <<
           "--title=Isy Framework | #{hash}"
+          
       yardoc.files.push(*input)
     end
   end
