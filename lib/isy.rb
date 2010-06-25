@@ -1,6 +1,4 @@
-require 'rubygems'
-require 'bundler'
-Bundler.setup
+raise "wrong ruby version #{RUBY_VERSION}" unless RUBY_VERSION =~ /1\.9/
 
 require 'uuid'
 require 'active_support/core_ext'
@@ -8,7 +6,7 @@ require 'erector'
 require 'sinatra/base'
 require 'require_all'
 
-Erector::Widget.prettyprint_default = true
+Erector::Widget.prettyprint_default = true # TODO remove after adding ajax
 
 module Isy
   def self.root
@@ -25,11 +23,7 @@ module Isy
     @logger ||= Logger.new($stdout)
   end
 
-  $LOAD_PATH << "#{Isy.root}/lib"
-
   require_all "#{Isy.root}/lib/isy/**/*.rb"
-  require_all "#{Isy.root}/app/**/*.rb"
-  
 end
 
 # require 'datamapper'

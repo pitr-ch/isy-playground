@@ -50,9 +50,9 @@ but if you write something don't try it in a console or a test application write
 Is generated using [YARD](http://yardoc.org/) with [yard-rspec](http://rubygems.org/gems/yard-rspec) extension.
 There are 3 Rake tasks:
 
-* `doc:yard` generates incrementally local documentation into `yardoc`
-* `doc:yard:regenerate` force to regenerate whole local documentation
-* `doc:yard:gh-pages` generates documentation into subdirectory `gh-pages` where clone of branch `gh-pages` is expected.
+* `yard` generates incrementally local documentation into `yardoc`
+* `yard:regenerate` force to regenerate whole local documentation
+* `yard:gh-pages` generates documentation into subdirectory `gh-pages` where clone of branch `gh-pages` is expected.
   It's used to update online documentation on
   [http://isy-pitr.github.com/isy-playground/](http://isy-pitr.github.com/isy-playground/)
 

@@ -2,13 +2,14 @@
 
 ruby component based state-full web framework
 
-## How to run
-Clone from github.
+## How to run example application
+Clone repository
     git clone git://github.com/isy-pitr/isy-playground.git
-Use
+Move to examples directory and run Bundler
+    cd examples
     bundle install
-and Ruby 1.9.1. Start server with:
-    ruby bin/run.rb
+use Ruby 1.9.1
+    ruby app.rb
 
 ## For more information visit [homepage](http://isy-pitr.github.com/isy-playground/).
 

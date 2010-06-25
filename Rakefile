@@ -2,7 +2,8 @@ require 'rubygems'
 require 'rake'
 require 'yard'
 
-namespace :doc do
+begin
+  require 'yard'
 
   options = %w[--protected --private --verbose --main=README_FULL.md]
   output = "--output-dir=./yardoc/"
@@ -32,4 +33,66 @@ namespace :doc do
       yardoc.files.push(*input)
     end
   end
+
+rescue LoadError
+  task :yardoc do
+    abort "YARD is not available. In order to run yardoc, you must: sudo gem install yard"
+  end
 end
+
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gem|
+    gem.name = "isy"
+    gem.summary = %Q{ruby component based state-full web framework}
+    gem.description = %Q{ruby component based state-full web framework}
+    #    gem.email = "chalupapetr@post.cz"
+    gem.homepage = "http://isy-pitr.github.com/isy-playground"
+    gem.authors = ["Petr Chalupa"]
+
+    gem.add_dependency 'uuid', ">= 0"
+    gem.add_dependency 'tzinfo', '>= 0'
+    gem.add_dependency 'i18n', '>= 0'
+    gem.add_dependency 'activesupport', '>= 3.0.0.beta'
+    gem.add_dependency 'erector', ">= 0"
+    gem.add_dependency 'sinatra', ">= 0"
+    gem.add_dependency 'thin', ">= 0"
+    gem.add_dependency 'require_all', ">= 0"
+
+    gem.add_development_dependency "rspec", ">= 2.0.0.beta"
+    gem.add_development_dependency "yard", ">= 0"
+    gem.add_development_dependency "yard-rspec", ">= 0"
+    gem.add_development_dependency "bluecloth", ">= 0"
+    gem.add_development_dependency "jeweler", ">= 0"
+
+    gem.files = FileList['lib/**/*.*', 'examples/**/*.*'].to_a
+
+    #    gem.files = %w[lib docs examples].inject([]) do |files, dir|
+    #      files + Dir.glob("#{File.dirname(__FILE__)}/#{dir}/**/*.*")
+    #    end + %w[README.md README_FULL.md MIT-LICENCE]
+
+    gem.test_files = FileList["spec/**/*.*"].to_a
+    gem.extra_rdoc_files = FileList["README.md", "README_FULL.md", "MIT-LICENSE", 'docs/**/*.*'].to_a
+    
+    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+  end
+  Jeweler::GemcutterTasks.new
+rescue LoadError
+  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
+end
+
+#begin
+#  require 'rspec/core/rake_task'
+#  RSpec::Core::RakeTask.new(:spec) do |spec|
+##    spec.libs << 'lib' << 'spec'
+#    spec.pattern = FileList['spec/**/*_spec.rb']
+#  end
+#
+#  RSpec::Core::RakeTask.new(:rcov) do |spec|
+##    spec.libs << 'lib' << 'spec'
+#    spec.pattern = 'spec/**/*_spec.rb'
+#    spec.rcov = true
+#  end
+#rescue LoadError
+#  puts "misiing rspec/core/rake_task"
+#end
