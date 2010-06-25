@@ -84,7 +84,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     <p>
-Abstract class of widgets used to render components
+Abstract class of all widgets
 </p>
 
 
@@ -94,43 +94,11 @@ Abstract class of widgets used to render components
   
 </div><div id="subclasses">
   <h2>Direct Known Subclasses</h2>
-  <p class="children"><a href="Collection.html" title="Isy::Widget::Collection (class)">Collection</a></p>
+  <p class="children"><a href="Component.html" title="Isy::Widget::Component (class)">Component</a>, <a href="Inspector.html" title="Isy::Widget::Inspector (class)">Inspector</a></p>
 </div>
 
 
   
-  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
-  <ul class="summary">
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#component-instance_method" title="#component (instance method)">- (Object) <strong>component</strong> </a>
-    
-
-    
-  </span>
-  
-  
-    <span class="note title readonly">readonly</span>
-    
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-component to be rendered.
-</p>
-</div></span>
-  
-</li>
-
-    
-  </ul>
-
 
   
     <h2>
@@ -143,33 +111,7 @@ component to be rendered.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Base) <strong>initialize</strong>(component) </a>
-    
-
-    
-  </span>
-  
-    <span class="note title constructor">constructor</span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-A new instance of Base.
-</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#link_to-instance_method" title="#link_to (instance method)">- (Object) <strong>link_to</strong>(label) { ... }</a>
+      <a href="#render-instance_method" title="#render (instance method)">- (Object) <strong>render</strong>(obj) </a>
     
 
     
@@ -183,56 +125,7 @@ A new instance of Base.
 
   
     <span class="summary_desc"><div class='inline'><p>
-renders link with <tt>label</tt> to some action <tt>action</tt> which is
-executed after click on the link.
-</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="private ">
-  <span class="summary_signature">
-    
-      <a href="#register_action-instance_method" title="#register_action (instance method)">- (Object) <strong>register_action</strong> { ... }</a>
-    
-
-    
-  </span>
-  
-  
-  <span class="note title private">private</span>
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-registers action to <tt><a href="#component-instance_method" title="Isy::Widget::Base#component (method)">Base#component</a></tt> for later evaluation.
-</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#widget-instance_method" title="#widget (instance method)">- (Object) <strong>widget</strong>(target, assigns = {}, &amp;block) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-adds ability to render component, preserves original behavior.
+try to obtain widget and render it with Erector::Widget#widget.
 </p>
 </div></span>
   
@@ -243,135 +136,23 @@ adds ability to render component, preserves original behavior.
   
 
 
-  <div id="constructor_details" class="method_details_list">
-  <h2>Constructor Details</h2>
   
-    <div class="method_details first">
-  <p class="signature first" id="initialize-instance_method">
-  
-    - (<tt><a href="" title="Isy::Widget::Base (class)">Base</a></tt>) <strong>initialize</strong>(component) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-A new instance of Base
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='type'>(<tt><a href="../Component/Base.html" title="Isy::Component::Base (class)">Component::Base</a></tt>)</span>
-      
-      
-        <span class='name'>component</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-to be rendered
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-11
-12
-13</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/base.rb', line 11</span>
-
-<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id component'>component</span><span class='rparen'>)</span>
-  <span class='ivar'>@component</span> <span class='op'>=</span> <span class='id component'>component</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-  
-</div>
-
-  <div id="instance_attr_details" class="attr_details">
-    <h2>Instance Attribute Details</h2>
-    
-      
-      <span id=""></span>
-      <span id="component-instance_method"></span>
-      <div class="method_details first">
-  <p class="signature first" id="component-instance_method">
-  
-    - (<tt>Object</tt>) <strong>component</strong>  <span class="extras">(readonly)</span>
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-component to be rendered
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-8
-9
-10</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/base.rb', line 8</span>
-
-<span class='kw'>def</span> <span class='id component'>component</span>
-  <span class='ivar'>@component</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-  </div>
-
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
     
     
       <div class="method_details first">
-  <p class="signature first" id="link_to-instance_method">
+  <p class="signature first" id="render-instance_method">
   
-    - (<tt>Object</tt>) <strong>link_to</strong>(label) { ... }
+    - (<tt>Object</tt>) <strong>render</strong>(obj) 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
     <p>
-renders link with <tt>label</tt> to some action <tt>action</tt> which is
-executed after click on the link
+try to obtain widget and render it with Erector::Widget#widget
 </p>
 
 
@@ -383,36 +164,16 @@ executed after click on the link
   
     <li>
       
-        <span class='type'>(<tt>String</tt>)</span>
+        <span class='type'>(<tt>Erector::Widget</tt>, <tt>#widget</tt>)</span>
       
       
-        <span class='name'>label</span>
+        <span class='name'>obj</span>
       
       
       
         &mdash;
         <div class='inline'><p>
-text of the link
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-<h3>Yields:</h3>
-<ul class="yield">
-  
-    <li>
-      
-        <span class='type'></span>
-      
-      
-      
-      
-        
-        <div class='inline'><p>
-action block of code which will be evaluated inside <tt><a href="#component-instance_method" title="Isy::Widget::Base#component (method)">#component</a></tt> after
-click on the link
+to render
 </p>
 </div>
       
@@ -426,129 +187,31 @@ click on the link
       <pre class="lines">
 
 
-25
-26
-27
-28</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/base.rb', line 25</span>
-
-<span class='kw'>def</span> <span class='id link_to'>link_to</span><span class='lparen'>(</span><span class='id label'>label</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id action'>action</span><span class='rparen'>)</span>
-  <span class='id uuid'>uuid</span> <span class='op'>=</span> <span class='id register_action'>register_action</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id action'>action</span><span class='rparen'>)</span>
-  <span class='id a'>a</span> <span class='id label'>label</span><span class='comma'>,</span> <span class='symbol'>:href</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>?context_id=</span><span class='embexpr_beg'>#{</span><span class='id component'>component</span><span class='period'>.</span><span class='id context'>context</span><span class='period'>.</span><span class='id id'>id</span><span class='rbrace'>}</span><span class='tstring_content'>&amp;action_id=</span><span class='embexpr_beg'>#{</span><span class='id uuid'>uuid</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="register_action-instance_method">
-  
-    - (<tt>Object</tt>) <strong>register_action</strong> { ... } <span class="extras">(private)</span>
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-registers action to <tt><a href="#component-instance_method" title="Isy::Widget::Base#component (method)">#component</a></tt> for later evaluation
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Yields:</h3>
-<ul class="yield">
-  
-    <li>
-      
-        <span class='type'></span>
-      
-      
-      
-      
-        
-        <div class='inline'><p>
-action block to register
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-34
-35
-36</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/base.rb', line 34</span>
-
-<span class='kw'>def</span> <span class='id register_action'>register_action</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-  <span class='id component'>component</span><span class='period'>.</span><span class='id context'>context</span><span class='period'>.</span><span class='id register_action'>register_action</span><span class='lparen'>(</span><span class='id component'>component</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="widget-instance_method">
-  
-    - (<tt>Object</tt>) <strong>widget</strong>(target, assigns = {}, &amp;block) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-adds ability to render component, preserves original behavior
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='type'>(<tt><a href="../Component/Base.html" title="Isy::Component::Base (class)">Component::Base</a></tt>)</span>
-      
-      
-        <span class='name'>target</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
+9
+10
+11
+12
+13
+14
+15
+16
+17
 18
-19
-20</pre>
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/base.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/base.rb', line 9</span>
 
-<span class='kw'>def</span> <span class='id widget'>widget</span><span class='lparen'>(</span><span class='id target'>target</span><span class='comma'>,</span> <span class='id assigns'>assigns</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-  <span class='kw'>super</span><span class='lparen'>(</span><span class='id target'>target</span><span class='period'>.</span><span class='id kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Isy</span><span class='op'>::</span><span class='const'>Component</span><span class='op'>::</span><span class='const'>Base</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id target'>target</span><span class='period'>.</span><span class='id widget'>widget</span> <span class='op'>:</span> <span class='id target'>target</span><span class='comma'>,</span> <span class='id assigns'>assigns</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id render'>render</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='rparen'>)</span>
+  <span class='id widget'>widget</span> <span class='kw'>begin</span>
+    <span class='kw'>if</span> <span class='id obj'>obj</span><span class='period'>.</span><span class='id kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Erector</span><span class='op'>::</span><span class='const'>Widget</span><span class='rparen'>)</span>
+      <span class='id obj'>obj</span>
+    <span class='kw'>elsif</span> <span class='id obj'>obj</span><span class='period'>.</span><span class='id respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:widget</span><span class='rparen'>)</span>
+      <span class='id obj'>obj</span><span class='period'>.</span><span class='id widget'>widget</span>
+    <span class='kw'>else</span>
+      <span class='id raise'>raise</span> <span class='const'>ArgumentError</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -560,7 +223,7 @@ adds ability to render component, preserves original behavior
 </div>
     
     <div id="footer">
-  Generated on Thu Jun 24 14:46:48 2010 by 
+  Generated on Fri Jun 25 19:59:32 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.1).
 </div>

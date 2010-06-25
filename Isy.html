@@ -60,7 +60,7 @@
   
     <dt class="r1 last">Defined in:</dt>
     <dd class="r1 last">lib/isy.rb<span class="defines">,<br />
-  lib/isy/widget/base.rb,<br /> lib/isy/context/base.rb,<br /> lib/isy/widget/layout.rb,<br /> lib/isy/context/action.rb,<br /> lib/isy/component/base.rb,<br /> lib/isy/widget/inspector.rb,<br /> lib/isy/application/base.rb,<br /> lib/isy/widget/collection.rb,<br /> lib/isy/context/container.rb,<br /> lib/isy/application/default.rb,<br /> lib/isy/application/common_logger.rb,<br /> lib/isy/widget/optionable_collection.rb</span>
+  lib/isy/widget/base.rb,<br /> lib/isy/context/base.rb,<br /> lib/isy/widget/layout.rb,<br /> lib/isy/context/action.rb,<br /> lib/isy/component/base.rb,<br /> lib/isy/application/base.rb,<br /> lib/isy/widget/component.rb,<br /> lib/isy/widget/inspector.rb,<br /> lib/isy/widget/collection.rb,<br /> lib/isy/context/container.rb,<br /> lib/isy/application/common_logger.rb,<br /> lib/isy/widget/optionable_collection.rb</span>
 </dd>
   
 </dl>
@@ -172,14 +172,14 @@
       <pre class="lines">
 
 
+16
+17
 18
 19
-20
-21
-22</pre>
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'lib/isy.rb', line 16</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id generate_id'>generate_id</span>
   <span class='comment'>#    @last_id ||= 0
@@ -204,12 +204,12 @@
       <pre class="lines">
 
 
-24
-25
-26</pre>
+22
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'lib/isy.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id logger'>logger</span>
   <span class='ivar'>@logger</span> <span class='op'>||=</span> <span class='const'>Logger</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='gvar'>$stdout</span><span class='rparen'>)</span>
@@ -232,12 +232,12 @@
       <pre class="lines">
 
 
-14
-15
-16</pre>
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'lib/isy.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id root'>root</span>
   <span class='ivar'>@root</span> <span class='op'>||=</span> <span class='const'>File</span><span class='period'>.</span><span class='id expand_path'>expand_path</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'>File</span><span class='period'>.</span><span class='id dirname'>dirname</span><span class='lparen'>(</span><span class='kw'>__FILE__</span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_content'>/..</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -252,7 +252,7 @@
 </div>
     
     <div id="footer">
-  Generated on Thu Jun 24 14:46:47 2010 by 
+  Generated on Fri Jun 25 19:59:32 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.1).
 </div>
