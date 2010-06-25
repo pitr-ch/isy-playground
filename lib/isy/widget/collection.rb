@@ -2,7 +2,7 @@ module Isy
   module Widget
 
     # Abstract widget to render collections
-    class Collection < Base
+    class Collection < Component
 
       # @overload initialize(component)
       #   @param [Component::Base] component which respond_to? #collection
@@ -24,12 +24,12 @@ module Isy
         if collection.blank?
           nothing
         elsif collection.size == 1
-          widget collection.first
+          render collection.first
         else
-          widget collection.first
+          render collection.first
           collection[1..-1].each do |element|
             between
-            widget element
+            render element
           end
         end
         after

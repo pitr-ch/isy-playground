@@ -14,7 +14,7 @@ module Ask
       numbers.inject {|sum, num| sum + num }
     end
 
-    class Widget < Isy::Widget::Base
+    class Widget < Isy::Widget::Component
 
       def content
         strong 'Numbers:'
@@ -41,7 +41,7 @@ module Ask
         # If counter is set, let's show it
         # if not, let's add link to new one
         if component.counter
-          widget component.counter
+          render component.counter
         else
           link_to('Select Number') do
             # if 'Select Number' is clicked, +counter+ is set and

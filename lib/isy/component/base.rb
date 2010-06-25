@@ -24,7 +24,7 @@ module Isy
         (root? ? layout : widget).to_s
       end
 
-      # @return [Widget::Base] return instantiated widget or creates one
+      # @return [Widget::Component] return instantiated widget or creates one
       def widget
         @widget ||= self.class.widget_class.new(self, *widget_args)
       end

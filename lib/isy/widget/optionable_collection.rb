@@ -24,9 +24,9 @@ module Isy
       %w[before, after, between, nothing].map(&:to_sym).each do |method|
         define_method method do 
           case options[method]
-          when Erector::Widget, Isy::Component::Base then widget options[method]
           when String then text options[method]
           when Proc then options[method].call(self)
+          else render options[method]
           end
         end
       end

@@ -6,7 +6,7 @@ class Examples < Isy::Component::Base
     @example = nil
   end
 
-  class Widget < Isy::Widget::Base
+  class Widget < Isy::Widget::Component
     def content
       strong 'Examples:'
       ul do
@@ -17,7 +17,7 @@ class Examples < Isy::Component::Base
       
       hr
 
-      widget component.example if component.example
+      render component.example if component.example
     end
   end
 

@@ -6,7 +6,7 @@ class Counter < Isy::Component::Base
     @counter = 0
   end
 
-  class Widget < Isy::Widget::Base
+  class Widget < Isy::Widget::Component
     def content
       h3 'Counter'
       p do

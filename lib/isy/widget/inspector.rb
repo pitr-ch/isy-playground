@@ -4,7 +4,7 @@ module Isy
   module Widget
 
     # renders inspection of a object
-    class Inspector < Erector::Widget
+    class Inspector < Base
 
       # @param [Object] obj to be inspected
       # @param [Symbol] method of inspection. Supported are :pp and :p
