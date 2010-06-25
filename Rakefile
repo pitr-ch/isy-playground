@@ -4,9 +4,9 @@ require 'yard'
 
 namespace :doc do
 
-  options = %w[--protected --private --verbose] # --main=HOMEPAGE.md]
+  options = %w[--protected --private --verbose --main=README_FULL.md]
   output = "--output-dir=./yardoc/"
-  input = %w[./lib/**/*.rb - MIT-LICENSE] + Dir.glob('docs/**/*')
+  input = %w[./lib/**/*.rb - MIT-LICENSE README.md] + Dir.glob('docs/**/*')
   title = "--title=Isy Framework"
   
   YARD::Rake::YardocTask.new(:yard) do |yardoc|
