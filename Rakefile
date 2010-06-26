@@ -61,7 +61,7 @@ begin
 
     gem.add_development_dependency "rspec", ">= 2.0.0.beta"
     gem.add_development_dependency "yard", ">= 0"
-    gem.add_development_dependency "yard-rspec", ">= 0"
+    #    gem.add_development_dependency "yard-rspec", ">= 0"
     gem.add_development_dependency "bluecloth", ">= 0"
     gem.add_development_dependency "jeweler", ">= 0"
 
@@ -81,18 +81,13 @@ rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
 end
 
-#begin
-#  require 'rspec/core/rake_task'
-#  RSpec::Core::RakeTask.new(:spec) do |spec|
-##    spec.libs << 'lib' << 'spec'
-#    spec.pattern = FileList['spec/**/*_spec.rb']
-#  end
-#
-#  RSpec::Core::RakeTask.new(:rcov) do |spec|
-##    spec.libs << 'lib' << 'spec'
-#    spec.pattern = 'spec/**/*_spec.rb'
-#    spec.rcov = true
-#  end
-#rescue LoadError
-#  puts "misiing rspec/core/rake_task"
-#end
+begin
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new 
+
+  RSpec::Core::RakeTask.new(:rcov) do |spec|
+    spec.rcov = true
+  end
+rescue LoadError
+  puts "misiing rspec/core/rake_task"
+end

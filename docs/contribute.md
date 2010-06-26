@@ -42,7 +42,7 @@ in this repository `master` acts as `devel` and `stable` will act as `master` in
 
 Are done with [RSpec](http://rspec.info/) v2.0.0.beta 
 ([2.0 changes](http://github.com/rspec/rspec-core/blob/master/Upgrade.markdown)).
-Framework is in its really early stages so there is no need to full coverage,
+Framework is in its really early stage so there is no need to full coverage,
 but if you write something don't try it in a console or a test application write some tests.
 
 ## Documentation

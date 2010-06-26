@@ -1,6 +1,7 @@
 .rvmrc
 .bundle
 .yardoc
+.rspec
 .rake_tasks~
 yardoc
 gh-pages

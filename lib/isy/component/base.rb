@@ -55,7 +55,7 @@ module Isy
         @asker, @askers_callback = to_whom, block
       end
 
-      # answer with +answer+
+      # answers with +answer+
       # @param [Object] answer passed to stored block
       # @see #ask
       def answer!(answer = nil)

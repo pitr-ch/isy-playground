@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Petr Chalupa"]
-  s.date = %q{2010-06-25}
+  s.date = %q{2010-06-26}
   s.description = %q{ruby component based state-full web framework}
   s.extra_rdoc_files = [
     "MIT-LICENSE",
@@ -42,6 +42,7 @@ Gem::Specification.new do |s|
      "lib/isy/context/container.rb",
      "lib/isy/widget/base.rb",
      "lib/isy/widget/collection.rb",
+     "lib/isy/widget/component.rb",
      "lib/isy/widget/inspector.rb",
      "lib/isy/widget/layout.rb",
      "lib/isy/widget/optionable_collection.rb"
@@ -51,6 +52,10 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{ruby component based state-full web framework}
+  s.test_files = [
+    "spec/isy/widget/base_spec.rb",
+     "spec/spec_helper.rb"
+  ]
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
@@ -67,7 +72,6 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<require_all>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 2.0.0.beta"])
       s.add_development_dependency(%q<yard>, [">= 0"])
-      s.add_development_dependency(%q<yard-rspec>, [">= 0"])
       s.add_development_dependency(%q<bluecloth>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
     else
@@ -81,7 +85,6 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<require_all>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 2.0.0.beta"])
       s.add_dependency(%q<yard>, [">= 0"])
-      s.add_dependency(%q<yard-rspec>, [">= 0"])
       s.add_dependency(%q<bluecloth>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
     end
@@ -96,7 +99,6 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<require_all>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 2.0.0.beta"])
     s.add_dependency(%q<yard>, [">= 0"])
-    s.add_dependency(%q<yard-rspec>, [">= 0"])
     s.add_dependency(%q<bluecloth>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
   end
