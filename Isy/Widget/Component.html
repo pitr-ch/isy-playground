@@ -149,7 +149,7 @@ component to be rendered.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Component) <strong>initialize</strong>(component) </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Component) <strong>initialize</strong>(component, assigns = {}, &amp;block) </a>
     
 
     
@@ -233,7 +233,7 @@ registers action to <tt><a href="#component-instance_method" title="Isy::Widget:
   
   
   <h3 class="inherited">Methods inherited from <a href="Base.html" title="Isy::Widget::Base (class)">Base</a></h3>
-  <p class="inherited"><a href="Base.html#render-instance_method" title="Isy::Widget::Base#render (method)">#render</a></p>
+  <p class="inherited"><a href="Base.html#_render-instance_method" title="Isy::Widget::Base#_render (method)">#_render</a>, <a href="Base.html#content_with_wrapper-instance_method" title="Isy::Widget::Base#content_with_wrapper (method)">#content_with_wrapper</a>, <a href="Base.html#css_class-class_method" title="Isy::Widget::Base.css_class (method)">css_class</a>, <a href="Base.html#render-instance_method" title="Isy::Widget::Base#render (method)">#render</a>, <a href="Base.html#wrap_in-class_method" title="Isy::Widget::Base.wrap_in (method)">wrap_in</a>, <a href="Base.html#wrapped_in-class_method" title="Isy::Widget::Base.wrapped_in (method)">wrapped_in</a>, <a href="Base.html#write_via-instance_method" title="Isy::Widget::Base#write_via (method)">#write_via</a></p>
 
   <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
@@ -241,7 +241,7 @@ registers action to <tt><a href="#component-instance_method" title="Isy::Widget:
     <div class="method_details first">
   <p class="signature first" id="initialize-instance_method">
   
-    - (<tt><a href="" title="Isy::Widget::Component (class)">Component</a></tt>) <strong>initialize</strong>(component) 
+    - (<tt><a href="" title="Isy::Widget::Component (class)">Component</a></tt>) <strong>initialize</strong>(component, assigns = {}, &amp;block) 
   
 
   
@@ -285,12 +285,14 @@ to be rendered
 
 11
 12
-13</pre>
+13
+14</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/isy/widget/component.rb', line 11</span>
 
-<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id component'>component</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id component'>component</span><span class='comma'>,</span> <span class='id assigns'>assigns</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id assigns'>assigns</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='ivar'>@component</span> <span class='op'>=</span> <span class='id component'>component</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -418,13 +420,13 @@ click on the link
       <pre class="lines">
 
 
-18
-19
-20
-21</pre>
+21
+22
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/component.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/component.rb', line 21</span>
 
 <span class='kw'>def</span> <span class='id link_to'>link_to</span><span class='lparen'>(</span><span class='id label'>label</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id action'>action</span><span class='rparen'>)</span>
   <span class='id uuid'>uuid</span> <span class='op'>=</span> <span class='id register_action'>register_action</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id action'>action</span><span class='rparen'>)</span>
@@ -478,12 +480,12 @@ action block to register
       <pre class="lines">
 
 
-27
-28
-29</pre>
+30
+31
+32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/component.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/component.rb', line 30</span>
 
 <span class='kw'>def</span> <span class='id register_action'>register_action</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='id component'>component</span><span class='period'>.</span><span class='id context'>context</span><span class='period'>.</span><span class='id register_action'>register_action</span><span class='lparen'>(</span><span class='id component'>component</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
@@ -498,7 +500,7 @@ action block to register
 </div>
     
     <div id="footer">
-  Generated on Fri Jun 25 19:59:33 2010 by 
+  Generated on Mon Jun 28 10:27:17 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.1).
 </div>

@@ -208,12 +208,14 @@ which is rendered with this layout
 
 8
 9
-10</pre>
+10
+11</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/isy/widget/layout.rb', line 8</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id context'>context</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span>
   <span class='ivar'>@context</span> <span class='op'>=</span> <span class='id context'>context</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -252,12 +254,12 @@ after rendering itself it renders root component into body
       <pre class="lines">
 
 
-13
 14
-15</pre>
+15
+16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/layout.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/layout.rb', line 14</span>
 
 <span class='kw'>def</span> <span class='id body_content'>body_content</span>
   <span class='id widget'>widget</span> <span class='ivar'>@context</span><span class='period'>.</span><span class='id root_component'>root_component</span><span class='period'>.</span><span class='id widget'>widget</span>
@@ -272,7 +274,7 @@ after rendering itself it renders root component into body
 </div>
     
     <div id="footer">
-  Generated on Fri Jun 25 19:59:32 2010 by 
+  Generated on Mon Jun 28 10:27:16 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.1).
 </div>

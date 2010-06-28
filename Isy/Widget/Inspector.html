@@ -217,7 +217,7 @@ A new instance of Inspector.
   
   
   <h3 class="inherited">Methods inherited from <a href="Base.html" title="Isy::Widget::Base (class)">Base</a></h3>
-  <p class="inherited"><a href="Base.html#render-instance_method" title="Isy::Widget::Base#render (method)">#render</a></p>
+  <p class="inherited"><a href="Base.html#_render-instance_method" title="Isy::Widget::Base#_render (method)">#_render</a>, <a href="Base.html#content_with_wrapper-instance_method" title="Isy::Widget::Base#content_with_wrapper (method)">#content_with_wrapper</a>, <a href="Base.html#css_class-class_method" title="Isy::Widget::Base.css_class (method)">css_class</a>, <a href="Base.html#render-instance_method" title="Isy::Widget::Base#render (method)">#render</a>, <a href="Base.html#wrap_in-class_method" title="Isy::Widget::Base.wrap_in (method)">wrap_in</a>, <a href="Base.html#wrapped_in-class_method" title="Isy::Widget::Base.wrapped_in (method)">wrapped_in</a>, <a href="Base.html#write_via-instance_method" title="Isy::Widget::Base#write_via (method)">#write_via</a></p>
 
   <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
@@ -288,12 +288,14 @@ of inspection. Supported are :pp and :p
 
 11
 12
-13</pre>
+13
+14</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/isy/widget/inspector.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='comma'>,</span> <span class='id method'>method</span> <span class='op'>=</span> <span class='symbol'>:pp</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span>
   <span class='ivar'>@obj</span><span class='comma'>,</span> <span class='ivar'>@method</span> <span class='op'>=</span> <span class='id obj'>obj</span><span class='comma'>,</span> <span class='id method'>method</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -321,14 +323,14 @@ of inspection. Supported are :pp and :p
       <pre class="lines">
 
 
-15
 16
 17
 18
-19</pre>
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/inspector.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/inspector.rb', line 16</span>
 
 <span class='kw'>def</span> <span class='id content'>content</span>
   <span class='id code'>code</span> <span class='kw'>do</span>
@@ -398,12 +400,12 @@ inspection output
       <pre class="lines">
 
 
-26
 27
-28</pre>
+28
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/inspector.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/inspector.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='id format_dump'>format_dump</span><span class='lparen'>(</span><span class='id str'>str</span><span class='rparen'>)</span>
   <span class='id str'>str</span><span class='period'>.</span><span class='id html_escape'>html_escape</span><span class='period'>.</span><span class='id gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'> </span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>&amp;#160;</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\r\n?</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\n</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='id capture'>capture</span> <span class='lbrace'>{</span><span class='id br'>br</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -456,17 +458,17 @@ inspection selected by @method
       <pre class="lines">
 
 
-31
 32
 33
 34
 35
 36
 37
-38</pre>
+38
+39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/inspector.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/inspector.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='id get_dump'>get_dump</span>
   <span class='kw'>case</span> <span class='ivar'>@method</span>
@@ -486,7 +488,7 @@ inspection selected by @method
 </div>
     
     <div id="footer">
-  Generated on Fri Jun 25 19:59:33 2010 by 
+  Generated on Mon Jun 28 10:27:17 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.1).
 </div>

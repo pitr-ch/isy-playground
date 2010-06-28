@@ -102,11 +102,134 @@ Abstract class of all widgets
 
   
     <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#css_class-class_method" title="css_class (class method)">+ (String) <strong>css_class</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Class name transformed into CSS class, used by #content_with_wrapper.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#wrap_in-class_method" title="wrap_in (class method)">+ (Object) <strong>wrap_in</strong>(element) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#wrapped_in-class_method" title="wrapped_in (class method)">+ (Symbol) <strong>wrapped_in</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Element which will by used to wrap widget.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
       Instance Method Summary
       <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
     </h2>
 
     <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#_render-instance_method" title="#_render (instance method)">- (Object) <strong>_render</strong>(options = {}, &amp;blk) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#content_with_wrapper-instance_method" title="#content_with_wrapper (instance method)">- (Object) <strong>content_with_wrapper</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Wraps widget with element set by .wrap_in.
+</p>
+</div></span>
+  
+</li>
+
       
         <li class="public ">
   <span class="summary_signature">
@@ -132,18 +255,312 @@ try to obtain widget and render it with Erector::Widget#widget.
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#write_via-instance_method" title="#write_via (instance method)">- (Object) <strong>write_via</strong>(parent) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
     </ul>
   
 
 
   
 
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="css_class-class_method">
+  
+    + (<tt>String</tt>) <strong>css_class</strong>  <span class="extras">(private)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Class name transformed into CSS class, used by #content_with_wrapper
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+class name transformed into CSS class, used by #content_with_wrapper
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+73
+74
+75</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/base.rb', line 73</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id css_class'>css_class</span>
+  <span class='ivar'>@css_class</span> <span class='op'>||=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='period'>.</span><span class='id underscore'>underscore</span><span class='period'>.</span><span class='id gsub'>gsub</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>-</span><span class='tstring_end'>'</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="wrap_in-class_method">
+  
+    + (<tt>Object</tt>) <strong>wrap_in</strong>(element) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+        <span class='name'>element</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+which will by used to wrap widget
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+61
+62
+63</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/base.rb', line 61</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id wrap_in'>wrap_in</span><span class='lparen'>(</span><span class='id element'>element</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id wrapper'>wrapper</span> <span class='op'>=</span> <span class='id element'>element</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="wrapped_in-class_method">
+  
+    + (<tt>Symbol</tt>) <strong>wrapped_in</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Element which will by used to wrap widget
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+element which will by used to wrap widget
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+66
+67
+68</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/base.rb', line 66</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id wrapped_in'>wrapped_in</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id wrapper'>wrapper</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
     
     
       <div class="method_details first">
-  <p class="signature first" id="render-instance_method">
+  <p class="signature first" id="_render-instance_method">
+  
+    - (<tt>Object</tt>) <strong>_render</strong>(options = {}, &amp;blk) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/base.rb', line 12</span>
+
+<span class='kw'>def</span> <span class='id _render'>_render</span><span class='lparen'>(</span><span class='id options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id blk'>blk</span><span class='rparen'>)</span>
+  <span class='id options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+    <span class='symbol'>:output</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>  <span class='comment'># &quot;&quot; is apparently faster than [] in a long-running process
+</span>    <span class='symbol'>:prettyprint</span> <span class='op'>=&gt;</span> <span class='id prettyprint_default'>prettyprint_default</span><span class='comma'>,</span>
+    <span class='symbol'>:indentation</span> <span class='op'>=&gt;</span> <span class='int'>0</span><span class='comma'>,</span>
+    <span class='symbol'>:helpers</span> <span class='op'>=&gt;</span> <span class='kw'>nil</span><span class='comma'>,</span>
+    <span class='symbol'>:parent</span> <span class='op'>=&gt;</span> <span class='ivar'>@parent</span><span class='comma'>,</span>
+    <span class='symbol'>:content_method_name</span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id content_method_name'>content_method_name</span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='period'>.</span><span class='id merge'>merge</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
+  <span class='id context'>context</span><span class='lparen'>(</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:parent</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:output</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:prettyprint</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:indentation</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:helpers</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id send'>send</span><span class='lparen'>(</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:content_method_name</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id blk'>blk</span><span class='rparen'>)</span>
+    <span class='id output'>output</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="content_with_wrapper-instance_method">
+  
+    - (<tt>Object</tt>) <strong>content_with_wrapper</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Wraps widget with element set by .wrap_in. Method is called automatically
+use #content.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52
+53
+54</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/base.rb', line 50</span>
+
+<span class='kw'>def</span> <span class='id content_with_wrapper'>content_with_wrapper</span>
+  <span class='id send'>send</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id wrapped_in'>wrapped_in</span><span class='comma'>,</span> <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id css_class'>css_class</span> <span class='kw'>do</span>
+    <span class='id content'>content</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="render-instance_method">
   
     - (<tt>Object</tt>) <strong>render</strong>(obj) 
   
@@ -187,20 +604,20 @@ to render
       <pre class="lines">
 
 
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19</pre>
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/base.rb', line 9</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/base.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id render'>render</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='rparen'>)</span>
   <span class='id widget'>widget</span> <span class='kw'>begin</span>
@@ -218,12 +635,44 @@ to render
 </table>
 </div>
     
+      <div class="method_details ">
+  <p class="signature " id="write_via-instance_method">
+  
+    - (<tt>Object</tt>) <strong>write_via</strong>(parent) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27
+28
+29
+30
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/base.rb', line 27</span>
+
+<span class='kw'>def</span> <span class='id write_via'>write_via</span><span class='lparen'>(</span><span class='id parent'>parent</span><span class='rparen'>)</span>
+  <span class='id context'>context</span><span class='lparen'>(</span><span class='id parent'>parent</span><span class='comma'>,</span> <span class='id parent'>parent</span><span class='period'>.</span><span class='id output'>output</span><span class='comma'>,</span> <span class='id parent'>parent</span><span class='period'>.</span><span class='id prettyprint'>prettyprint</span><span class='comma'>,</span> <span class='id parent'>parent</span><span class='period'>.</span><span class='id indentation'>indentation</span><span class='comma'>,</span> <span class='id parent'>parent</span><span class='period'>.</span><span class='id helpers'>helpers</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id send'>send</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id content_method_name'>content_method_name</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
     
     <div id="footer">
-  Generated on Fri Jun 25 19:59:32 2010 by 
+  Generated on Mon Jun 28 10:27:16 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.1).
 </div>
