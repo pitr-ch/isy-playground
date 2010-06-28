@@ -26,7 +26,7 @@ module Isy
 
       # @return [Widget::Component] return instantiated widget or creates one
       def widget
-        @widget ||= self.class.widget_class.new(self, *widget_args)
+        @widget ||= create_widget
       end
 
       # asks a +component+ for something and executes +block+ when answer is obtained
@@ -64,22 +64,19 @@ module Isy
 
       protected
 
-      # @return [Class] which is used to insatiate widget
-      def self.widget_class
-        self._widget_class || @widget_class ||= begin
-          "#{self.to_s}::Widget".constantize
-        rescue NameError
-          "#{self.to_s}Widget".constantize
-        end
-      end
-
       # when {Base} is initialized this method is called to setup initial state of the {Base}
       def initial_state
       end
 
+      def create_widget
+        self.class.widget_class.new(self, *widget_args)
+      end
+
+      class_inheritable_accessor :_widget_class, :instance_writer => false, :instance_reader => false
+
       # @return [Class] which is used to insatiate widget
-      def widget_class
-        options[:widget_class] || self.class.widget_class
+      def self.widget_class
+        self._widget_class || self.const_get(:Widget) || raise(MissingWidgetClass, "for #{self}")
       end
 
       def widget_args
@@ -87,13 +84,10 @@ module Isy
 
       private
 
-      class_inheritable_accessor :_widget_class, :instance_writer => false, :instance_reader => false
-
       # sets widget class
       # @see #widget_class
-      # @see .widget_class
       # @param [Class] klass
-      def self.set_widget_class(klass)
+      def self.use_widget_class(klass)
         self._widget_class = klass
       end
 

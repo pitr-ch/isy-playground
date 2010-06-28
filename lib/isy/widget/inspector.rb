@@ -9,6 +9,7 @@ module Isy
       # @param [Object] obj to be inspected
       # @param [Symbol] method of inspection. Supported are :pp and :p
       def initialize(obj, method = :pp)
+        super()
         @obj, @method = obj, method
       end
 

@@ -6,8 +6,7 @@ module Isy
 
       set(
         :logging => false,
-        :server => %w[thin],
-        :dump_errors => false
+        :server => %w[thin]
       )
 
       configure(:development) do

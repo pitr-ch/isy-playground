@@ -8,9 +8,12 @@ module Isy
       attr_reader :component
 
       # @param [Component::Base] component to be rendered
-      def initialize(component)
+      def initialize(component, assigns = {}, &block)
+        super(assigns, &block)
         @component = component
       end
+
+      wrap_in :div
 
       # renders link with +label+ to some action +action+ which is executed after click on the link
       # @param [String] label text of the link

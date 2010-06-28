@@ -6,6 +6,7 @@ module Isy
 
       # @param [Context::Base] context which is rendered with this layout
       def initialize(context)
+        super()
         @context = context
       end
 
