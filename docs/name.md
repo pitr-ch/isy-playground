@@ -1,6 +1,7 @@
 # New name
 
 Isy was just a work name. I think it should be replaced with something better.
+Short introduction is {file:README_FULL here}.
 If you want to know more about this framework look at [blog](http://isyruby.wordpress.com)
 
 ## Poll

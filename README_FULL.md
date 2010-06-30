@@ -1,6 +1,17 @@
 # ISY
 
-ruby component based state-full web framework
+Ruby component based state-full web framework.
+
+Framework is based on sinatra, eventmachine, em-websocket.
+
+Goals:
+
+- To make building rich web applications easy as possible.
+- Fast application prototyping - smart building blocks.
+- Speed.
+- Concurrent request handling.
+- Clean design - avoid unnecessary magic.
+- Integrated server-side push actualizations.
 
 ## How to run example application
 Clone repository
