@@ -6,7 +6,8 @@ If you want to know more about this framework look at [blog](http://isyruby.word
 
 ## Poll
 
-You can choose more options if you like. If you have an idea please share with us in the discussion.
+**[You can choose more options if you like](http://www.doodle.com/bya8a2k24sbnwhpv)**.
+If you have an idea please share with us in the discussion.
 
 <iframe width="300" frameborder="0" src="http://www.doodle.com/summary.html?pollId=bya8a2k24sbnwhpv">
 </iframe>
