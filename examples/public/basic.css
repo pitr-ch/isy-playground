@@ -7,3 +7,12 @@ a {
   padding-right: 0.2em;
 }
 
+.log-widget p {
+  font-family: monospace;
+  font-size: 85%;
+  margin: 0;
+}
+
+.log-widget .odd{
+  background-color: #eee;
+}

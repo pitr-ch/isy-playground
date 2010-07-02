@@ -4,15 +4,31 @@ module Isy
     # Abstract layout for Isy applications
     class Layout < Erector::Widgets::Page
 
-      # @param [Context::Base] context which is rendered with this layout
-      def initialize(context)
-        super()
-        @context = context
+      external :js, "js/jquery-1.4.2.min.js"
+      external :js, "js/isy.js"
+      
+      def body_content
+        loading
       end
 
-      # after rendering itself it renders root component into body
-      def body_content
-        widget @context.root_component.widget
+      def head_content
+        super
+        set_variables(@session_id)
+      end
+
+      def loading
+        h1 'Loading ...'
+      end
+
+      private
+
+      def set_variables(session_id)
+        javascript \
+            "isy.setVariables({" + 
+            "server: \"#{Config[:websocket][:server]}\"," +
+            "port: #{Config[:websocket][:port]}, " +
+            "sessionId: \"#{session_id}\"," +
+            "sendLogBack: #{Config[:js][:send_log_back]}});"
       end
 
     end

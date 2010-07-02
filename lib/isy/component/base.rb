@@ -6,13 +6,13 @@ module Isy
 
       attr_reader :context
 
-      # @param [Context::Base] context
+      # @param [Core::Context] context
       def initialize(context)
         @context = context
         initial_state
       end
       
-      # {Base} factory method, it adds proper {Context::Base} automatically 
+      # {Base} factory method, it adds proper {Core::Context} automatically
       # @param [] args are passed automatically to +klass+.new
       # @param [Class] klass which is used to create new {Base} instance
       def new(klass, *args)
@@ -21,7 +21,7 @@ module Isy
 
       # renders html
       def to_s
-        (root? ? layout : widget).to_s
+        widget.to_s
       end
 
       # @return [Widget::Component] return instantiated widget or creates one

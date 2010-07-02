@@ -1,32 +1,38 @@
 raise "wrong ruby version #{RUBY_VERSION}" unless RUBY_VERSION =~ /1\.9/
 
-require 'uuid'
-require 'active_support/core_ext'
-require 'erector'
-require 'sinatra/base'
-require 'require_all'
+unless defined? Isy
+  require 'pp'
+  require 'uuid'
+  require 'active_support/core_ext'
+  require 'active_support/configurable'
+  require 'erector'
+  require 'sinatra/base'
+  require 'require_all'
+  require 'em-websocket'
+  require 'configliere'
+  require 'json/pure' # TODO load something faster
+  require 'benchmark'
+  require 'neverblock'
+  require 'observer'
 
-Erector::Widget.prettyprint_default = true # TODO remove after adding ajax
+  module Isy
 
-module Isy
-  def self.root
-    @root ||= File.expand_path("#{File.dirname(__FILE__)}/..")
+    def self.logger
+      @logger ||= Isy::Logger.new($stdout)
+    end
+
+    def self.benchmark(label, req = true, &block)
+      time = Benchmark.realtime { block.call }
+      Isy.logger.info "#{label} in %0.6f sec" % time unless req
+      Isy.logger.info "#{label} in %0.6f sec ~ %d req" % [time, (1/time).to_i] if req
+    end
+
+    root = File.expand_path("#{File.dirname(__FILE__)}/..")
+    require_all "#{root}/lib/isy/**/*.rb"
   end
 
-  def self.generate_id
-    #    @last_id ||= 0
-    #    (@last_id += 1).to_s(36)
-    UUID.generate(:compact).to_i(16).to_s(36)
-  end
-
-  def self.logger
-    @logger ||= Logger.new($stdout)
-  end
-
-  require_all "#{Isy.root}/lib/isy/**/*.rb"
+  # require 'datamapper'
+  # require "#{Isy.root}/lib/setup_db.rb"
+  # DataMapper.setup(:default, 'sqlite3://memory')
+  # DataMapper.auto_migrate!
 end
-
-# require 'datamapper'
-# require "#{Isy.root}/lib/setup_db.rb"
-# DataMapper.setup(:default, 'sqlite3://memory')
-# DataMapper.auto_migrate!

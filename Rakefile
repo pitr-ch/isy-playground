@@ -58,6 +58,9 @@ begin
     gem.add_dependency 'sinatra', ">= 0"
     gem.add_dependency 'thin', ">= 0"
     gem.add_dependency 'require_all', ">= 0"
+    gem.add_dependency 'em-websocket', ">= 0"
+    gem.add_dependency 'configliere', ">= 0"
+    gem.add_dependency 'neverblock', ">= 0"
 
     gem.add_development_dependency "rspec", ">= 2.0.0.beta"
     gem.add_development_dependency "yard", ">= 0"

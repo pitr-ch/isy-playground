@@ -1,5 +1,5 @@
 module Isy
-  module Context
+  module Core
 
     # represents action which are stored when link is added and evaluated on link click
     class Action
@@ -14,8 +14,9 @@ module Isy
 
       # executes action
       def call
-        Isy.logger.debug "component #{component.class} action #{block.source_location.join(':')}"
-        component.send(:instance_eval, &block)
+        Isy.benchmark "Running action #{block.source_location.join(':')}" do
+          component.send(:instance_eval, &block)
+        end
       end
     end
   end
