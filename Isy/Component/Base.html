@@ -353,7 +353,7 @@ A new instance of Base.
 
   
     <span class="summary_desc"><div class='inline'><p>
-<tt><a href="" title="Isy::Component::Base (class)">Base</a></tt> factory method, it adds proper <tt><a href="../Context/Base.html" title="Isy::Context::Base (class)">Isy::Context::Base</a></tt> automatically.
+<tt><a href="" title="Isy::Component::Base (class)">Base</a></tt> factory method, it adds proper <tt><a href="../Core/Context.html" title="Isy::Core::Context (class)">Isy::Core::Context</a></tt> automatically.
 </p>
 </div></span>
   
@@ -457,7 +457,7 @@ A new instance of Base
   
     <li>
       
-        <span class='type'>(<tt><a href="../Context/Base.html" title="Isy::Context::Base (class)">Context::Base</a></tt>)</span>
+        <span class='type'>(<tt><a href="../Core/Context.html" title="Isy::Core::Context (class)">Core::Context</a></tt>)</span>
       
       
         <span class='name'>context</span>
@@ -999,7 +999,7 @@ the <tt><a href="" title="Isy::Component::Base (class)"></a></tt>
 </p><div class="docstring">
   <div class="discussion">
     <p>
-<tt><a href="" title="Isy::Component::Base (class)"></a></tt> factory method, it adds proper <tt><a href="../Context/Base.html" title="Isy::Context::Base (class)">Isy::Context::Base</a></tt> automatically
+<tt><a href="" title="Isy::Component::Base (class)"></a></tt> factory method, it adds proper <tt><a href="../Core/Context.html" title="Isy::Core::Context (class)">Isy::Core::Context</a></tt> automatically
 </p>
 
 
@@ -1098,7 +1098,7 @@ renders html
       <pre class="code"><span class="info file"># File 'lib/isy/component/base.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id to_s'>to_s</span>
-  <span class='lparen'>(</span><span class='id root?'>root?</span> <span class='op'>?</span> <span class='id layout'>layout</span> <span class='op'>:</span> <span class='id widget'>widget</span><span class='rparen'>)</span><span class='period'>.</span><span class='id to_s'>to_s</span>
+  <span class='id widget'>widget</span><span class='period'>.</span><span class='id to_s'>to_s</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1194,7 +1194,7 @@ return instantiated widget or creates one
 </div>
     
     <div id="footer">
-  Generated on Wed Jun 30 15:58:52 2010 by 
+  Generated on Fri Jul  2 19:40:32 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.1).
 </div>

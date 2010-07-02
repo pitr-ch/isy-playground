@@ -55,27 +55,29 @@
 <li>Optimize for readability, not performance.</li>
 </ul>
 
-<p>Short example of correct formating
-    class Foo
-      def method(*args)
-        pp "something really long" +
-            args.inspect</p>
 
-<pre class="code">    user = User.new(arg1, arg2,
-      :name =&gt; 'John',
-      :age =&gt; 21
-    )
+<p>Short example of correct formating</p>
 
-    Users.all.map {|u| [u.name, u.age] }.select do |name, age|
-      name &gt; 'd' &amp;&amp; age &gt; 10
-    end
+<pre class="code"><span class='kw'>class</span> <span class='const'>Foo</span>
+  <span class='kw'>def</span> <span class='id method'>method</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='rparen'>)</span>
+    <span class='id pp'>pp</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>something really long</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+        <span class='id args'>args</span><span class='period'>.</span><span class='id inspect'>inspect</span>
 
-    hash = {
-      :key =&gt; :value
-    }
+    <span class='id user'>user</span> <span class='op'>=</span> <span class='const'>User</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id arg1'>arg1</span><span class='comma'>,</span> <span class='id arg2'>arg2</span><span class='comma'>,</span>
+      <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>John</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+      <span class='symbol'>:age</span> <span class='op'>=&gt;</span> <span class='int'>21</span>
+    <span class='rparen'>)</span>
 
-  end
-end
+    <span class='const'>Users</span><span class='period'>.</span><span class='id all'>all</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id u'>u</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='id u'>u</span><span class='period'>.</span><span class='id name'>name</span><span class='comma'>,</span> <span class='id u'>u</span><span class='period'>.</span><span class='id age'>age</span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id select'>select</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id name'>name</span><span class='comma'>,</span> <span class='id age'>age</span><span class='op'>|</span>
+      <span class='id name'>name</span> <span class='op'>&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>d</span><span class='tstring_end'>'</span></span> <span class='op'>&amp;&amp;</span> <span class='id age'>age</span> <span class='op'>&gt;</span> <span class='int'>10</span>
+    <span class='kw'>end</span>
+
+    <span class='id hash'>hash</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+      <span class='symbol'>:key</span> <span class='op'>=&gt;</span> <span class='symbol'>:value</span>
+    <span class='rbrace'>}</span>
+
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
 </pre>
 
 <h2>Repository</h2>
@@ -86,7 +88,7 @@ in this repository <code>master</code> acts as <code>devel</code> and <code>stab
 
 <h2>Test</h2>
 
-<p>Are done with <a href="http://rspec.info/">RSpec</a> v2.0.0.beta 
+<p>Are done with <a href="http://rspec.info/">RSpec</a> v2.0.0.beta
 (<a href="http://github.com/rspec/rspec-core/blob/master/Upgrade.markdown">2.0 changes</a>).
 Framework is in its really early stage so there is no need to full coverage,
 but if you write something don't try it in a console or a test application write some tests.</p>
@@ -104,19 +106,24 @@ It's used to update online documentation on
 <a href="http://isy-pitr.github.com/isy-playground/">http://isy-pitr.github.com/isy-playground/</a></li>
 </ul>
 
+
 <h2><a href="https://wave.google.com/wave/waveref/googlewave.com/w+7z-HD1_8D">Discussion</a></h2>
 
 <div id="waveframe" style="width:100%; height:700px;"></div>
 
+
 <script src="http://www.google.com/jsapi"></script>
+
+
 <script type="text/javascript">
 google.load("wave", "1");
 google.setOnLoadCallback(function() { 
 new google.wave.WavePanel({ target: document.getElementById("waveframe") }).loadWave("googlewave.com!w+7z-HD1_8D");});
-</script></div></div>
+</script>
+</div></div>
     
     <div id="footer">
-  Generated on Wed Jun 30 15:58:51 2010 by 
+  Generated on Fri Jul  2 19:40:31 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.1).
 </div>
