@@ -422,15 +422,13 @@ click on the link
 
 21
 22
-23
-24</pre>
+23</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/isy/widget/component.rb', line 21</span>
 
 <span class='kw'>def</span> <span class='id link_to'>link_to</span><span class='lparen'>(</span><span class='id label'>label</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id action'>action</span><span class='rparen'>)</span>
-  <span class='id uuid'>uuid</span> <span class='op'>=</span> <span class='id register_action'>register_action</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id action'>action</span><span class='rparen'>)</span>
-  <span class='id a'>a</span> <span class='id label'>label</span><span class='comma'>,</span> <span class='symbol'>:href</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:onclick</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>isy.action(\&quot;</span><span class='embexpr_beg'>#{</span><span class='id uuid'>uuid</span><span class='rbrace'>}</span><span class='tstring_content'>\&quot;)</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id a'>a</span> <span class='id label'>label</span><span class='comma'>,</span> <span class='symbol'>:href</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:data-action</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='id register_action'>register_action</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id action'>action</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -480,12 +478,12 @@ action block to register
       <pre class="lines">
 
 
+29
 30
-31
-32</pre>
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/component.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/component.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id register_action'>register_action</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='id component'>component</span><span class='period'>.</span><span class='id context'>context</span><span class='period'>.</span><span class='id register_action'>register_action</span><span class='lparen'>(</span><span class='id component'>component</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
@@ -500,7 +498,7 @@ action block to register
 </div>
     
     <div id="footer">
-  Generated on Fri Jul  2 19:40:33 2010 by 
+  Generated on Sat Jul  3 09:36:14 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.1).
 </div>
