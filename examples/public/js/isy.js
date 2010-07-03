@@ -173,5 +173,9 @@ $(document).ready(function(){
     isy.debug("WebSocket connected...");
     new Isy.GetContext().send();
   };
+
+  $('a[data-action]').live('click', function (event) {
+        isy.action(event.currentTarget.getAttribute('data-action'));
+    });
 });
 

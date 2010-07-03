@@ -19,8 +19,7 @@ module Isy
       # @param [String] label text of the link
       # @yield action block of code which will be evaluated inside {#component} after click on the link
       def link_to(label, &action)
-        uuid = register_action(&action)
-        a label, :href => "#", :onclick => "isy.action(\"#{uuid}\")"
+        a label, :href => "#", :'data-action' => register_action(&action)
       end
 
       private
