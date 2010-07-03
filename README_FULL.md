@@ -24,6 +24,7 @@ run Bundler
     bundle install
 use Ruby 1.9.1 and run isy
     isy
+use Chrome browser. It wont work in others.
 
 ## {file:docs/contribute How to Contribute}
 
