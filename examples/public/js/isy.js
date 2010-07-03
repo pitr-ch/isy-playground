@@ -72,6 +72,7 @@ Isy.Recieved.prototype = {
     //    var commands = typeof this.json.command == "string" ? [this.json.command] : this.json.command;
     //    commands.forEach( function(command) {
     isy.debug("executing :" + this.json.command);
+    if (this.json.hash) location.hash = this.json.hash;
     var func = eval("this." + this.json.command);
     if(func) {
       func.call(this);
@@ -98,6 +99,7 @@ Isy.Recieved.prototype = {
 Isy.Message = function() {  
   this.sessionId = isy.sessionId;
   this.contextId = isy.contextId;
+  this.hash = location.hash;
 }
 
 Isy.Message.prototype = {
@@ -121,8 +123,8 @@ Isy.LoggedMessage = function() {
 
 Isy.LoggedMessage.prototype = {
   send: function() {
-    Isy.LoggedMessage._superClass.send.call(this);    
     isy.debug("sending: " + this.data());
+    Isy.LoggedMessage._superClass.send.call(this);
   }
 }
 descendant(Isy.Message, Isy.LoggedMessage);
@@ -174,8 +176,8 @@ $(document).ready(function(){
     new Isy.GetContext().send();
   };
 
-  $('a[data-action]').live('click', function (event) {
-        isy.action(event.currentTarget.getAttribute('data-action'));
+  $('a[data-action-id]').live('click', function (event) {
+        isy.action(event.currentTarget.getAttribute('data-action-id'));
     });
 });
 

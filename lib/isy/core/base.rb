@@ -68,7 +68,7 @@ module Isy
               case message[:command].try(:underscore)
               when 'log' then Isy.logger.send(message[:severity], "Browser: " + message[:message])
               when 'get_context' then
-                context = Base.container(message[:session_id]).context
+                context = Base.container(message[:session_id]).context(nil, message[:hash])
                 context.schedule { context.send_id!(connection).actualize! }
               when 'execute_action' then
                 context = Base.container(message[:session_id]).context(message[:context_id])

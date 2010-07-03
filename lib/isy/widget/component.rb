@@ -19,7 +19,13 @@ module Isy
       # @param [String] label text of the link
       # @yield action block of code which will be evaluated inside {#component} after click on the link
       def link_to(label, &action)
-        a label, :href => "#", :'data-action' => register_action(&action)
+        a label, :href => "#", :'data-action-id' => register_action(&action)
+      end
+
+      protected
+
+      def wrapper_options
+        super.merge :'data-component-id' => component.object_id
       end
 
       private

@@ -12,10 +12,10 @@ module Isy
 
       # @return [Base, nil] {Base} with +id+
       # @param [String] id of a {Base}
-      def context(id = nil)
+      def context(id = nil, hash = nil)
         @contexts[id] || begin
           id = Core.generate_id
-          @contexts[id] = Context.new(id, self)
+          @contexts[id] = Context.new(id, self, hash)
         end
       end
 

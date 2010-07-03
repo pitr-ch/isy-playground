@@ -4,8 +4,9 @@ module Isy
     # Abstract layout for Isy applications
     class Layout < Erector::Widgets::Page
 
-      external :js, "js/jquery-1.4.2.min.js"
-      external :js, "js/isy.js"
+      external :js, 'js/jquery-1.4.2.min.js'
+      external :js, 'js/isy.js'
+      external :css, 'developer.css'
       
       def body_content
         loading

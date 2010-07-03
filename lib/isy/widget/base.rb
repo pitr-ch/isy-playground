@@ -48,7 +48,7 @@ module Isy
 
       # Wraps widget with element set by .wrap_in. Method is called automatically use #content.
       def content_with_wrapper
-        send self.class.wrapped_in, :class => self.class.css_class do
+        send self.class.wrapped_in, wrapper_options do
           content
         end
       end
@@ -65,6 +65,12 @@ module Isy
       # @return [Symbol] element which will by used to wrap widget
       def self.wrapped_in
         self.wrapper
+      end
+
+      protected
+
+      def wrapper_options
+        { :class => self.class.css_class, :id => object_id }
       end
 
       private

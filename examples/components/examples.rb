@@ -12,7 +12,6 @@ class Examples < Isy::Component::Base
       ul do
         li { link_to("Counters") { @example = new Counters::Base } }
         li { link_to("#ask") { @example = new Ask::Base } }
-        li { link_to("Log") { @example = new Log } }
         li { link_to("none") { @example = nil } }
       end
       

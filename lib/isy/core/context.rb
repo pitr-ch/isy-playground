@@ -3,12 +3,12 @@ module Isy
 
     # represents context of user, each tab of browser has one of its own
     class Context
-      attr_reader :id, :connection, :container
+      attr_reader :id, :connection, :container, :hash
 
       # @param [String] id unique identification
-      def initialize(id, container)
-        @id, @container = id, container
-        @root_component = self.class.root_class.new(self)
+      def initialize(id, container, hash = nil)
+        @id, @container, @hash = id, container, hash
+        @root_component = root_class.new(self)
         @queue = []
         clear_actions
       end
@@ -26,20 +26,30 @@ module Isy
       end
 
       # @return [Class] class of a root component
-      def self.root_class
-        @root_class ||= Config[:root_class].to_s.constantize
+      def root_class
+        @root_class ||= unless @hash == '#devel'
+          Config[:root_class].to_s.constantize
+        else
+          Component::Developer::Tools
+        end
+      end
+
+      def location_hash
+        root_class == Component::Developer::Tools ? '#devel' : ''
       end
 
       # pushes actualization to the user
       def actualize!
-        Isy.benchmark('Actualization') { connection.send :command => REPLACE_BODY, :html => self.to_s }
+        Isy.benchmark('Actualization') do
+          connection.send :command => REPLACE_BODY, :html => self.to_s, :hash => location_hash
+        end
         self
       end
 
       # sends context id. It's used after loading layout.
       def send_id!(connection)
         self.connection = connection
-        connection.send :command => SET_CONTEXT, :context_id => self.id
+        connection.send :command => SET_CONTEXT, :context_id => self.id, :hash => location_hash
         self
       end
 
