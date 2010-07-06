@@ -137,7 +137,7 @@ Returns the value of attribute id.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#context-instance_method" title="#context (instance method)">- (Base<sup>?</sup>) <strong>context</strong>(id = nil) </a>
+      <a href="#context-instance_method" title="#context (instance method)">- (Base<sup>?</sup>) <strong>context</strong>(id = nil, hash = nil) </a>
     
 
     
@@ -355,7 +355,7 @@ Returns the value of attribute id
       <div class="method_details first">
   <p class="signature first" id="context-instance_method">
   
-    - (<tt><a href="Base.html" title="Isy::Core::Base (class)">Base</a></tt><sup>?</sup>) <strong>context</strong>(id = nil) 
+    - (<tt><a href="Base.html" title="Isy::Core::Base (class)">Base</a></tt><sup>?</sup>) <strong>context</strong>(id = nil, hash = nil) 
   
 
   
@@ -428,10 +428,10 @@ of a <tt><a href="Base.html" title="Isy::Core::Base (class)">Isy::Core::Base</a>
     <td>
       <pre class="code"><span class="info file"># File 'lib/isy/core/container.rb', line 15</span>
 
-<span class='kw'>def</span> <span class='id context'>context</span><span class='lparen'>(</span><span class='id id'>id</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id context'>context</span><span class='lparen'>(</span><span class='id id'>id</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id hash'>hash</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='ivar'>@contexts</span><span class='lbracket'>[</span><span class='id id'>id</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='kw'>begin</span>
     <span class='id id'>id</span> <span class='op'>=</span> <span class='const'>Core</span><span class='period'>.</span><span class='id generate_id'>generate_id</span>
-    <span class='ivar'>@contexts</span><span class='lbracket'>[</span><span class='id id'>id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Context</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id id'>id</span><span class='comma'>,</span> <span class='kw'>self</span><span class='rparen'>)</span>
+    <span class='ivar'>@contexts</span><span class='lbracket'>[</span><span class='id id'>id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Context</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id id'>id</span><span class='comma'>,</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='id hash'>hash</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -581,9 +581,9 @@ context&#8217;s count
 </div>
     
     <div id="footer">
-  Generated on Sat Jul  3 09:36:13 2010 by 
+  Generated on Tue Jul  6 16:28:45 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
-  0.5.8 (ruby-1.9.1).
+  0.5.8 (ruby-1.9.2).
 </div>
 
   </body>

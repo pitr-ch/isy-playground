@@ -152,6 +152,33 @@ Returns the value of attribute container.
       <li class="public ">
   <span class="summary_signature">
     
+      <a href="#hash-instance_method" title="#hash (instance method)">- (Object) <strong>hash</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute hash.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#id-instance_method" title="#id (instance method)">- (Object) <strong>id</strong> </a>
     
 
@@ -228,30 +255,6 @@ By <tt>connection</tt>.
 
   
     <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#root_class-class_method" title="root_class (class method)">+ (Class) <strong>root_class</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-Class of a root component.
-</p>
-</div></span>
   
 </li>
 
@@ -340,7 +343,7 @@ remove context form container.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Context) <strong>initialize</strong>(id, container) </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Context) <strong>initialize</strong>(id, container, hash = nil) </a>
     
 
     
@@ -366,6 +369,27 @@ A new instance of Context.
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#location_hash-instance_method" title="#location_hash (instance method)">- (Object) <strong>location_hash</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#register_action-instance_method" title="#register_action (instance method)">- (Object) <strong>register_action</strong>(component) { ... }</a>
     
 
@@ -381,6 +405,30 @@ A new instance of Context.
   
     <span class="summary_desc"><div class='inline'><p>
 creates and stores action for later evaluation.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#root_class-instance_method" title="#root_class (instance method)">- (Class) <strong>root_class</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Class of a root component.
 </p>
 </div></span>
   
@@ -510,7 +558,7 @@ renders html, similar to Erector::Widget#to_s.
     <div class="method_details first">
   <p class="signature first" id="initialize-instance_method">
   
-    - (<tt><a href="" title="Isy::Core::Context (class)">Context</a></tt>) <strong>initialize</strong>(id, container) 
+    - (<tt><a href="" title="Isy::Core::Context (class)">Context</a></tt>) <strong>initialize</strong>(id, container, hash = nil) 
   
 
   
@@ -562,9 +610,9 @@ unique identification
     <td>
       <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 9</span>
 
-<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id id'>id</span><span class='comma'>,</span> <span class='id container'>container</span><span class='rparen'>)</span>
-  <span class='ivar'>@id</span><span class='comma'>,</span> <span class='ivar'>@container</span> <span class='op'>=</span> <span class='id id'>id</span><span class='comma'>,</span> <span class='id container'>container</span>
-  <span class='ivar'>@root_component</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id root_class'>root_class</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id id'>id</span><span class='comma'>,</span> <span class='id container'>container</span><span class='comma'>,</span> <span class='id hash'>hash</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='ivar'>@id</span><span class='comma'>,</span> <span class='ivar'>@container</span><span class='comma'>,</span> <span class='ivar'>@hash</span> <span class='op'>=</span> <span class='id id'>id</span><span class='comma'>,</span> <span class='id container'>container</span><span class='comma'>,</span> <span class='id hash'>hash</span>
+  <span class='ivar'>@root_component</span> <span class='op'>=</span> <span class='id root_class'>root_class</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
   <span class='ivar'>@queue</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
   <span class='id clear_actions'>clear_actions</span>
 <span class='kw'>end</span></pre>
@@ -656,6 +704,48 @@ Returns the value of attribute container
 
 <span class='kw'>def</span> <span class='id container'>container</span>
   <span class='ivar'>@container</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="hash-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="hash-instance_method">
+  
+    - (<tt>Object</tt>) <strong>hash</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute hash
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+6
+7
+8</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 6</span>
+
+<span class='kw'>def</span> <span class='id hash'>hash</span>
+  <span class='ivar'>@hash</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -775,12 +865,12 @@ by <tt>connection</tt>
       <pre class="lines">
 
 
-81
-82
-83</pre>
+91
+92
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 81</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id by_connection'>by_connection</span><span class='lparen'>(</span><span class='id connection'>connection</span><span class='rparen'>)</span>
   <span class='id by_connection_hash'>by_connection_hash</span><span class='lbracket'>[</span><span class='id connection'>connection</span><span class='rbracket'>]</span>
@@ -803,73 +893,15 @@ by <tt>connection</tt>
       <pre class="lines">
 
 
-101
-102
-103</pre>
+111
+112
+113</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 101</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 111</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id by_connection_hash'>by_connection_hash</span>
   <span class='ivar'>@connection_hash</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="root_class-class_method">
-  
-    + (<tt>Class</tt>) <strong>root_class</strong> 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-Class of a root component
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Returns:</h3>
-<ul class="return">
-  
-    <li>
-      
-        <span class='type'>(<tt>Class</tt>)</span>
-      
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-class of a root component
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-29
-30
-31</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 29</span>
-
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id root_class'>root_class</span>
-  <span class='ivar'>@root_class</span> <span class='op'>||=</span> <span class='const'>Config</span><span class='lbracket'>[</span><span class='symbol'>:root_class</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='period'>.</span><span class='id constantize'>constantize</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -906,16 +938,20 @@ pushes actualization to the user
       <pre class="lines">
 
 
-34
-35
-36
-37</pre>
+42
+43
+44
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 42</span>
 
 <span class='kw'>def</span> <span class='id actualize!'>actualize!</span>
-  <span class='const'>Isy</span><span class='period'>.</span><span class='id benchmark'>benchmark</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Actualization</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id connection'>connection</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:command</span> <span class='op'>=&gt;</span> <span class='const'>REPLACE_BODY</span><span class='comma'>,</span> <span class='symbol'>:html</span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id to_s'>to_s</span> <span class='rbrace'>}</span>
+  <span class='const'>Isy</span><span class='period'>.</span><span class='id benchmark'>benchmark</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Actualization</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id connection'>connection</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:command</span> <span class='op'>=&gt;</span> <span class='const'>REPLACE_BODY</span><span class='comma'>,</span> <span class='symbol'>:html</span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='comma'>,</span> <span class='symbol'>:hash</span> <span class='op'>=&gt;</span> <span class='id location_hash'>location_hash</span>
+  <span class='kw'>end</span>
   <span class='kw'>self</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -947,12 +983,12 @@ deletes all stored <tt><a href="Action.html" title="Isy::Core::Action (class)">I
       <pre class="lines">
 
 
-88
-89
-90</pre>
+98
+99
+100</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 88</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 98</span>
 
 <span class='kw'>def</span> <span class='id clear_actions'>clear_actions</span>
   <span class='ivar'>@actions</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -995,6 +1031,34 @@ remove context form container
 
 <span class='kw'>def</span> <span class='id drop'>drop</span>
   <span class='id container'>container</span><span class='period'>.</span><span class='id drop_context'>drop_context</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="location_hash-instance_method">
+  
+    - (<tt>Object</tt>) <strong>location_hash</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 37</span>
+
+<span class='kw'>def</span> <span class='id location_hash'>location_hash</span>
+  <span class='id root_class'>root_class</span> <span class='op'>==</span> <span class='const'>Component</span><span class='op'>::</span><span class='const'>Developer</span><span class='op'>::</span><span class='const'>Tools</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#devel</span><span class='tstring_end'>'</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1065,19 +1129,85 @@ the action
       <pre class="lines">
 
 
-62
-63
-64
-65
-66</pre>
+72
+73
+74
+75
+76</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 72</span>
 
 <span class='kw'>def</span> <span class='id register_action'>register_action</span><span class='lparen'>(</span><span class='id component'>component</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='id uuid'>uuid</span> <span class='op'>=</span> <span class='const'>Core</span><span class='period'>.</span><span class='id generate_id'>generate_id</span>
   <span class='ivar'>@actions</span><span class='lbracket'>[</span><span class='id uuid'>uuid</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Action</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id uuid'>uuid</span><span class='comma'>,</span> <span class='id component'>component</span><span class='comma'>,</span> <span class='id block'>block</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id uuid'>uuid</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="root_class-instance_method">
+  
+    - (<tt>Class</tt>) <strong>root_class</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Class of a root component
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Class</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+class of a root component
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31
+32
+33
+34
+35</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 29</span>
+
+<span class='kw'>def</span> <span class='id root_class'>root_class</span>
+  <span class='ivar'>@root_class</span> <span class='op'>||=</span> <span class='kw'>unless</span> <span class='ivar'>@hash</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#devel</span><span class='tstring_end'>'</span></span>
+    <span class='const'>Config</span><span class='lbracket'>[</span><span class='symbol'>:root_class</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='period'>.</span><span class='id constantize'>constantize</span>
+  <span class='kw'>else</span>
+    <span class='const'>Component</span><span class='op'>::</span><span class='const'>Developer</span><span class='op'>::</span><span class='const'>Tools</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1129,17 +1259,17 @@ of a <tt><a href="Action.html" title="Isy::Core::Action (class)">Isy::Core::Acti
       <pre class="lines">
 
 
-70
-71
-72
-73
-74
-75
-76
-77</pre>
+80
+81
+82
+83
+84
+85
+86
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 80</span>
 
 <span class='kw'>def</span> <span class='id run_action'>run_action</span><span class='lparen'>(</span><span class='id id'>id</span><span class='rparen'>)</span>
   <span class='comment'>#        time = Benchmark.realtime do
@@ -1194,15 +1324,15 @@ block scheduled into fiber_pool for delayed execution
       <pre class="lines">
 
 
-47
-48
-49
-50
-51
-52</pre>
+57
+58
+59
+60
+61
+62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 57</span>
 
 <span class='kw'>def</span> <span class='id schedule'>schedule</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='comment'># TODO context queue
@@ -1228,17 +1358,17 @@ block scheduled into fiber_pool for delayed execution
       <pre class="lines">
 
 
-92
-93
-94
-95
-96
-97
-98
-99</pre>
+102
+103
+104
+105
+106
+107
+108
+109</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 92</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 102</span>
 
 <span class='kw'>def</span> <span class='id schedule_next'>schedule_next</span>
   <span class='kw'>if</span> <span class='id block'>block</span> <span class='op'>=</span> <span class='ivar'>@queue</span><span class='period'>.</span><span class='id shift'>shift</span>
@@ -1277,18 +1407,18 @@ sends context id. It&#8217;s used after loading layout.
       <pre class="lines">
 
 
-40
-41
-42
-43
-44</pre>
+50
+51
+52
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 50</span>
 
 <span class='kw'>def</span> <span class='id send_id!'>send_id!</span><span class='lparen'>(</span><span class='id connection'>connection</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id connection'>connection</span> <span class='op'>=</span> <span class='id connection'>connection</span>
-  <span class='id connection'>connection</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:command</span> <span class='op'>=&gt;</span> <span class='const'>SET_CONTEXT</span><span class='comma'>,</span> <span class='symbol'>:context_id</span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id id'>id</span>
+  <span class='id connection'>connection</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:command</span> <span class='op'>=&gt;</span> <span class='const'>SET_CONTEXT</span><span class='comma'>,</span> <span class='symbol'>:context_id</span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id id'>id</span><span class='comma'>,</span> <span class='symbol'>:hash</span> <span class='op'>=&gt;</span> <span class='id location_hash'>location_hash</span>
   <span class='kw'>self</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1320,12 +1450,12 @@ renders html, similar to Erector::Widget#to_s
       <pre class="lines">
 
 
-55
-56
-57</pre>
+65
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/core/context.rb', line 65</span>
 
 <span class='kw'>def</span> <span class='id to_s'>to_s</span>
   <span class='ivar'>@root_component</span><span class='period'>.</span><span class='id to_s'>to_s</span>
@@ -1340,9 +1470,9 @@ renders html, similar to Erector::Widget#to_s
 </div>
     
     <div id="footer">
-  Generated on Sat Jul  3 09:36:13 2010 by 
+  Generated on Tue Jul  6 16:28:44 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
-  0.5.8 (ruby-1.9.1).
+  0.5.8 (ruby-1.9.2).
 </div>
 
   </body>
