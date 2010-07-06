@@ -16,15 +16,19 @@ Goals:
 ## How to run example application
 Clone repository
     git clone git://github.com/isy-pitr/isy-playground.git
-Install isy gem
+Install jeweler and install isy gem
+    gem install jeweler
     rake install
 Move to examples directory
     cd examples
-run Bundler
+install bundler and run Bundler
+    gem install bundler
     bundle install
-use Ruby 1.9.1 and run isy
+use Ruby 1.9.(1|2) and run isy
     isy
 use Chrome browser. It wont work in others.
+
+There are some examples on http://localhost:3000 and real-time log on http://localhost:3000/#devel
 
 ## {file:docs/contribute How to Contribute}
 
