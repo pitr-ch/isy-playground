@@ -1,183 +1,181 @@
-var descendant = function(parent, child) {
-  var F = function() {};
-  F.prototype = parent.prototype;
-  child.prototype = new F();
-  child._superClass = parent.prototype;
-  child.prototype.constructor = child;
-};
+//var descendant = function(parent, child) {
+//  var F = function() {};
+//  F.prototype = parent.prototype;
+//  child.prototype = new F();
+//  child._superClass = parent.prototype;
+//  child.prototype.constructor = child;
+//};
 
 var Isy = function() {
-  this.contextId = undefined;
-  this.server = undefined;
-  this.port = undefined;
-  this.sessionId = undefined;
-  this.sendLogBack = undefined;
+  this.sendLogBack = false;
+  this.hashchange = true;
 };
 
 Isy.prototype = {
-  error:  function(message) {
-    console.error(message);
-    if(isy.sendLogBack == true) new Isy.Log('error', message).send();
-  },
-
-  warn:  function(message) {
-    console.warn(message);
-    if(isy.sendLogBack == true) new Isy.Log('warn', message).send();
-  },
-
-  info:  function(message) {
-    console.info(message);
-    if(isy.sendLogBack == true) new Isy.Log('info', message).send();
-  },
-
-  debug:  function(message) {
-    console.debug(message);
-    if(isy.sendLogBack == true) new Isy.Log('debug', message).send();
-  },
-
-  safely: function(func) {
+  _safely: function(func) {
     try {
       func();
     } catch (e) {
-      this.error(e.stack);
+      Isy.Logger.error(e.stack);
     }
   },
 
   action: function(id) {
-    return new Isy.ExecuteAction(id).send();
+    var data = this._ids();
+    data.action_id = id;
+    return this._send(data);
   },
 
-  noConnection: function() {
-    this.safely(function() {
+  _noConnection: function() {
+    this._safely(function() {
       throw Error('unconnected websocket');
     });
   },
 
-  setVariables: function(obj) {
+  _setVariables: function(obj) {
     var property;
     for (property in obj) {
-      eval("this." + property + "=obj." + property, this);
+      this[property] = obj[property];
     }
+  },
+
+  //  disableHashchange: function(obj, func) {
+  //    this.hashchange = false;
+  //    func.call(obj);
+  //    this.hashchange = true;
+  //  }
+
+  _checkVariables: function() {
+    if (!this.sessionId) throw Error('no sessionId')
+    if (!this.server) throw Error('no server')
+    if (!this.port) throw Error('no port')
+  },
+
+  _setupWebsocket: function() {
+    if (!this.websocket) {
+      this.websocket = new WebSocket("ws://" + this.server + ":" + this.port + "/");
+
+      this.websocket.onmessage = function(evt) {
+        isy._safely( function() {
+          Isy.Logger.debug("recieving: " + evt.data);
+          isy._recieve(JSON.parse(evt.data));
+        });
+      };
+
+      this.websocket.onclose = function() {
+        isy._noConnection()
+      };
+      this.websocket.onerror = function() {
+        isy._noConnection()
+      };
+
+      this.websocket.onopen = function() {
+        Isy.Logger.debug("WebSocket connected...");
+        isy._requestContent();
+      };
+    }
+  },
+
+  _recieve: function(obj) {
+    (new Isy.Reciever(obj))._execute();
+  },
+
+  _requestContent: function() {
+    this._send(this._ids());
+  },
+
+  _ids: function() {
+    return {
+      session_id: this.sessionId,
+      hash: location.hash.replace(/^#/, ''),
+      context_id: this.contextId
+    };
+  },
+
+  _send: function(obj) {
+    var json = JSON.stringify(obj);
+    Isy.Logger.debug("sending: " + json);
+    this.websocket.send(json);
+  },
+
+  _events: function() {
+    $('a[data-action-id]').live('click', function(event) {
+      isy.action(event.currentTarget.getAttribute('data-action-id'));
+      event.preventDefault();
+    });
+
+    $(window).bind('hashchange', function(evt) {
+      if (isy.hashchange == true) {
+        Isy.Logger.warn("hashchange trigered")
+        isy._send(isy._ids());
+      }
+    });
+  },
+
+  initialize: function() {
+    this._events();
+    this._checkVariables();
+    this._setupWebsocket();
   }
 }
 
-var isy = new Isy;
+var isy = new Isy();
 
-Isy.Recieved = function(json) {
-  this.json = json;
-}
-
-Isy.Recieved.prototype = {
-  execute: function() {
-    //    var commands = typeof this.json.command == "string" ? [this.json.command] : this.json.command;
-    //    commands.forEach( function(command) {
-    isy.debug("executing :" + this.json.command);
-    if (this.json.hash) location.hash = this.json.hash;
-    var func = eval("this." + this.json.command);
-    if(func) {
-      func.call(this);
-    } else {
-      throw Error("undefined command: " + this.json.command);
-    }
-  //    }, this);
+Isy.Logger = {
+  error:  function(message) {
+    console.error(message);
+  //    if(isy.sendLogBack == true) new Isy.Log('error', message).send();
   },
 
-  replaceBody: function() {
+  warn:  function(message) {
+    console.warn(message);
+  //    if(isy.sendLogBack == true) new Isy.Log('warn', message).send();
+  },
+
+  info:  function(message) {
+    console.info(message);
+  //    if(isy.sendLogBack == true) new Isy.Log('info', message).send();
+  },
+
+  debug:  function(message) {
+    console.debug(message);
+  //    if(isy.sendLogBack == true) new Isy.Log('debug', message).send();
+  }
+};
+
+
+Isy.Reciever = function(json) {
+  this.json = json;  
+}
+
+Isy.Reciever.prototype = {
+  _execute: function() {
+    if (this.json.html) this._replaceBody();
+    if (this.json.js) this._evalJs();
+    if (this.json.context_id) this._setContextId();
+  //    if (this.json.hash) this._setHash();
+  },
+
+  _replaceBody: function() {
     $("body").empty();
     $("body").append(this.json.html);
   },
 
-  evalJs: function() {
+  _evalJs: function() {
     eval(this.json.js);
   },
 
-  setContextId: function() {
-    isy.contextId = this.json.contextId;
-  }
-}
-
-Isy.Message = function() {  
-  this.sessionId = isy.sessionId;
-  this.contextId = isy.contextId;
-  this.hash = location.hash;
-}
-
-Isy.Message.prototype = {
-  data: function() {
-    return JSON.stringify(this);
+  _setContextId: function() {
+    isy.contextId = this.json.context_id;
   },
 
-  send: function() {
-    //    if(isy.websocket.readyState == isy.websocket.CONNECTED) {
-    //    isy.debug("sending: " + json);
-    return isy.websocket.send(this.data());
-  //    } else {
-  //      return isy.noConnection();
-  //    }
+  _setHash: function() {
+    location.hash = this.json.hash;
   }
 }
 
-Isy.LoggedMessage = function() {
-  Isy.Message.call(this);
-}
 
-Isy.LoggedMessage.prototype = {
-  send: function() {
-    isy.debug("sending: " + this.data());
-    Isy.LoggedMessage._superClass.send.call(this);
-  }
-}
-descendant(Isy.Message, Isy.LoggedMessage);
-
-
-Isy.ExecuteAction = function(id) {
-  Isy.LoggedMessage.call(this);
-  this.command = 'executeAction';
-  this.actionId = id;
-}
-descendant(Isy.LoggedMessage, Isy.ExecuteAction);
-
-
-Isy.GetContext = function() {
-  Isy.LoggedMessage.call(this);
-  this.command = 'getContext';
-}
-descendant(Isy.LoggedMessage, Isy.GetContext);
-
-
-Isy.Log = function(severity, message) {
-  Isy.Message.call(this);
-  this.command = 'log';
-  this.severity = severity;
-  this.message = message;
-}
-descendant(Isy.Message, Isy.Log);
-
-
-$(document).ready(function(){
-  isy.websocket = new WebSocket("ws://" + isy.server + ":" + isy.port + "/");
-
-  isy.websocket.onmessage = function(evt) {
-    isy.safely( function() {
-      isy.debug("recieving: " + evt.data);
-      new Isy.Recieved(JSON.parse(evt.data)).execute();
-    });
-  };
-
-  isy.websocket.onclose = function() {
-    isy.noConnection()
-  };
-  isy.websocket.onerror = function() {
-    isy.noConnection()
-  };
-
-  isy.websocket.onopen = function() {
-    isy.debug("WebSocket connected...");
-    new Isy.GetContext().send();
-  };
-
-  $('a[data-action-id]').live('click', function (event) {
-        isy.action(event.currentTarget.getAttribute('data-action-id'));
-    });
+$(document).ready(function() {
+  isy.initialize();
 });
 

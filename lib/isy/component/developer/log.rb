@@ -12,11 +12,11 @@ module Isy
         end
 
         def new_message(message)
-          Isy.logger.silence(6) do
+          Isy.logger.silence(5) do
             context.schedule do
-              Isy.logger.silence(6) do
+              Isy.logger.silence(5) do
                 add_message(message)
-                context.actualize!
+                context.actualize.send!
               end
             end
           end

@@ -7,9 +7,6 @@ module Isy
       UUID.generate(:compact).to_i(16).to_s(36)
     end
 
-    REPLACE_BODY = 'replaceBody'
-    SET_CONTEXT = 'setContextId'
-
     class Base
       
       @containers = {}
@@ -65,15 +62,20 @@ module Isy
             end
 
             connection.onmessage do |message|
-              case message[:command].try(:underscore)
-              when 'log' then Isy.logger.send(message[:severity], "Browser: " + message[:message])
-              when 'get_context' then
-                context = Base.container(message[:session_id]).context(nil, message[:hash])
-                context.schedule { context.send_id!(connection).actualize! }
-              when 'execute_action' then
-                context = Base.container(message[:session_id]).context(message[:context_id])
-                context.schedule { context.run_action(message[:action_id]).actualize! } 
-              else Isy.logger.info "Unknown action #{message[:command]}"
+              if !(session_id = message['session_id'])
+                Isy.logger.warn "missing session_id"
+              elsif !(context_id = message['context_id'])
+                context = Base.container(session_id).context(nil, message['hash'])
+                context.schedule { context.send_id(connection).actualize.send! }
+              elsif (action_id = message['action_id'])
+                context = Base.container(session_id).context(context_id)
+                context.schedule { context.run_action(action_id).actualize.send! }
+              elsif context_id
+                Base.container(session_id).context(context_id).drop
+                context = Base.container(session_id).context(nil, message['hash'])
+                context.schedule { context.send_id(connection).actualize.send! }
+              else
+                Isy.logger.warn "Non valid message: #{message}"
               end
             end
 
