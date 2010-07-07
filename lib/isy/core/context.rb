@@ -9,7 +9,7 @@ module Isy
       def initialize(id, container, hash = nil)
         @id, @container, @hash = id, container, hash
         @root_component = root_class.new(self)
-        @queue = []
+        @queue, @message = [], {}
         clear_actions
       end
 
@@ -27,7 +27,7 @@ module Isy
 
       # @return [Class] class of a root component
       def root_class
-        @root_class ||= unless @hash == '#devel'
+        @root_class ||= unless @hash == 'devel'
           Config[:root_class].to_s.constantize
         else
           Component::Developer::Tools
@@ -35,22 +35,28 @@ module Isy
       end
 
       def location_hash
-        root_class == Component::Developer::Tools ? '#devel' : ''
+        root_class == Component::Developer::Tools ? 'devel' : ''
       end
 
-      # pushes actualization to the user
-      def actualize!
+      # renders actualization for the user and stores it in {#message}
+      def actualize
         Isy.benchmark('Actualization') do
-          connection.send :command => REPLACE_BODY, :html => self.to_s, :hash => location_hash
+          message :html => self.to_s
         end
         self
       end
 
-      # sends context id. It's used after loading layout.
-      def send_id!(connection)
+      # adds context id to {#message}. It's used after loading layout.
+      def send_id(connection)
         self.connection = connection
-        connection.send :command => SET_CONTEXT, :context_id => self.id, :hash => location_hash
+        message :context_id => self.id
         self
+      end
+
+      # sends current message to user through {#connection}
+      def send!
+        connection.send message
+        @message.clear
       end
 
       # @yield block scheduled into fiber_pool for delayed execution
@@ -94,11 +100,18 @@ module Isy
 
       private
 
+      # @return [Hash] current message stored to {#send!}
+      # @param [Hash] hash to be merged into current message
+      def message(hash = {})
+        @message.merge! hash
+      end
+
       # deletes all stored {Action}-s
       def clear_actions
         @actions = {}
       end
 
+      # schedules next block from @queue to be processed in {Base.fibers_pool}
       def schedule_next
         if block = @queue.shift
           @running = block
