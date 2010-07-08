@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 unless defined? Isy::Config
 
   module Isy

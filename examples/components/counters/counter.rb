@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class Counters::Counter < Counter
 
   # we need to store @counters_collection to know where to delete itself

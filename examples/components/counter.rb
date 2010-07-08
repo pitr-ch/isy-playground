@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class Counter < Isy::Component::Base
 
   attr_reader :counter

@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class Ask::Counter < ::Counter
 
   def initialize(context, number = 0)

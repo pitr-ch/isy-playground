@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module Isy
   module Core
     class Application < Sinatra::Base

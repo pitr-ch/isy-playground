@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module Counters
   class Base < Isy::Component::Base
 

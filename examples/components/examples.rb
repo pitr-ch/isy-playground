@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class Examples < Isy::Component::Base
 
   attr_reader :example

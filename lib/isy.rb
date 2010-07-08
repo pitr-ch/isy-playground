@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 raise "wrong ruby version #{RUBY_VERSION}" unless RUBY_VERSION =~ /1\.9/
 
 unless defined? Isy

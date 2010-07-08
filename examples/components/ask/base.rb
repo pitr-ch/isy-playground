@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module Ask
   class Base < Isy::Component::Base
 
