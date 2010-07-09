@@ -6,14 +6,11 @@ module Isy
     # Abstract layout for Isy applications
     class Layout < Erector::Widgets::Page
 
+      #      depends_on :js, 'js/swfobject.js', 'js/FABridge.js', 'js/web_socket.js'
       external :js, 'js/jquery-1.4.2.js'
       external :js, 'js/jquery.ba-hashchange.js'
-      #      external :js, 'js/swfobject.js'
-      #      external :js, 'js/FABridge.js'
-      #      external :js, 'js/web_socket.js'
       external :js, 'js/isy.js'
-
-      external :css, 'developer.css'
+      external :css,  'developer.css'
       
       def body_content
         loading

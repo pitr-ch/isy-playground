@@ -11,11 +11,20 @@ module Isy
           @tool = nil
         end
 
+        class TT
+          def initialize
+            @as = rand
+            @af = rand.to_s
+          end
+        end
+
         class Widget < Isy::Widget::Component
           def content
             strong 'Tools:'
             ul do
-              li { link_to("Log") { @tool = new Log } }
+              li { link_to("Log") { @tool = new Isy::Component::Developer::Log } }
+              li { link_to("Inspector Isy::Core::Base") { @tool = inspector Isy::Core::Base } }
+              li { link_to("Inspector Object") { @tool = inspector Object } }
               li { link_to("none") { @tool = nil } }
             end
       

@@ -6,6 +6,8 @@ module Isy
       class << self
 
         def run!
+          encoding
+
           load_app_files
           Core::Base.run!
           setup_application
@@ -28,6 +30,11 @@ module Isy
               :host => Config[:web][:host],
               :port => Config[:web][:port],
               :environment => Config[:web][:environment]          
+        end
+
+        def encoding
+          puts "External encoding: #{Encoding.default_external.inspect}"
+          puts "Internal encoding: #{Encoding.default_internal.inspect}"
         end
 
       end

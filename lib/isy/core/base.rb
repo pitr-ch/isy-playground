@@ -45,12 +45,34 @@ module Isy
       def self.safely(&block)
         begin
           block.call
-        rescue Exception => e
+        rescue => e
           Isy.logger.exception e
         end
       end
 
       private
+
+      # schedules tasks depending on what message was received
+      # @param [String] message which was received
+      def self.receive_message(message, connection)
+        safely do
+          if !(session_id = message['session_id'])
+            Isy.logger.warn "missing session_id"
+          elsif !(context_id = message['context_id'])
+            context = Base.container(session_id).context(nil, message['hash'])
+            context.schedule { context.send_id(connection).actualize.send! }
+          elsif (action_id = message['action_id'])
+            context = Base.container(session_id).context(context_id)
+            context.schedule { context.run_action(action_id).actualize.send! }
+          elsif context_id
+            Base.container(session_id).context(context_id).drop
+            context = Base.container(session_id).context(nil, message['hash'])
+            context.schedule { context.send_id(connection).actualize.send! }
+          else
+            Isy.logger.warn "Non valid message: #{message}"
+          end
+        end
+      end
 
       # setups websocket server
       def self.run_websocket_server
@@ -59,31 +81,11 @@ module Isy
           EventMachine::start_server config[:host], config[:port], WebSocket::Connection,
               :debug => config[:debug] do |connection|
 
-            connection.onopen do
-              Isy.logger.debug "WebSocket connection opened"
-            end
-
-            connection.onmessage do |message|
-              if !(session_id = message['session_id'])
-                Isy.logger.warn "missing session_id"
-              elsif !(context_id = message['context_id'])
-                context = Base.container(session_id).context(nil, message['hash'])
-                context.schedule { context.send_id(connection).actualize.send! }
-              elsif (action_id = message['action_id'])
-                context = Base.container(session_id).context(context_id)
-                context.schedule { context.run_action(action_id).actualize.send! }
-              elsif context_id
-                Base.container(session_id).context(context_id).drop
-                context = Base.container(session_id).context(nil, message['hash'])
-                context.schedule { context.send_id(connection).actualize.send! }
-              else
-                Isy.logger.warn "Non valid message: #{message}"
-              end
-            end
-
+            connection.onopen    { Isy.logger.debug "WebSocket connection opened" }
+            connection.onmessage { |message| receive_message(message, connection) }
             connection.onclose do
-              Isy.logger.debug "WebSocket connection closed"
               safely do
+                Isy.logger.debug "WebSocket connection closed"
                 Context.by_connection(connection).drop
               end
             end

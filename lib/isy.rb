@@ -6,7 +6,6 @@ unless defined? Isy
   require 'pp'
   require 'uuid'
   require 'active_support/core_ext'
-  require 'active_support/configurable'
   require 'erector'
   require 'sinatra/base'
   require 'require_all'

@@ -43,14 +43,18 @@ module Isy
           elsif obj.respond_to?(:widget)
             obj.widget
           else
-            raise ArgumentError
+            raise ArgumentError, obj.inspect
           end
         end
       end
 
       # Wraps widget with element set by .wrap_in. Method is called automatically use #content.
       def content_with_wrapper
-        send self.class.wrapped_in, wrapper_options do
+        if self.class.wrapped_in
+          send self.class.wrapped_in, wrapper_options do
+            content
+          end
+        else
           content
         end
       end

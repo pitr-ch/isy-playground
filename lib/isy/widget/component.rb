@@ -18,10 +18,23 @@ module Isy
       wrap_in :div
 
       # renders link with +label+ to some action +action+ which is executed after click on the link
-      # @param [String] label text of the link
+      # @param [String, Proc] label text of the link
       # @yield action block of code which will be evaluated inside {#component} after click on the link
       def link_to(label, &action)
-        a label, :href => "#", :'data-action-id' => register_action(&action)
+        if label.kind_of?(String)
+          a label, :href => "#", :'data-action-id' => register_action(&action)
+        elsif label.kind_of?(Proc)
+          a :href => "#", :'data-action-id' => register_action(&action), &label
+        else
+          raise ArgumentError
+        end
+      end
+
+      # sets default delegation to {#component}
+      def self.delegate(*methods)
+        options = methods.extract_options!
+        options.merge!(:to => :component) {|k, old, new| old }
+        super(*(methods << options))
       end
 
       protected

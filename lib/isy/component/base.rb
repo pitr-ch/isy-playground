@@ -22,7 +22,7 @@ module Isy
       end
 
       # renders html
-      def to_s
+      def to_html
         widget.to_s
       end
 
@@ -64,6 +64,10 @@ module Isy
         @asker.instance_exec answer, &@askers_callback
       end
 
+      def inspector(obj, label = nil, packed = true)
+        new(inspector_class(obj.class), obj, label, packed)
+      end
+
       protected
 
       # when {Base} is initialized this method is called to setup initial state of the {Base}
@@ -78,7 +82,10 @@ module Isy
 
       # @return [Class] which is used to insatiate widget
       def self.widget_class
-        self._widget_class || self.const_get(:Widget) || raise(MissingWidgetClass, "for #{self}")
+        self._widget_class || 
+            self.const_get(:Widget) ||
+            self.superclass.widget_class ||
+            raise(MissingWidgetClass, "for #{self}")
       end
 
       def widget_args
@@ -91,6 +98,12 @@ module Isy
       # @param [Class] klass
       def self.use_widget_class(klass)
         self._widget_class = klass
+      end
+
+      def inspector_class(klass)
+        "Isy::Component::Developer::Inspection::#{klass}".constantize
+      rescue NameError
+        inspector_class(klass.superclass)
       end
 
     end

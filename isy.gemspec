@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Petr Chalupa"]
-  s.date = %q{2010-07-03}
+  s.date = %q{2010-07-09}
   s.default_executable = %q{isy}
   s.description = %q{ruby component based state-full web framework}
   s.executables = ["isy"]
@@ -23,22 +23,39 @@ Gem::Specification.new do |s|
      "docs/wave.md"
   ]
   s.files = [
-    "examples/components/ask/base.rb",
+    "examples/Gemfile.lock",
+     "examples/components/ask/base.rb",
      "examples/components/ask/counter.rb",
      "examples/components/counter.rb",
      "examples/components/counters/base.rb",
      "examples/components/counters/counter.rb",
      "examples/components/examples.rb",
-     "examples/components/log.rb",
      "examples/config.yml",
      "examples/layouts/app_layout.rb",
      "examples/public/basic.css",
+     "examples/public/developer.css",
      "examples/public/favicon.ico",
+     "examples/public/js/FABridge.js",
+     "examples/public/js/WebSocketMain.swf",
      "examples/public/js/isy.js",
      "examples/public/js/jquery-1.4.2.js",
      "examples/public/js/jquery-1.4.2.min.js",
+     "examples/public/js/jquery.ba-hashchange.js",
+     "examples/public/js/jquery.ba-hashchange.min.js",
+     "examples/public/js/swfobject.js",
+     "examples/public/js/web_socket.js",
      "lib/isy.rb",
      "lib/isy/component/base.rb",
+     "lib/isy/component/developer/inspection/array.rb",
+     "lib/isy/component/developer/inspection/class.rb",
+     "lib/isy/component/developer/inspection/hash.rb",
+     "lib/isy/component/developer/inspection/module.rb",
+     "lib/isy/component/developer/inspection/numeric.rb",
+     "lib/isy/component/developer/inspection/object.rb",
+     "lib/isy/component/developer/inspection/string.rb",
+     "lib/isy/component/developer/inspection/symbol.rb",
+     "lib/isy/component/developer/log.rb",
+     "lib/isy/component/developer/tools.rb",
      "lib/isy/config.rb",
      "lib/isy/core/action.rb",
      "lib/isy/core/application.rb",
@@ -53,7 +70,8 @@ Gem::Specification.new do |s|
      "lib/isy/widget/base.rb",
      "lib/isy/widget/collection.rb",
      "lib/isy/widget/component.rb",
-     "lib/isy/widget/inspector.rb",
+     "lib/isy/widget/inspect/object.rb",
+     "lib/isy/widget/inspect/string.rb",
      "lib/isy/widget/layout.rb",
      "lib/isy/widget/optionable_collection.rb"
   ]
@@ -64,6 +82,8 @@ Gem::Specification.new do |s|
   s.summary = %q{ruby component based state-full web framework}
   s.test_files = [
     "spec/isy/widget/base_spec.rb",
+     "spec/isy/component/developer/inspection/array_spec.rb",
+     "spec/isy/component/developer/inspection/object_spec.rb",
      "spec/spec_helper.rb"
   ]
 
@@ -76,8 +96,8 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<tzinfo>, [">= 0"])
       s.add_runtime_dependency(%q<i18n>, [">= 0"])
       s.add_runtime_dependency(%q<activesupport>, [">= 3.0.0.beta"])
-      s.add_runtime_dependency(%q<erector>, [">= 0"])
-      s.add_runtime_dependency(%q<sinatra>, [">= 0"])
+      s.add_runtime_dependency(%q<erector>, [">= 0.7"])
+      s.add_runtime_dependency(%q<sinatra>, [">= 1.0"])
       s.add_runtime_dependency(%q<thin>, [">= 0"])
       s.add_runtime_dependency(%q<require_all>, [">= 0"])
       s.add_runtime_dependency(%q<em-websocket>, [">= 0"])
@@ -93,8 +113,8 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<tzinfo>, [">= 0"])
       s.add_dependency(%q<i18n>, [">= 0"])
       s.add_dependency(%q<activesupport>, [">= 3.0.0.beta"])
-      s.add_dependency(%q<erector>, [">= 0"])
-      s.add_dependency(%q<sinatra>, [">= 0"])
+      s.add_dependency(%q<erector>, [">= 0.7"])
+      s.add_dependency(%q<sinatra>, [">= 1.0"])
       s.add_dependency(%q<thin>, [">= 0"])
       s.add_dependency(%q<require_all>, [">= 0"])
       s.add_dependency(%q<em-websocket>, [">= 0"])
@@ -111,8 +131,8 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<tzinfo>, [">= 0"])
     s.add_dependency(%q<i18n>, [">= 0"])
     s.add_dependency(%q<activesupport>, [">= 3.0.0.beta"])
-    s.add_dependency(%q<erector>, [">= 0"])
-    s.add_dependency(%q<sinatra>, [">= 0"])
+    s.add_dependency(%q<erector>, [">= 0.7"])
+    s.add_dependency(%q<sinatra>, [">= 1.0"])
     s.add_dependency(%q<thin>, [">= 0"])
     s.add_dependency(%q<require_all>, [">= 0"])
     s.add_dependency(%q<em-websocket>, [">= 0"])

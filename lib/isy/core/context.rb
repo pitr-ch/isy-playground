@@ -43,7 +43,7 @@ module Isy
       # renders actualization for the user and stores it in {#message}
       def actualize
         Isy.benchmark('Actualization') do
-          message :html => self.to_s
+          message :html => self.to_html
         end
         self
       end
@@ -70,8 +70,8 @@ module Isy
       end
 
       # renders html, similar to Erector::Widget#to_s
-      def to_s
-        @root_component.to_s
+      def to_html
+        @root_component.to_html
       end
 
       # creates and stores action for later evaluation

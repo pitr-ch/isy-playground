@@ -9,9 +9,9 @@ end
 describe Isy::Widget::Base do
   describe Foo do
     describe "#to_s" do
-      subject { Foo.new.to_s }
+      subject { (@widget = Foo.new).to_s }
 
-      it {should == "<span class=\"foo\"></span>"}
+      it {should == "<span class=\"foo\" id=\"#{@widget.object_id}\"></span>"}
     end    
   end
 end
