@@ -16,3 +16,8 @@
 .isy-component-developer-log-widget .odd{
   background-color: #eee;
 }
+
+.isy-component-developer-tools-widget code {
+  font-family: monospace;
+}
+

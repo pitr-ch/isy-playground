@@ -10,9 +10,8 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Petr Chalupa"]
   s.date = %q{2010-07-09}
-  s.default_executable = %q{isy}
   s.description = %q{ruby component based state-full web framework}
-  s.executables = ["isy"]
+  s.executables = ["isy", "isy-prof"]
   s.extra_rdoc_files = [
     "MIT-LICENSE",
      "README.md",
@@ -23,8 +22,7 @@ Gem::Specification.new do |s|
      "docs/wave.md"
   ]
   s.files = [
-    "examples/Gemfile.lock",
-     "examples/components/ask/base.rb",
+    "examples/components/ask/base.rb",
      "examples/components/ask/counter.rb",
      "examples/components/counter.rb",
      "examples/components/counters/base.rb",
@@ -46,6 +44,7 @@ Gem::Specification.new do |s|
      "examples/public/js/web_socket.js",
      "lib/isy.rb",
      "lib/isy/component/base.rb",
+     "lib/isy/component/developer/gc.rb",
      "lib/isy/component/developer/inspection/array.rb",
      "lib/isy/component/developer/inspection/class.rb",
      "lib/isy/component/developer/inspection/hash.rb",
@@ -54,6 +53,7 @@ Gem::Specification.new do |s|
      "lib/isy/component/developer/inspection/object.rb",
      "lib/isy/component/developer/inspection/string.rb",
      "lib/isy/component/developer/inspection/symbol.rb",
+     "lib/isy/component/developer/inspection/weak_ref.rb",
      "lib/isy/component/developer/log.rb",
      "lib/isy/component/developer/tools.rb",
      "lib/isy/config.rb",
@@ -63,15 +63,15 @@ Gem::Specification.new do |s|
      "lib/isy/core/base.rb",
      "lib/isy/core/container.rb",
      "lib/isy/core/context.rb",
+     "lib/isy/core/observable.rb",
      "lib/isy/core/web_socket/connection.rb",
      "lib/isy/exception/exceptions.rb.rb",
      "lib/isy/logger.rb",
      "lib/isy/runner.rb",
+     "lib/isy/weak/observable.rb",
      "lib/isy/widget/base.rb",
      "lib/isy/widget/collection.rb",
      "lib/isy/widget/component.rb",
-     "lib/isy/widget/inspect/object.rb",
-     "lib/isy/widget/inspect/string.rb",
      "lib/isy/widget/layout.rb",
      "lib/isy/widget/optionable_collection.rb"
   ]
@@ -84,6 +84,7 @@ Gem::Specification.new do |s|
     "spec/isy/widget/base_spec.rb",
      "spec/isy/component/developer/inspection/array_spec.rb",
      "spec/isy/component/developer/inspection/object_spec.rb",
+     "spec/isy/weak/ref_spec.rb",
      "spec/spec_helper.rb"
   ]
 

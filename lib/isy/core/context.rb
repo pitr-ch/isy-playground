@@ -5,6 +5,9 @@ module Isy
 
     # represents context of user, each tab of browser has one of its own
     class Context
+      include Core::Observable
+      observable_events :drop
+
       attr_reader :id, :connection, :container, :hash
 
       # @param [String] id unique identification
@@ -12,6 +15,7 @@ module Isy
         @id, @container, @hash = id, container, hash
         @root_component = root_class.new(self)
         @queue, @message = [], {}
+        self.class.no_connection_contexts << self
         clear_actions
       end
 
@@ -19,12 +23,16 @@ module Isy
       # @param [WebSocket::Connection] connection
       def connection=(connection)
         @connection = connection
-        self.class.by_connection_hash[connection] = self
+        self.class.contexts_by_connection[connection] = self
+        self.class.no_connection_contexts.delete self
       end
 
       # remove context form container
       def drop
         container.drop_context(self)
+        self.class.contexts_by_connection.delete(connection)
+        self.class.no_connection_contexts.delete(self)
+        notify_observers(:drop, self)
       end
 
       # @return [Class] class of a root component
@@ -57,7 +65,7 @@ module Isy
 
       # sends current message to user through {#connection}
       def send!
-        connection.send message
+        connection.send message if connection # FIXME unsended will be lost
         @message.clear
       end
 
@@ -97,7 +105,7 @@ module Isy
       # @param [WebSocket::Connection] connection to find out by
       # @return [Context] by +connection+
       def self.by_connection(connection)
-        by_connection_hash[connection]
+        contexts_by_connection[connection]
       end
 
       private
@@ -123,8 +131,14 @@ module Isy
         end
       end
 
-      def self.by_connection_hash
-        @connection_hash ||= {}
+      @contexts_by_connection = {}
+      def self.contexts_by_connection
+        @contexts_by_connection
+      end
+
+      @no_connection_contexts = []
+      def self.no_connection_contexts
+        @no_connection_contexts
       end
 
     end

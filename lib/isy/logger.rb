@@ -12,7 +12,9 @@ module Isy
       UNKNOWN = 5
     end
     include Severity
-    include Observable
+
+    include Isy::Core::Observable
+    observable_events :message
 
     ##
     # :singleton-method:
@@ -55,8 +57,7 @@ module Isy
       return if @level > severity
       message = (message || (block && block.call) || progname).to_s
       message += (message[-1] == ?\n ? '' : "\n")
-      changed
-      notify_observers(message)
+      notify_observers(:message, message)
       #      unless @log
       #        @start_buffer << message
       #        return

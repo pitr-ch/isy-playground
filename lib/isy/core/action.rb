@@ -16,7 +16,7 @@ module Isy
 
       # executes action
       def call
-        Isy.benchmark "Running action #{block.source_location.join(':')}" do
+        Isy.benchmark "Running action #{block}" do
           component.send(:instance_eval, &block)
         end
       end

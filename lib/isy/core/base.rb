@@ -20,7 +20,7 @@ module Isy
 
       # delete container where isn't needed any more
       def self.drop_container(container)
-        @containers.delete(container.id)
+        @containers.delete(container.id) || raise
       end
 
       # runs websocket server - schedule start after eventmachine startup in thin
@@ -33,7 +33,7 @@ module Isy
         Config[:websocket]
       end
 
-      @fibers_pool = NeverBlock::Pool::FiberPool.new
+      @fibers_pool = NeverBlock::Pool::FiberPool.new config[:fibers]
 
       # @return [NeverBlock::Pool::FiberPool]
       def self.fibers_pool
@@ -86,12 +86,23 @@ module Isy
             connection.onclose do
               safely do
                 Isy.logger.debug "WebSocket connection closed"
-                Context.by_connection(connection).drop
+                Context.by_connection(connection).try :drop
               end
             end
           end
           
           Isy.logger.info '== Isy WebSocket running.'
+
+          EventMachine::add_periodic_timer(10) do
+            safely do
+              # drops contexts without connections
+              contexts = Context.send(:no_connection_contexts)
+              unless contexts.empty?
+                Isy.logger.debug "Dropping #{contexts.size} context without connection"
+                contexts.each {|c| c.drop }
+              end
+            end
+          end
         end
       end
 

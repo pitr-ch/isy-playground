@@ -74,8 +74,12 @@ module Isy
       def initial_state
       end
 
-      def create_widget
-        self.class.widget_class.new(self, *widget_args)
+      def create_widget        
+        if widget_args
+          self.class.widget_class.new(self, *widget_args)
+        else
+          self.class.widget_class.new(self)
+        end
       end
 
       class_inheritable_accessor :_widget_class, :instance_writer => false, :instance_reader => false
@@ -101,6 +105,7 @@ module Isy
       end
 
       def inspector_class(klass)
+        raise ArgumentError, klass.inspect unless klass && klass.kind_of?(Class)
         "Isy::Component::Developer::Inspection::#{klass}".constantize
       rescue NameError
         inspector_class(klass.superclass)

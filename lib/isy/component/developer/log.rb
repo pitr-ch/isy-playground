@@ -10,17 +10,20 @@ module Isy
         def initial_state
           @messages = []
           @limit = 200
-          Isy.logger.add_observer(self, :new_message)
-        end
-
-        def new_message(message)
-          Isy.logger.silence(5) do
-            context.schedule do
-              Isy.logger.silence(5) do
-                add_message(message)
-                context.actualize.send!
+          
+          @observer = Isy.logger.add_observer(:message) do |message|
+            Isy.logger.silence(5) do
+              context.schedule do
+                Isy.logger.silence(5) do
+                  add_message(message)
+                  context.actualize.send!
+                end
               end
             end
+          end
+
+          context.add_observer(:drop) do
+            Isy.logger.delete_observer :message, @observer
           end
         end
 
@@ -34,6 +37,9 @@ module Isy
         class Widget < Isy::Widget::Component
           def content
             h3 'Log'
+
+            p "objects observing: #{Isy.logger.count_observers(:message)}"
+
             component.messages.each do |message|
               p :class => odd do
                 text message

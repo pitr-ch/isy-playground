@@ -12,7 +12,8 @@ unless defined? Isy::Config
           :host => '0.0.0.0',
           :server => '127.0.0.1',
           :port => 3001,
-          :debug => false
+          :debug => false,
+          :fibers => 20,
         },
         :layout_class => 'Isy::Widget::Layout',
         :environment => :development,
@@ -38,6 +39,7 @@ unless defined? Isy::Config
     Config.define 'websocket.server', :require => true, :type => String
     Config.define 'websocket.port', :require => true, :type => Integer
     Config.define 'websocket.debug', :require => true, :type => :boolean
+    Config.define 'websocket.fibers', :require => true, :type => Integer
     Config.define 'root_class', :require => true, :type => String
     Config.define 'layout_class', :require => true, :type => String,
         :description => "Name of a layout class."

@@ -1,25 +1,29 @@
 # encoding: UTF-8
 
-raise "wrong ruby version #{RUBY_VERSION}" unless RUBY_VERSION =~ /1\.9/
-
 unless defined? Isy
   require 'pp'
   require 'uuid'
   require 'active_support/core_ext'
+  require 'active_support/basic_object'
   require 'erector'
   require 'sinatra/base'
   require 'require_all'
   require 'em-websocket'
   require 'configliere'
-  require 'json/pure' # TODO load something faster
+  require 'json' # TODO load something faster
   require 'benchmark'
   require 'neverblock'
-  require 'observer'
+  require 'observer'  
+  require 'weakref'
 
   module Isy
 
     def self.logger
       @logger ||= Isy::Logger.new($stdout)
+    end
+
+    def self.v19?
+      RUBY_VERSION =~ /1.9/
     end
 
     def self.benchmark(label, req = true, &block)

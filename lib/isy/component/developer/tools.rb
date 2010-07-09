@@ -25,6 +25,9 @@ module Isy
               li { link_to("Log") { @tool = new Isy::Component::Developer::Log } }
               li { link_to("Inspector Isy::Core::Base") { @tool = inspector Isy::Core::Base } }
               li { link_to("Inspector Object") { @tool = inspector Object } }
+              li { link_to("Inspector Isy.logger") { @tool = inspector Isy.logger } }
+              li { link_to("GC and stats") { @tool = new Developer::Gc } }
+              li { link_to("Memprof dump all") { Memprof.dump_all("heap_dump.json") } } if defined? Memprof
               li { link_to("none") { @tool = nil } }
             end
       
