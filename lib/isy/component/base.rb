@@ -23,7 +23,7 @@ module Isy
 
       # renders html
       def to_html
-        widget.to_s
+        widget.to_html
       end
 
       # @return [Widget::Component] return instantiated widget or creates one

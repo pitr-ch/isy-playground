@@ -25,7 +25,7 @@ module Isy
       end
 
       get '/' do
-        Config[:layout_class].to_s.constantize.new(:session_id => session_id).to_s
+        Config[:layout_class].to_s.constantize.new(:session_id => session_id).to_html
       end
 
       # monkey patch sintra .run!

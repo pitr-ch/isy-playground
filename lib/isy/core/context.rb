@@ -78,7 +78,7 @@ module Isy
         self
       end
 
-      # renders html, similar to Erector::Widget#to_s
+      # renders html, similar to Erector::Widget#to_html
       def to_html
         @root_component.to_html
       end

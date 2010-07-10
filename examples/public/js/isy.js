@@ -52,6 +52,7 @@ Isy.prototype = {
         isy._safely( function() {
           Isy.Logger.debug("recieving: " + evt.data);
           isy._recieve(JSON.parse(evt.data));
+          if (isy.bench) isy.callRandomAction();
         });
       };
 
@@ -67,6 +68,11 @@ Isy.prototype = {
         isy._requestContent();
       };
     }
+  },
+
+  callRandomAction: function() {
+    var arr = $('a[data-action-id]');
+    this.action( arr[Math.floor(Math.random()*arr.size())].getAttribute('data-action-id') );
   },
 
   _recieve: function(obj) {

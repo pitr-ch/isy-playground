@@ -1,3 +1,4 @@
 ## YAML Template.
 ---
 :root_class: "Examples"
+:layout_class: "AppLayout"

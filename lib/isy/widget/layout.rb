@@ -14,11 +14,11 @@ module Isy
       
       def body_content
         loading
+        set_variables(@session_id)
       end
 
       def head_content
         super
-        set_variables(@session_id)
       end
 
       def loading
