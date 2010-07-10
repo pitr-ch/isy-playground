@@ -26,7 +26,7 @@ install bundler and run Bundler
     bundle install
 use Ruby 1.9.(1|2) and run isy
     isy
-use Chrome browser. It wont work in others.
+use Chrome browser. It wont work in others. (It should work in Safari, but I did not test it.)
 
 There are some examples on http://localhost:3000 and real-time log on http://localhost:3000/#devel
 

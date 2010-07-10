@@ -21,6 +21,18 @@ module Isy
         end
       end
 
+      # restarts context when hash has changed or error occurred
+      # @param [String] id of a context
+      # @param [String] hash new or current
+      # @param [WebSocket::Connection] connection to the client
+      # @param [String] warn warning which will be shown to user
+      def restart_context(id, hash, connection, warn = nil)
+        context = @contexts[id] = Context.new(id, self, hash)
+        context.connection=(connection)
+        context.schedule(false) { context.actualize.warn(warn).send! }
+        context
+      end
+
       # @param [Context] context to drop when is not needed
       def drop_context(context)
         @contexts.delete(context.id)

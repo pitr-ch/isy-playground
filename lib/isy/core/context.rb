@@ -11,7 +11,8 @@ module Isy
       attr_reader :id, :connection, :container, :hash
 
       # @param [String] id unique identification
-      def initialize(id, container, hash = nil)
+      def initialize(id, container, hash)
+        raise ArgumentError unless hash
         @id, @container, @hash = id, container, hash
         @root_component = root_class.new(self)
         @queue, @message = [], {}
@@ -28,10 +29,10 @@ module Isy
       end
 
       # remove context form container
-      def drop
-        container.drop_context(self)
+      def drop        
         self.class.contexts_by_connection.delete(connection)
         self.class.no_connection_contexts.delete(self)
+        container.drop_context(self)
         notify_observers(:drop, self)
       end
 
@@ -70,10 +71,10 @@ module Isy
       end
 
       # @yield block scheduled into fiber_pool for delayed execution
-      def schedule(&block)
+      def schedule(restart = true, &block)
         # TODO context queue
         @queue << block
-        schedule_next unless @running
+        schedule_next(restart) unless @running
         self
       end
 
@@ -108,6 +109,24 @@ module Isy
         contexts_by_connection[connection]
       end
 
+      # processes safely block, restarts context when error occurred
+      # @yield task to execute
+      def safely(restart = true, &block)
+        unless Base.safely(&block)
+          if restart
+            container.restart_context(id, hash, connection, "We are sorry but there was a error. Application is reloaded")
+          else
+            warn("Fatal error").send!
+          end
+        end
+      end
+
+      # @param [String] warn which will be shown to user using alert();
+      def warn(warn)
+        message :js => "alert('#{warn}');" if warn
+        self
+      end
+
       private
 
       # @return [Hash] current message stored to {#send!}
@@ -122,10 +141,10 @@ module Isy
       end
 
       # schedules next block from @queue to be processed in {Base.fibers_pool}
-      def schedule_next
+      def schedule_next(restart = true)
         if block = @queue.shift
           @running = block
-          Base.fibers_pool.spawn { Base.safely { block.call; schedule_next } }
+          Base.fibers_pool.spawn { safely(restart) { block.call; schedule_next } }
         else
           @running = nil
         end

@@ -27,9 +27,8 @@ Isy.prototype = {
   },
 
   _noConnection: function() {
-    this._safely(function() {
-      throw Error('unconnected websocket');
-    });
+    alert('Connection to server was lost, click OK to reload.');
+    location.reload();
   },
 
   _setVariables: function(obj) {
@@ -38,12 +37,6 @@ Isy.prototype = {
       this[property] = obj[property];
     }
   },
-
-  //  disableHashchange: function(obj, func) {
-  //    this.hashchange = false;
-  //    func.call(obj);
-  //    this.hashchange = true;
-  //  }
 
   _checkVariables: function() {
     if (!this.sessionId) throw Error('no sessionId')

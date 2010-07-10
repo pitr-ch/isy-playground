@@ -16,7 +16,6 @@ class Examples < Isy::Component::Base
         li { link_to("#ask") { @example = new Ask::Base } }
         li { link_to("none") { @example = nil } }
       end
-      
       hr
 
       render component.example if component.example

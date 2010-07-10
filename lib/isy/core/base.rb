@@ -42,12 +42,15 @@ module Isy
 
       # tries to execute block safely, errors are logged
       # @yield block to safe execution
+      # @return [Boolean] if block was successfully processed
       def self.safely(&block)
         begin
           block.call
         rescue => e
           Isy.logger.exception e
+          return false
         end
+        return true
       end
 
       private
@@ -55,22 +58,18 @@ module Isy
       # schedules tasks depending on what message was received
       # @param [String] message which was received
       def self.receive_message(message, connection)
-        safely do
-          if !(session_id = message['session_id'])
-            Isy.logger.warn "missing session_id"
-          elsif !(context_id = message['context_id'])
-            context = Base.container(session_id).context(nil, message['hash'])
-            context.schedule { context.send_id(connection).actualize.send! }
-          elsif (action_id = message['action_id'])
-            context = Base.container(session_id).context(context_id)
-            context.schedule { context.run_action(action_id).actualize.send! }
-          elsif context_id
-            Base.container(session_id).context(context_id).drop
-            context = Base.container(session_id).context(nil, message['hash'])
-            context.schedule { context.send_id(connection).actualize.send! }
-          else
-            Isy.logger.warn "Non valid message: #{message}"
-          end
+        if !(session_id = message['session_id'])
+          Isy.logger.warn "missing session_id"
+        elsif !(context_id = message['context_id'])
+          context = Base.container(session_id).context(nil, message['hash'])
+          context.schedule { context.send_id(connection).actualize.send! }
+        elsif (action_id = message['action_id'])
+          context = Base.container(session_id).context(context_id)
+          context.schedule { context.run_action(action_id).actualize.send! }
+        elsif context_id
+          context = Base.container(session_id).restart_context(context_id, message['hash'], connection)
+        else
+          Isy.logger.warn "Non valid message: #{message}"
         end
       end
 
