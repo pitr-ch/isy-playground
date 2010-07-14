@@ -6,34 +6,6 @@ module Isy
     # Abstract class of all widgets
     class Base < Erector::Widget
 
-      # FIXME monkey patch
-
-      #      class_inheritable_accessor :content_method_name
-      #      self.content_method_name = :content
-      #
-      #      def _render(options = {}, &blk)
-      #        options = {
-      #          :output => "",  # "" is apparently faster than [] in a long-running process
-      #          :prettyprint => prettyprint_default,
-      #          :indentation => 0,
-      #          :helpers => nil,
-      #          :parent => @parent,
-      #          :content_method_name => self.class.content_method_name,
-      #        }.merge(options)
-      #        context(options[:parent], options[:output], options[:prettyprint], options[:indentation], options[:helpers]) do
-      #          send(options[:content_method_name], &blk)
-      #          output
-      #        end
-      #      end
-      #
-      #      def write_via(parent)
-      #        context(parent, parent.output, parent.prettyprint, parent.indentation, parent.helpers) do
-      #          send self.class.content_method_name
-      #        end
-      #      end
-
-      # end of monkey patch
-
       # try to obtain widget and render it with Erector::Widget#widget
       # @param [Erector::Widget, #widget] obj to render
       def render(obj)
@@ -58,8 +30,6 @@ module Isy
           content
         end
       end
-
-      #      self.content_method_name = :content_with_wrapper
 
       def to_html(options = {})
         super options.merge(:content_method_name => :content_with_wrapper) {|_,old,_| old }

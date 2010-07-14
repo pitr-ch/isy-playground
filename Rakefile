@@ -53,7 +53,7 @@ begin
     gem.add_dependency 'tzinfo', '>= 0'
     gem.add_dependency 'i18n', '>= 0'
     gem.add_dependency 'activesupport', '>= 3.0.0.beta'
-    gem.add_dependency 'erector', ">= 0.7"
+    gem.add_dependency 'erector', ">= 0.8"
     gem.add_dependency 'sinatra', ">= 1.0"
     gem.add_dependency 'thin', ">= 0"
     gem.add_dependency 'require_all', ">= 0"
