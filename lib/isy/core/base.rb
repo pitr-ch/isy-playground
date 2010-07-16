@@ -63,9 +63,9 @@ module Isy
         elsif !(context_id = message['context_id'])
           context = Base.container(session_id).context(nil, message['hash'])
           context.schedule { context.send_id(connection).actualize.send! }
-        elsif (action_id = message['action_id'])
+        elsif (action_id = message['action_id'] || form = message['form'])
           context = Base.container(session_id).context(context_id)
-          context.schedule { context.run_action(action_id).actualize.send! }
+          context.schedule { context.update_form(form).run_action(action_id).actualize.send! }
         elsif context_id
           context = Base.container(session_id).restart_context(context_id, message['hash'], connection)
         else

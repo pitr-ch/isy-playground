@@ -22,13 +22,13 @@ module Isy
           def content
             strong 'Tools:'
             ul do
-              li { link_to("Log") { @tool = new Isy::Component::Developer::Log } }
-              li { link_to("Inspector Isy::Core::Base") { @tool = inspector Isy::Core::Base } }
-              li { link_to("Inspector Object") { @tool = inspector Object } }
-              li { link_to("Inspector Isy.logger") { @tool = inspector Isy.logger } }
-              li { link_to("GC and stats") { @tool = new Developer::Gc } }
-              li { link_to("Memprof dump all") { Memprof.dump_all("heap_dump.json") } } if defined? Memprof
-              li { link_to("none") { @tool = nil } }
+              li { a "Log", :click => do_action { @tool = new Isy::Component::Developer::Log } }
+              li { a "Inspector Isy::Core::Base", :click => do_action { @tool = inspector Isy::Core::Base } }
+              li { a "Inspector Object", :click => do_action { @tool = inspector Object } }
+              li { a "Inspector Isy.logger", :click => do_action { @tool = inspector Isy.logger } }
+              li { a "GC and stats", :click => do_action { @tool = new Developer::Gc } }
+              li { a "Memprof dump all", :click => do_action { Memprof.dump_all("heap_dump.json") }} if defined? Memprof
+              li { a "none", :click => do_action { @tool = nil } }
             end
       
             hr

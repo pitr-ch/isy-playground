@@ -5,30 +5,31 @@ module Isy
 
     # Collection with options ability
     class OptionableCollection < Collection
-      # @param [Hash] options defines what will be rendered before, after, between or when nothing
-      # @option options [Erector::Widget, Component::Base, String, Proc] :before renders before collection
-      # @option options [Erector::Widget, Component::Base, String, Proc] :after renders after collection
-      # @option options [Erector::Widget, Component::Base, String, Proc] :between renders between collection's elements
-      # @option options [Erector::Widget, Component::Base, String, Proc] :nothing renders when collection is blank
+      
+      # @param [Hash] assigns defines what will be rendered before, after, between or when nothing
+      # @option assigns [Erector::Widget, Component::Base, String, Proc] :before renders before collection
+      # @option assigns [Erector::Widget, Component::Base, String, Proc] :after renders after collection
+      # @option assigns [Erector::Widget, Component::Base, String, Proc] :between renders between collection's elements
+      # @option assigns [Erector::Widget, Component::Base, String, Proc] :nothing renders when collection is blank
       # @example
-      #     OCollection.new(users, nil,
+      #     OCollection.new(
+      #       :component => users,
       #       :before => 'Users:',
       #       :nothing => 'No users.',
       #       :after => lambda {|w| w.p { text "count: #{w.collection.count}" }}
       #     )
-      def initialize(component, collection = nil, options = {})
-        super component, collection
-        @options = options
+      def initialize(assigns = {}, &block)
+        super
       end
 
       protected
 
       %w[before, after, between, nothing].map(&:to_sym).each do |method|
         define_method method do 
-          case options[method]
-          when String then text options[method]
-          when Proc then options[method].call(self)
-          else render options[method]
+          case value = instance_variable_get(:"@#{method}")
+          when String then text value
+          when Proc then value.call(self)
+          else render value
           end
         end
       end

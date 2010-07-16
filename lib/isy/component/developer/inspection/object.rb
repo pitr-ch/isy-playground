@@ -1,13 +1,19 @@
 module Isy
   module Component
     module Developer
+
+      # Inspection components
       module Inspection
+
 
         class Object < Base
 
           attr_reader :obj, :label, :components
           attr_writer :packed
 
+          # @param [Object] obj to inspect
+          # @param [String] label optional description
+          # @param [Boolean] packed inspector is initially packed?
           def initialize(context, obj, label = nil, packed = true)
             @obj, @packed, @label = obj, packed, label
             super(context)            
@@ -17,10 +23,12 @@ module Isy
             @packed ? pack : unpack
           end
 
+          # @return [Boolean] is inspector packed?
           def packed?
             @packed
           end
 
+          # switches packed state and calls {#pack} or {#unpack} to change the state
           def switch_packed
             @packed = !@packed
             @packed ? pack : unpack
@@ -28,6 +36,7 @@ module Isy
 
           protected
 
+          # unpacks inspector, creates subinspectors for instance variables, constants etc.
           def unpack
             @components = [
               inspector(
@@ -36,29 +45,31 @@ module Isy
             ]
           end
 
+          # packs inspector, drops subinspectors
           def pack
             @components = []
           end
 
           class Widget < Widget::Component
-            delegate :obj, :label, :packed?, :variables, :components
-
             def content
               packed
-              ul { unpacked } unless packed?
+              ul { unpacked } unless c.packed?
             end
 
+            # renders packed form
             def packed
-              link_to("#{label ? label + ' ' : nil}#{name}") { switch_packed }
+              a "#{c.label ? c.label + ' ' : nil}#{name}", :click => do_action { switch_packed }
             end
 
+            # renders name of the inspector
             def name
-              "##{obj.class}"
+              "##{c.obj.class}"
             end
 
+            # renders unpacked form
             def unpacked
-              li "size #{obj.size}" if obj.respond_to?(:size)
-              components.each do |c|
+              li "size #{c.obj.size}" if c.obj.respond_to?(:size)
+              c.components.each do |c|
                 li { render c }
               end
             end

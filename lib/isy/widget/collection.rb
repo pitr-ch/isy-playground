@@ -6,15 +6,7 @@ module Isy
     # Abstract widget to render collections
     class Collection < Component
 
-      # @overload initialize(component)
-      #   @param [Component::Base] component which respond_to? #collection
-      # @overload initialize(component, collection)
-      #   @param [Component::Base] component
-      #   @param [Array<Erector::Widget, Component::Base>] collection
-      def initialize(component, collection = nil)
-        super component
-        @collection = collection
-      end
+      needs :collection => nil
 
       # @return [Array<Erector::Widget, Component::Base>, nil] obtained collection of widgets/components
       def collection

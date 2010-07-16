@@ -1,0 +1,43 @@
+# encoding: UTF-8
+
+module Examples
+  module Form
+    class Base < Isy::Component::FormPart
+
+      attr_reader :counter
+      def initial_state
+        super
+        @counter = 0
+      end
+
+      class Widget < Isy::Component::FormPart::Widget
+
+        def content
+          p do
+            text 'name'
+            widget Isy::Widget::FormPart::Input, :value => :name
+          end
+          p do
+            text 'sex'
+            widget Isy::Widget::FormPart::Select, :value => :sex, :select_options => [nil, 'male', 'female']
+          end
+          p do
+            text 'description'
+            widget Isy::Widget::FormPart::Textarea, :value => :description
+          end
+
+          a "Send for the #{c.counter}th time", :click => [ actualize_form, do_action { @counter += 1 } ]
+
+          h4 'Values:'
+          ul do
+            li c.value(:name).inspect
+            li c.value(:sex).inspect
+            li c.value(:description).inspect
+          end          
+          
+        end
+      end
+
+    end
+  end
+end

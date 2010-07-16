@@ -22,7 +22,7 @@ module Isy
       end
 
       def loading
-        h1 'Loading ...'
+        div(:class => 'loading') { img :src => 'img/loading.gif', :alt => "Loading..." }
       end
 
       private

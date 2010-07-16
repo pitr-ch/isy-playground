@@ -28,16 +28,16 @@ module Isy
             h1 'GC'
             ul do
               li do                
-                link_to("GC::Profiler.enable? => #{GC::Profiler.enabled?}") do
+                a "GC::Profiler.enable? => #{GC::Profiler.enabled?}", :click => do_action {
                   if GC::Profiler.enabled?
                     GC::Profiler.disable
                     GC::Profiler.clear
                   else
                     GC::Profiler.enable
                   end
-                end
+                }
               end if Isy.v19?
-              li { link_to("GC.start") { ObjectSpace.garbage_collect; ObjectSpace.garbage_collect }}
+              li { a "GC.start", :click => do_action { ObjectSpace.garbage_collect; ObjectSpace.garbage_collect }}
             end
 
             pre { code GC::Profiler.result } if Isy.v19?

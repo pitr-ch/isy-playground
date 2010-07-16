@@ -10,9 +10,10 @@ module Isy
         def initial_state
           @messages = []
           @limit = 200
-          
+
+          # observe log :message event
           @observer = Isy.logger.add_observer(:message) do |message|
-            Isy.logger.silence(5) do
+            Isy.logger.silence(5) do # we don't want to end up in infinite loop
               context.schedule do
                 Isy.logger.silence(5) do
                   add_message(message)
@@ -22,6 +23,7 @@ module Isy
             end
           end
 
+          # listen context for :drop event then delete observer to collect by GC
           context.add_observer(:drop) do
             Isy.logger.delete_observer :message, @observer
           end
@@ -31,7 +33,7 @@ module Isy
 
         def add_message(message)
           @messages.unshift message
-          #    @messages = @messages[0...@limit] if @messages.size > @limit
+          @messages.pop if @messages.size > @limit
         end
 
         class Widget < Isy::Widget::Component

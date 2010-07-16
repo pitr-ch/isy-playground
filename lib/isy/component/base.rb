@@ -75,11 +75,7 @@ module Isy
       end
 
       def create_widget        
-        if widget_args
-          self.class.widget_class.new(self, *widget_args)
-        else
-          self.class.widget_class.new(self)
-        end
+        self.class.widget_class.new(widget_assigns)
       end
 
       class_inheritable_accessor :_widget_class, :instance_writer => false, :instance_reader => false
@@ -92,7 +88,9 @@ module Isy
             raise(MissingWidgetClass, "for #{self}")
       end
 
-      def widget_args
+      # default widget's assignments
+      def widget_assigns
+        {:component => self}
       end
 
       private
@@ -104,6 +102,8 @@ module Isy
         self._widget_class = klass
       end
 
+      # @return [Class] suitable inspector class for +klass+
+      # @param [Class] klass to inspect
       def inspector_class(klass)
         raise ArgumentError, klass.inspect unless klass && klass.kind_of?(Class)
         "Isy::Component::Developer::Inspection::#{klass}".constantize

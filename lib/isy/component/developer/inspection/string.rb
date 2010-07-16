@@ -10,7 +10,7 @@ module Isy
 
         class Widget < Inspection::Object::Widget
           def content
-            text obj.inspect
+            text c.obj.inspect
           end
         end
       end

@@ -11,7 +11,7 @@ module Isy
 
         class Widget < Inspection::Object::Widget
           def name
-            obj.to_s
+            c.obj.to_s
           end
         end
 

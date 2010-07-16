@@ -1,10 +1,15 @@
 #!/usr/bin/env ruby
 
-require `gem which memprof/signal`.chomp
-
 require "rubygems"
 require "bundler"
+require 'ruby-prof'
 Bundler.setup
 require "isy"
 
-Isy::Runner.run!
+result = RubyProf.profile do
+  Isy::Runner.run!
+end
+
+File.open 'profile.html', 'w' do |f|
+  RubyProf::GraphHtmlPrinter.new(result).print(f)
+end

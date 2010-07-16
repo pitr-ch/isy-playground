@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Petr Chalupa"]
-  s.date = %q{2010-07-14}
+  s.date = %q{2010-07-16}
   s.description = %q{ruby component based state-full web framework}
-  s.executables = ["isy-prof", "isy"]
+  s.executables = ["isy-memprof", "isy", "isy-prof"]
   s.extra_rdoc_files = [
     "MIT-LICENSE",
      "README.md",
@@ -22,12 +22,13 @@ Gem::Specification.new do |s|
      "docs/wave.md"
   ]
   s.files = [
-    "examples/components/ask/base.rb",
-     "examples/components/ask/counter.rb",
-     "examples/components/counter.rb",
-     "examples/components/counters/base.rb",
-     "examples/components/counters/counter.rb",
-     "examples/components/examples.rb",
+    "examples/components/examples/ask/base.rb",
+     "examples/components/examples/ask/counter.rb",
+     "examples/components/examples/base.rb",
+     "examples/components/examples/counter.rb",
+     "examples/components/examples/counters/base.rb",
+     "examples/components/examples/counters/counter.rb",
+     "examples/components/examples/form/base.rb",
      "examples/config.yml",
      "examples/layouts/app_layout.rb",
      "examples/public/basic.css",
@@ -54,12 +55,9 @@ Gem::Specification.new do |s|
      "lib/isy/component/developer/inspection/object.rb",
      "lib/isy/component/developer/inspection/string.rb",
      "lib/isy/component/developer/inspection/symbol.rb",
-     "lib/isy/component/developer/inspection/weak_ref.rb",
      "lib/isy/component/developer/log.rb",
      "lib/isy/component/developer/tools.rb",
-     "lib/isy/component/form.rb",
-     "lib/isy/component/form_parts/base.rb",
-     "lib/isy/component/form_parts/input.rb",
+     "lib/isy/component/form_part.rb",
      "lib/isy/config.rb",
      "lib/isy/core/action.rb",
      "lib/isy/core/application.rb",
@@ -72,10 +70,13 @@ Gem::Specification.new do |s|
      "lib/isy/exception/exceptions.rb.rb",
      "lib/isy/logger.rb",
      "lib/isy/runner.rb",
-     "lib/isy/weak/observable.rb",
      "lib/isy/widget/base.rb",
      "lib/isy/widget/collection.rb",
      "lib/isy/widget/component.rb",
+     "lib/isy/widget/form_part/abstract.rb",
+     "lib/isy/widget/form_part/input.rb",
+     "lib/isy/widget/form_part/select.rb",
+     "lib/isy/widget/form_part/textarea.rb",
      "lib/isy/widget/layout.rb",
      "lib/isy/widget/optionable_collection.rb"
   ]
@@ -85,10 +86,10 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{ruby component based state-full web framework}
   s.test_files = [
-    "spec/spec_helper.rb",
-     "spec/isy/widget/base_spec.rb",
+    "spec/isy/widget/base_spec.rb",
      "spec/isy/component/developer/inspection/array_spec.rb",
-     "spec/isy/component/developer/inspection/object_spec.rb"
+     "spec/isy/component/developer/inspection/object_spec.rb",
+     "spec/spec_helper.rb"
   ]
 
   if s.respond_to? :specification_version then

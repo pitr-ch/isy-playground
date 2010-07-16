@@ -12,18 +12,34 @@ var Isy = function() {
 };
 
 Isy.prototype = {
-  _safely: function(func) {
+  _safely: function(func, obj) {
     try {
-      func();
+      return func.call(obj);
     } catch (e) {
       Isy.Logger.error(e.stack);
     }
   },
 
-  action: function(id) {
-    var data = this._ids();
-    data.action_id = id;
-    return this._send(data);
+  callback: function(event) {
+    return isy._safely( function() {
+      var data = this._ids();
+      var json = JSON.parse(event.currentTarget.getAttribute("data-callback-" + event.type));
+
+      if (json.action) data.action_id = json.action;
+      if (json.form) {
+        data.form = {};
+        $("[data-form-id=" + json.form + "]").each(function(i, elem) {
+          var componentId = elem.getAttribute('data-component-id');
+          data.form[componentId] = {};
+          $(elem).find("[data-value]").each(
+            function(i,elem) {
+              data.form[componentId][elem.getAttribute('data-value')] = $(elem).val();
+            })
+        })
+      }
+      event.preventDefault();
+      return this._send(data);
+    }, this);
   },
 
   _noConnection: function() {
@@ -70,10 +86,10 @@ Isy.prototype = {
     }
   },
 
-  callRandomAction: function() {
-    var arr = $('a[data-action-id]');
-    this.action( arr[Math.floor(Math.random()*arr.size())].getAttribute('data-action-id') );
-  },
+  //  callRandomAction: function() {
+  //    var arr = $('a[data-action-id]');
+  //    this.action( arr[Math.floor(Math.random()*arr.size())].getAttribute('data-action-id') );
+  //  },
 
   _recieve: function(obj) {
     (new Isy.Reciever(obj))._execute();
@@ -98,11 +114,17 @@ Isy.prototype = {
   },
 
   _events: function() {
-    $('a[data-action-id]').live('click', function(event) {
-      isy.action(event.currentTarget.getAttribute('data-action-id'));
-      event.preventDefault();
-    });
 
+    var events = $([ 'blur', 'focus', 'focusin', 'focusout', 'load', 'resize', 'scroll', 'unload', 'click', 'dblclick',
+      'mousedown', 'mouseup', 'mousemove', 'mouseover', 'mouseout', 'mouseenter', 'mouseleave', 'change', 'select',
+      'submit', 'keydown', 'keypress', 'keyup', 'error'])
+
+    events.each( function(i, event) {
+      $('[data-callback-'+event+']').live(event, function(event) {
+        isy.callback(event)
+      });
+    });
+    
     $(window).bind('hashchange', function(evt) {
       if (isy.hashchange == true) {
         Isy.Logger.warn("hashchange trigered")

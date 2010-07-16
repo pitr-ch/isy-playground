@@ -71,6 +71,7 @@ module Isy
       end
 
       # @yield block scheduled into fiber_pool for delayed execution
+      # @param [Boolean] restart try to restart when error?
       def schedule(restart = true, &block)
         # TODO context queue
         @queue << block
@@ -86,6 +87,7 @@ module Isy
       # creates and stores action for later evaluation
       # @param [Component::Base] component where action will be evaluated
       # @yield the action
+      # @return [String] uuid of the action
       def register_action(component, &block)
         uuid = Core.generate_id
         @actions[uuid] = Action.new(uuid, component, block)
@@ -111,6 +113,7 @@ module Isy
 
       # processes safely block, restarts context when error occurred
       # @yield task to execute
+      # @param [Boolean] restart try to restart when error?
       def safely(restart = true, &block)
         unless Base.safely(&block)
           if restart
@@ -122,8 +125,28 @@ module Isy
       end
 
       # @param [String] warn which will be shown to user using alert();
+      # @return self
       def warn(warn)
         message :js => "alert('#{warn}');" if warn
+        self
+      end
+
+      # updates values in form parts
+      # @param [Hash] hash ['form'] part of message form client
+      # @return self
+      def update_form(hash)
+        Isy.benchmark "Updating form" do
+          return self unless hash && hash.kind_of?(Hash)
+          hash.each do |id, values|
+            form_part = begin ObjectSpace._id2ref(id.to_i) rescue RangeError end
+            # FIXME dangerous
+            if form_part
+              values.each {|key, value| 
+                form_part.set_value(key, value)
+              }
+            end
+          end
+        end
         self
       end
 
@@ -141,6 +164,7 @@ module Isy
       end
 
       # schedules next block from @queue to be processed in {Base.fibers_pool}
+      # @param [Boolean] restart try to restart when error?
       def schedule_next(restart = true)
         if block = @queue.shift
           @running = block
