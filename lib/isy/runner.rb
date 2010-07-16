@@ -19,9 +19,7 @@ module Isy
       private
 
       def load_app_files
-        %w[components layouts widgets].each do |dir|
-          require_all "./#{dir}/**/*.rb" if File.exist?("./#{dir}")
-        end
+        require_all "./**/*.rb"
       end
 
       def setup_application
