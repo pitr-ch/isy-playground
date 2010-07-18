@@ -144,6 +144,8 @@ module Isy
               values.each {|key, value| 
                 form_part.set_value(key, value)
               }
+            else
+              Isy.logger.debug "missing form with id: #{id.to_i} for values: #{values.inspect}"
             end
           end
         end

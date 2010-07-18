@@ -14,12 +14,10 @@ module Isy
           def stats
             h1 'Stats'
             ul do
-              [ Isy::Core::Container,
-                Isy::Core::Context,
-                Isy::Component::Base,
-                Isy::Widget::Base
-              ].each do |klass|
-                li "#{klass}: #{ObjectSpace.each_object(klass) {}}"
+              objects = ObjectSpace.each_object(Class).map {|c| [c.to_s,  ObjectSpace.each_object(c) {}] }.
+                  sort_by { |c, count| [count, c.to_s] }
+              objects.each do |klass, count|
+                li "#{klass}: #{count}"
               end
             end
           end

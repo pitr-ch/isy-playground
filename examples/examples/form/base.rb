@@ -8,6 +8,7 @@ module Examples
       def initial_state
         super
         @counter = 0
+        @record =  Struct.new("Data", :name, :sex, :description).new
       end
 
       class Widget < Isy::Component::FormPart::Widget

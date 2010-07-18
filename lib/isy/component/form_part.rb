@@ -4,11 +4,13 @@ module Isy
 
       attr_accessor :form
 
+      attr_reader :record
+
       # values from form's tags are stored here. They are automatically updated when :form callback is triggered
       # @return [Object] value for +key+
       # @param [Symbol] key of a value
       def value(key = :value)
-        @value[key]
+        @record.send key
       end
 
       # @overload set_value(key, value)
@@ -21,7 +23,7 @@ module Isy
       def set_value(*args)
         key, value = args.pop 2
         key ||= :value
-        @value[key.to_sym] = value # FIXME possible memory leek
+        @record.send "#{key}=",  value # FIXME possible memory leek
       end
 
       # @param [Object] form Identifies which form parts belongs together. +form+.object_id is used to identify

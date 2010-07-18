@@ -7,3 +7,4 @@ yardoc
 gh-pages
 nbproject
 pkg
+*.log

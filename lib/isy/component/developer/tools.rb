@@ -26,6 +26,9 @@ module Isy
               li { a "Inspector Isy::Core::Base", :click => do_action { @tool = inspector Isy::Core::Base } }
               li { a "Inspector Object", :click => do_action { @tool = inspector Object } }
               li { a "Inspector Isy.logger", :click => do_action { @tool = inspector Isy.logger } }
+              if defined? Chat::Model::Room
+                li { a "Inspector Chat::Model::Room", :click => do_action { @tool = inspector Chat::Model::Room } }
+              end
               li { a "GC and stats", :click => do_action { @tool = new Developer::Gc } }
               li { a "Memprof dump all", :click => do_action { Memprof.dump_all("heap_dump.json") }} if defined? Memprof
               li { a "none", :click => do_action { @tool = nil } }

@@ -23,7 +23,7 @@ module Isy
 
       # renders html
       def to_html
-        widget.to_html
+        @passed_on ? @passed_on.to_html : widget.to_html
       end
 
       # @return [Widget::Component] return instantiated widget or creates one
@@ -62,6 +62,14 @@ module Isy
       # @see #ask
       def answer!(answer = nil)
         @asker.instance_exec answer, &@askers_callback
+      end
+
+      def pass_on(component)
+        @passed_on = component
+      end
+
+      def retake_control!
+        @passed_on = nil
       end
 
       def inspector(obj, label = nil, packed = true)

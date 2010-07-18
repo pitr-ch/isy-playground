@@ -1,0 +1,4 @@
+## YAML Template.
+---
+:root_class: "Chat::Root"
+:layout_class: "AppLayout"

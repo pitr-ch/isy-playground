@@ -10,7 +10,7 @@ module Isy
       external :js, 'js/jquery-1.4.2.js'
       external :js, 'js/jquery.ba-hashchange.js'
       external :js, 'js/isy.js'
-      external :css,  'developer.css'
+      external :css,  'css/developer.css'
       
       def body_content
         loading

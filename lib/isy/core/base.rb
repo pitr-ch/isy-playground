@@ -58,12 +58,17 @@ module Isy
       # schedules tasks depending on what message was received
       # @param [String] message which was received
       def self.receive_message(message, connection)
-        if !(session_id = message['session_id'])
+        session_id = message['session_id']
+        context_id = message['context_id']
+        action_id = message['action_id']
+        form = message['form']
+
+        if !(session_id)
           Isy.logger.warn "missing session_id"
-        elsif !(context_id = message['context_id'])
+        elsif !(context_id)
           context = Base.container(session_id).context(nil, message['hash'])
           context.schedule { context.send_id(connection).actualize.send! }
-        elsif (action_id = message['action_id'] || form = message['form'])
+        elsif action_id || form
           context = Base.container(session_id).context(context_id)
           context.schedule { context.update_form(form).run_action(action_id).actualize.send! }
         elsif context_id

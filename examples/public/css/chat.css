@@ -1,0 +1,32 @@
+.chat-room-widget .message {
+  clear: both;
+  background-color: #EEE;
+  border-top: 1px solid silver;
+  border-bottom: 2px solid white;
+  min-height: 38px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.chat-room-widget .message img {
+  float: left;
+  margin-right: 10px;
+  border: 3px solid white;
+}
+
+.chat-room-widget .message .time {
+  float: right;
+  font-size: 75%;
+  color: silver;
+}
+
+.chat-message_form-widget {
+  vertical-align: middle;
+}
+
+.isy-widget-form_part-textarea textarea {
+/*  width: 400px;
+  height: 100px; */
+  display: inline;
+}
+

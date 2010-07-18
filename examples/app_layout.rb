@@ -2,7 +2,7 @@
 
 class AppLayout < Isy::Widget::Layout
 
-  external :css, "basic.css"
+  external :css, "css/basic.css"
 
   def page_title
     "ISY - examples"

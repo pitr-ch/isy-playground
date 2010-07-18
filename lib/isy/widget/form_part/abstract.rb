@@ -3,6 +3,8 @@ module Isy
     module FormPart
       class Abstract < Widget::Component
 
+        wrap_in(:span)
+
         needs \
             :value => :value,
             :options => {}
