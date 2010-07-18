@@ -85,7 +85,7 @@ Gem::Specification.new do |s|
      "lib/isy/core/context.rb",
      "lib/isy/core/observable.rb",
      "lib/isy/core/web_socket/connection.rb",
-     "lib/isy/exception/exceptions.rb.rb",
+     "lib/isy/exception/exceptions.rb",
      "lib/isy/logger.rb",
      "lib/isy/runner.rb",
      "lib/isy/widget/base.rb",

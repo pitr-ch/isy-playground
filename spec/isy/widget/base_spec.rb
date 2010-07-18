@@ -8,8 +8,8 @@ end
 
 describe Isy::Widget::Base do
   describe Foo do
-    describe "#to_s" do
-      subject { (@widget = Foo.new).to_s }
+    describe "#to_html" do
+      subject { (@widget = Foo.new).to_html }
 
       it {should == "<span class=\"foo\" id=\"#{@widget.object_id}\"></span>"}
     end    
