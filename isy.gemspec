@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Petr Chalupa"]
-  s.date = %q{2010-07-16}
+  s.date = %q{2010-07-18}
   s.description = %q{ruby component based state-full web framework}
   s.executables = ["isy-memprof", "isy", "isy-prof"]
   s.extra_rdoc_files = [
@@ -22,15 +22,15 @@ Gem::Specification.new do |s|
      "docs/wave.md"
   ]
   s.files = [
-    "examples/components/examples/ask/base.rb",
-     "examples/components/examples/ask/counter.rb",
-     "examples/components/examples/base.rb",
-     "examples/components/examples/counter.rb",
-     "examples/components/examples/counters/base.rb",
-     "examples/components/examples/counters/counter.rb",
-     "examples/components/examples/form/base.rb",
+    "examples/app_layout.rb",
      "examples/config.yml",
-     "examples/layouts/app_layout.rb",
+     "examples/examples/ask/base.rb",
+     "examples/examples/ask/counter.rb",
+     "examples/examples/base.rb",
+     "examples/examples/counter.rb",
+     "examples/examples/counters/base.rb",
+     "examples/examples/counters/counter.rb",
+     "examples/examples/form/base.rb",
      "examples/public/basic.css",
      "examples/public/developer.css",
      "examples/public/favicon.ico",
@@ -101,7 +101,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<tzinfo>, [">= 0"])
       s.add_runtime_dependency(%q<i18n>, [">= 0"])
       s.add_runtime_dependency(%q<activesupport>, [">= 3.0.0.beta"])
-      s.add_runtime_dependency(%q<erector>, [">= 0.8"])
+      s.add_runtime_dependency(%q<erector>, [">= 0.8.1"])
       s.add_runtime_dependency(%q<sinatra>, [">= 1.0"])
       s.add_runtime_dependency(%q<thin>, [">= 0"])
       s.add_runtime_dependency(%q<require_all>, [">= 0"])
@@ -118,7 +118,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<tzinfo>, [">= 0"])
       s.add_dependency(%q<i18n>, [">= 0"])
       s.add_dependency(%q<activesupport>, [">= 3.0.0.beta"])
-      s.add_dependency(%q<erector>, [">= 0.8"])
+      s.add_dependency(%q<erector>, [">= 0.8.1"])
       s.add_dependency(%q<sinatra>, [">= 1.0"])
       s.add_dependency(%q<thin>, [">= 0"])
       s.add_dependency(%q<require_all>, [">= 0"])
@@ -136,7 +136,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<tzinfo>, [">= 0"])
     s.add_dependency(%q<i18n>, [">= 0"])
     s.add_dependency(%q<activesupport>, [">= 3.0.0.beta"])
-    s.add_dependency(%q<erector>, [">= 0.8"])
+    s.add_dependency(%q<erector>, [">= 0.8.1"])
     s.add_dependency(%q<sinatra>, [">= 1.0"])
     s.add_dependency(%q<thin>, [">= 0"])
     s.add_dependency(%q<require_all>, [">= 0"])

@@ -1,5 +1,4 @@
 source 'http://gemcutter.org'
 
-gem 'erector', ">=0.8", :git => 'git://github.com/isy-pitr/erector.git'
 gem 'isy', ">=0.0.0"
 #gem 'isy', "0.0.0", 
