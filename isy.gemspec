@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Petr Chalupa"]
-  s.date = %q{2010-07-18}
+  s.date = %q{2010-07-20}
   s.description = %q{ruby component based state-full web framework}
-  s.executables = ["isy-memprof", "isy", "isy-prof"]
+  s.executables = ["isy-prof", "isy-memprof", "isy"]
   s.extra_rdoc_files = [
     "MIT-LICENSE",
      "README.md",
@@ -104,10 +104,18 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{ruby component based state-full web framework}
   s.test_files = [
-    "spec/isy/widget/base_spec.rb",
+    "spec/spec_helper.rb",
+     "spec/isy/widget/component_spec.rb",
+     "spec/isy/widget/base_spec.rb",
+     "spec/isy/component/form_part_spec.rb",
+     "spec/isy/component/base_spec.rb",
      "spec/isy/component/developer/inspection/array_spec.rb",
      "spec/isy/component/developer/inspection/object_spec.rb",
-     "spec/spec_helper.rb"
+     "spec/isy/core/application_spec.rb",
+     "spec/isy/core/base_spec.rb",
+     "spec/isy/core/container_spec.rb",
+     "spec/isy/core/context_spec.rb",
+     "spec/isy/core/observable_spec.rb"
   ]
 
   if s.respond_to? :specification_version then
@@ -131,6 +139,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<yard>, [">= 0"])
       s.add_development_dependency(%q<BlueCloth>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
+      s.add_development_dependency(%q<rack-test>, [">= 0"])
     else
       s.add_dependency(%q<uuid>, [">= 0"])
       s.add_dependency(%q<tzinfo>, [">= 0"])
@@ -148,6 +157,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<yard>, [">= 0"])
       s.add_dependency(%q<BlueCloth>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
+      s.add_dependency(%q<rack-test>, [">= 0"])
     end
   else
     s.add_dependency(%q<uuid>, [">= 0"])
@@ -166,6 +176,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<yard>, [">= 0"])
     s.add_dependency(%q<BlueCloth>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
+    s.add_dependency(%q<rack-test>, [">= 0"])
   end
 end
 

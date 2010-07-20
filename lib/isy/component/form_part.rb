@@ -22,14 +22,15 @@ module Isy
       #   @param [Object] value describe value param
       def set_value(*args)
         key, value = args.pop 2
-        key ||= :value
-        @record.send "#{key}=",  value # FIXME possible memory leek
+        unless value
+          value, key = key, :value
+        end
+        @record.send "#{key}=", value
       end
 
       # @param [Object] form Identifies which form parts belongs together. +form+.object_id is used to identify
       def initialize(context, form = self)
         @form = form
-        @value = {}
         super(context)
       end
 

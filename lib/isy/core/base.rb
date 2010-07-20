@@ -97,7 +97,7 @@ module Isy
           
           Isy.logger.info '== Isy WebSocket running.'
 
-          EventMachine::add_periodic_timer(10) do
+          EventMachine::add_periodic_timer(60) do # TODO probably useless
             safely do
               # drops contexts without connections
               contexts = Context.send(:no_connection_contexts)

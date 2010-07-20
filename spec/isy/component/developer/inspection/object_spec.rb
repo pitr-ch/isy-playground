@@ -2,6 +2,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../../../../spec_helper')
 
 describe Isy::Component::Developer::Inspection::Object do
 
+  include IsyMocks
+
   class InspectTest
     @array = [1]
   end
@@ -14,15 +16,33 @@ describe Isy::Component::Developer::Inspection::Object do
     subject { inspector.obj }
     it { should eql(InspectTest) }
   end
-  
+
   describe '#components' do
     subject { inspector.components }
     it { should be_empty }
     it { should be_kind_of(Array) }
-  end  
+  end
 
   describe 'when unpacked' do
-    before { inspector.switch_packed }
+    before do
+      method = inspector.method(:unpack)
+      inspector.should_receive(:unpack).and_return { method.call }
+      inspector.switch_packed
+    end
+
+    it { inspector.instance_variable_get(:@packed).should == false }
+    it { inspector.components.should_not be_empty }
+
+    describe 'when packed' do
+      before do
+        method = inspector.method(:pack)
+        inspector.should_receive(:pack).and_return { method.call }
+        inspector.switch_packed
+      end
+
+      it { inspector.instance_variable_get(:@packed).should == true }
+      it { inspector.components.should be_empty }
+    end
 
     describe '#components' do
       subject { inspector.components }
@@ -47,7 +67,7 @@ describe Isy::Component::Developer::Inspection::Object do
           describe '#keys' do
             subject { inspector.components.first.obj.keys }
             it { should include(:@array) }
-          end          
+          end
         end
       end
 

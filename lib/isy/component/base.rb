@@ -43,6 +43,7 @@ module Isy
       #   ask self.counter do |answer|
       #     values << answer
       #   end
+      # @return [Base] created or passed component
       def ask(component, *args, &block)
         component = new(component, *args) if component.kind_of? Class
         component.answering!(self, &block)

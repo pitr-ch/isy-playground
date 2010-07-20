@@ -11,8 +11,7 @@ module Isy
       attr_reader :id, :connection, :container, :hash
 
       # @param [String] id unique identification
-      def initialize(id, container, hash)
-        raise ArgumentError unless hash
+      def initialize(id, container, hash = '')
         @id, @container, @hash = id, container, hash
         @root_component = root_class.new(self)
         @queue, @message = [], {}
@@ -96,12 +95,10 @@ module Isy
 
       # evaluates action with +id+
       # @param [String] id of a {Action}
+      # @return self
       def run_action(id)
-        #        time = Benchmark.realtime do
         (action = @actions[id]) && action.call
         clear_actions
-        #        end
-        #        Isy.logger.info 'Action in %0.6f sec' % time
         self
       end
 
@@ -117,7 +114,8 @@ module Isy
       def safely(restart = true, &block)
         unless Base.safely(&block)
           if restart
-            container.restart_context(id, hash, connection, "We are sorry but there was a error. Application is reloaded")
+            container.restart_context id, hash, connection,
+                "We are sorry but there was a error. Application is reloaded"
           else
             warn("Fatal error").send!
           end

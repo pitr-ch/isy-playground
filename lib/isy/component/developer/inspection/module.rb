@@ -6,7 +6,8 @@ module Isy
         def unpack
           super << inspector(
             obj.constants.inject({}) {|hash, name| hash[name] = obj.const_get(name); hash },
-            'Constants')
+            'Constants') <<
+              inspector(obj.included_modules, 'Included Modules')
         end
 
         class Widget < Inspection::Object::Widget

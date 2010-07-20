@@ -67,6 +67,7 @@ begin
     #    gem.add_development_dependency "yard-rspec", ">= 0"
     gem.add_development_dependency "BlueCloth", ">= 0"
     gem.add_development_dependency "jeweler", ">= 0"
+    gem.add_development_dependency "rack-test", ">= 0"
 
     gem.files = FileList['lib/**/*.*', 'examples/**/*.*'].to_a
 
