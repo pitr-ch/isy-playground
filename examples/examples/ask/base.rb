@@ -20,10 +20,10 @@ module Examples
 
         def content
           strong 'Numbers:'
-          if component.numbers.blank?
+          if numbers.blank?
             text 'none'
           else
-            component.numbers.each_with_index do |number, index|
+            numbers.each_with_index do |number, index|
               text '+' if index > 0
               a number.to_s, :click => do_action {
                 @counter = ask Ask::Counter, number do |answer|
@@ -36,14 +36,14 @@ module Examples
               }
             end
             #        text component.numbers.join(' + ')
-            text " = #{component.sum}"
+            text " = #{sum}"
           end
           br
 
           # If counter is set, let's show it
           # if not, let's add link to new one
-          if component.counter
-            render component.counter
+          if counter
+            render counter
           else
             a 'Select Number', :click => do_action {
               # if 'Select Number' is clicked, +counter+ is set and

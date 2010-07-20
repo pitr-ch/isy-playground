@@ -35,9 +35,9 @@ module Chat
       include Gravatarify::Helper
       
       def content
-        h2 c.room.name
-        render c.message_form
-        c.room.messages.each {|m| message(m) }
+        h2 room.name
+        render message_form
+        room.messages.each {|m| message(m) }
       end
 
       def message(message)

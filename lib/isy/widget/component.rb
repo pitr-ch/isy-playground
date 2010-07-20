@@ -22,6 +22,19 @@ module Isy
         super *args.push(args.extract_options!.merge(:href => '#')), &block
       end
 
+      # calls missing methods on component
+      def method_missing(method, *args, &block)
+        if component.respond_to?(method)
+          component.__send__ method, *args, &block
+        else
+          super
+        end
+      end
+
+      def respond_to?(symbol, include_private = false)
+        component.respond_to?(symbol) || super
+      end
+
       protected
 
       # TODO check performance

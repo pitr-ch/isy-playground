@@ -19,7 +19,7 @@ module Examples
         end
         hr
 
-        render component.example if component.example
+        render example if example
       end
     end
 

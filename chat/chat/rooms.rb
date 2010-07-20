@@ -18,7 +18,7 @@ module Chat
         Model::Room.rooms.each do |r|
           a "#{r.name} (#{r.messages.size})", :click => do_action { @room.try :leave!; @room = new Room, r, user }
         end
-        unless c.room_form
+        unless room_form
           a 'new room', :click => do_action() {
             @room_form = ask RoomForm, Model::Room.new do |room|
               Model::Room.rooms << room if room
@@ -26,10 +26,10 @@ module Chat
             end
           }
         else
-          render c.room_form
+          render room_form
         end
 
-        render c.room if c.room
+        render room if room
       end
     end
 

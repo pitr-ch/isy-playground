@@ -17,7 +17,7 @@ module Chat
 
     class Widget < Isy::Widget::Component
       def content
-        text c.user.inspect
+        text user.inspect
       end
     end
 

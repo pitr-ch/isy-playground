@@ -6,7 +6,7 @@ module Isy
         needs :type => :text
 
         def content
-          input({ :type => @type, :value => c.value(@value), :'data-value' => @value }.merge(@options))
+          input({ :type => @type, :value => value(@value), :'data-value' => @value }.merge(@options))
         end
       end
     end

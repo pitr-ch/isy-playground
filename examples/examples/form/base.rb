@@ -15,25 +15,25 @@ module Examples
 
         def content
           p do
-            text 'name'
+            text 'name '
             widget Isy::Widget::FormPart::Input, :value => :name
           end
           p do
-            text 'sex'
+            text 'sex '
             widget Isy::Widget::FormPart::Select, :value => :sex, :select_options => [nil, 'male', 'female']
           end
           p do
-            text 'description'
+            text 'description '
             widget Isy::Widget::FormPart::Textarea, :value => :description
           end
 
-          a "Send for the #{c.counter}th time", :click => [ actualize_form, do_action { @counter += 1 } ]
+          a "Send for the #{counter}th time", :click => [ actualize_form, do_action { @counter += 1 } ]
 
           h4 'Values:'
           ul do
-            li c.value(:name).inspect
-            li c.value(:sex).inspect
-            li c.value(:description).inspect
+            li value(:name).inspect
+            li value(:sex).inspect
+            li value(:description).inspect
           end          
           
         end

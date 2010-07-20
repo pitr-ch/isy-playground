@@ -6,7 +6,7 @@ module Isy
         needs :select_options
 
         def content
-          select({ :value => c.value(@value), :'data-value' => @value }.merge(@options)) { options_for_select }
+          select({ :value => value(@value), :'data-value' => @value }.merge(@options)) { options_for_select }
         end
 
         private
@@ -15,7 +15,7 @@ module Isy
           @select_options.each do |opt|
             value, text = opt
             text ||= value
-            option text, :value => value, :selected => c.value(@value) == value ? :selected : false
+            option text, :value => value, :selected => value(@value) == value ? :selected : false
           end
         end
 
