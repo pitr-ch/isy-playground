@@ -177,9 +177,9 @@ Isy.Reciever.prototype = {
   //    if (this.json.hash) this._setHash();
   },
 
-  _replaceBody: function() {
-    $("body").empty();
-    $("body").append(this.json.html);
+  _replaceBody: function() {    
+    $("body").html(this.json.html);
+    $(isy).trigger('isy.update')
   },
 
   _evalJs: function() {

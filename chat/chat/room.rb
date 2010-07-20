@@ -41,7 +41,7 @@ module Chat
       end
 
       def message(message)
-        div :class => :message do
+        div :class => %w[message ui-corner-all] do
           img :src => gravatar_url(message.user.email, :size => 32, :default => :wavatar), :alt => 'avatar'
           span(:class => :time) { text message.time.strftime('%H:%M:%S') }
           strong "#{message.user}: "

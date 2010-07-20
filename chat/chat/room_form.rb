@@ -9,6 +9,7 @@ module Chat
     alias_method(:room, :record)
 
     class Widget < Isy::Component::FormPart::Widget
+      wrap_in(:span)
       def content
         widget Isy::Widget::FormPart::Input, :value => :name, :options =>
             { :class => %w[ui-widget-content ui-corner-all] }

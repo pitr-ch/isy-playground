@@ -1,17 +1,19 @@
 .chat-room-widget .message {
   clear: both;
   background-color: #EEE;
-  border-top: 1px solid silver;
-  border-bottom: 2px solid white;
+  margin: 0.2em 0;
   min-height: 38px;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding: 0.2em 0.5em;
+  margin-left: 40px;
 }
 
 .chat-room-widget .message img {
   float: left;
-  margin-right: 10px;
-  border: 3px solid white;
+  margin-top: -0.2em;
+  margin-left: -45px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
 }
 
 .chat-room-widget .message .time {
@@ -22,11 +24,24 @@
 
 .chat-message_form-widget {
   vertical-align: middle;
+  margin-bottom: 1em;
 }
 
-.isy-widget-form_part-textarea textarea {
-/*  width: 400px;
-  height: 100px; */
+.chat-message_form-widget textarea {
   display: inline;
+  margin-bottom: -11px;
 }
 
+.isy-widget-form_part-textarea {
+  vertical-align: middle;
+}
+
+.chat-message_form-widget .ui-button-text-only .ui-button-text {
+  padding: 0.3em 1em;
+  font-size: 100%;
+}
+
+.ui-button-text-only .ui-button-text {
+  padding: 0.05em 0.4em;
+  font-size: 80%;
+}

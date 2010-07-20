@@ -2,3 +2,10 @@
 ---
 :root_class: "Chat::Root"
 :layout_class: "AppLayout"
+#:websocket:
+#  :server: 192.168.15.100
+#  :host: 0.0.0.0
+#  :port: 3006
+#:web:
+#  :host: 0.0.0.0
+#  :port: 3005
