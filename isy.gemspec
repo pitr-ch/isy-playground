@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
      "examples/examples/counters/base.rb",
      "examples/examples/counters/counter.rb",
      "examples/examples/form/base.rb",
+     "examples/loader.rb",
      "examples/public/css/basic.css",
      "examples/public/css/chat.css",
      "examples/public/css/developer.css",
@@ -133,7 +134,6 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<erector>, [">= 0.8.1"])
       s.add_runtime_dependency(%q<sinatra>, [">= 1.0"])
       s.add_runtime_dependency(%q<thin>, [">= 0"])
-      s.add_runtime_dependency(%q<require_all>, [">= 0"])
       s.add_runtime_dependency(%q<em-websocket>, [">= 0"])
       s.add_runtime_dependency(%q<configliere>, [">= 0"])
       s.add_runtime_dependency(%q<neverblock>, [">= 0"])
@@ -151,7 +151,6 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<erector>, [">= 0.8.1"])
       s.add_dependency(%q<sinatra>, [">= 1.0"])
       s.add_dependency(%q<thin>, [">= 0"])
-      s.add_dependency(%q<require_all>, [">= 0"])
       s.add_dependency(%q<em-websocket>, [">= 0"])
       s.add_dependency(%q<configliere>, [">= 0"])
       s.add_dependency(%q<neverblock>, [">= 0"])
@@ -170,7 +169,6 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<erector>, [">= 0.8.1"])
     s.add_dependency(%q<sinatra>, [">= 1.0"])
     s.add_dependency(%q<thin>, [">= 0"])
-    s.add_dependency(%q<require_all>, [">= 0"])
     s.add_dependency(%q<em-websocket>, [">= 0"])
     s.add_dependency(%q<configliere>, [">= 0"])
     s.add_dependency(%q<neverblock>, [">= 0"])

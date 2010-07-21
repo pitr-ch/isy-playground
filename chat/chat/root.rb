@@ -10,7 +10,7 @@ module Chat
         pass_on ask(Login, Model::User.new) { |user|
           @user = user
           File.open('users.log', 'a') { |f| f.write "#{@user.nick}\t#{@user.email}\n"  }
-          pass_on new(Rooms, @user)
+          pass_on new(Chat::Rooms, @user)
         }
       end
     end

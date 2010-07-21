@@ -12,19 +12,25 @@ module Chat
       ask_message
 
       room.add_observer(:message, self, :new_message)
+      context.add_observer(:drop, self, :context_dropped)
     end
 
     def leave!
       room.delete_observer :message, self
+      context.delete_observer :drop, self
     end
 
     def new_message
       context.schedule { context.actualize.send! }
     end
 
+    def context_dropped(context)
+      leave!
+    end
+
     attr_reader :message_form
     def ask_message
-      @message_form = ask(MessageForm, Model::Message.new(user)) { |message|
+      @message_form = ask(Chat::MessageForm, Chat::Model::Message.new(user)) { |message|
         room.add_message message
         ask_message
       }

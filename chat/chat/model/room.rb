@@ -17,7 +17,7 @@ module Chat
 
       def add_message(message)
         @messages.unshift message
-        @messages.pop if @messages.size > 200
+        @messages.pop if @messages.size > 50
         notify_observers(:message)
       end
 
@@ -33,7 +33,7 @@ module Chat
 
       EM.schedule do
         EventMachine::add_periodic_timer 5 do
-          rooms.delete_if {|room| Time.now - room.last_update > 60*60*12 }
+          rooms.delete_if {|room| Time.now - room.last_update > 60*60 }
         end
       end
 

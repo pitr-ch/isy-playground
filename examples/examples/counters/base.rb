@@ -8,12 +8,12 @@ module Examples
 
       # defines the state after new instance is created
       def initial_state
-        @counters = [ new(Counter, self) ]
+        @counters = [ new(Examples::Counters::Counter, self) ]
       end
 
       # adds new counter
       def add
-        counters << new(Counter, self)
+        counters << new(Examples::Counters::Counter, self)
       end
 
       # removes a +counter+

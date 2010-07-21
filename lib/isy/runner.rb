@@ -18,7 +18,7 @@ module Isy
       private
 
       def load_app_files
-        require_all "./**/*.rb"
+        require "./loader.rb"
       end
 
       def setup_application

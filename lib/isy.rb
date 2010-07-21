@@ -7,10 +7,9 @@ unless defined? Isy
   require 'active_support/basic_object'
   require 'erector'
   require 'sinatra/base'
-  require 'require_all'
   require 'em-websocket'
   require 'configliere'
-  require 'json'
+  require 'json/pure' # TODO require something faster
   require 'benchmark'
   require 'neverblock'
   require 'observer'  
@@ -19,7 +18,7 @@ unless defined? Isy
   module Isy
 
     def self.logger
-      @logger ||= Isy::Logger.new($stdout)
+      @logger ||= Isy::Logger.new(Config[:logger][:output])
     end
 
     def self.v19?

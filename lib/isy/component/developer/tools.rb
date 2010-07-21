@@ -26,9 +26,10 @@ module Isy
               li { cb.a("Inspector Isy::Core::Base").event(:click).action! { @tool = inspector Isy::Core::Base } }
               li { cb.a("Inspector Object").event(:click).action! { @tool = inspector Object } }
               li { cb.a("Inspector Isy.logger").event(:click).action! { @tool = inspector Isy.logger } }
-              if defined? Chat::Model::Room
-                li { cb.a("Inspector Chat::Model::Room").event(:click).action! { @tool = inspector Chat::Model::Room } }
-              end
+              li do
+                cb.a("Inspector Chat::Model::Room.rooms").event(:click).
+                    action! { @tool = inspector Chat::Model::Room.rooms }
+              end if defined? Chat::Model::Room
               li { cb.a("GC and stats").event(:click).action! { @tool = new Developer::Gc } }
               if defined? Memprof
                 li { cb.a("Memprof dump all").event(:click).action! { Memprof.dump_all("heap_dump.json") }}

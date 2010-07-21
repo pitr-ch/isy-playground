@@ -26,7 +26,7 @@ module Examples
             numbers.each_with_index do |number, index|
               text '+' if index > 0
               cb.a(number.to_s).event(:click).action! {
-                @counter = ask Ask::Counter, number do |answer|
+                @counter = ask Examples::Ask::Counter, number do |answer|
                   if answer
                     @numbers.delete_at(index)
                     @numbers.insert(index, answer)
@@ -49,7 +49,7 @@ module Examples
               # if 'Select Number' is clicked, +counter+ is set and
               # ask-callback is set. Both blocks are evaluated inside
               # the same component.
-              @counter = ask Ask::Counter do |answer|
+              @counter = ask Examples::Ask::Counter do |answer|
                 if answer
                   @numbers << answer
                 end

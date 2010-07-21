@@ -42,7 +42,13 @@ module Isy
       @level = level
       @start_buffer = []
       @ready = false
-      @log = log
+      if log.is_a? String
+        @log = File.open(log, 'a')
+        at_exit { @log.close }
+      else
+        @log = log
+      end
+      
       #      EM.schedule do
       #        EM.attach(log) do |connection|
       #          Isy.logger.instance_eval do

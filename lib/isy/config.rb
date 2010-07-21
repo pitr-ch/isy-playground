@@ -11,14 +11,15 @@ module Isy
         :server => '127.0.0.1',
         :port => 3001,
         :debug => false,
-        :fibers => 20,
+        :fibers => 10,
       },
       :layout_class => 'Isy::Widget::Layout',
       :environment => :development,
       :js => { :send_log_back => false },
       :logger => {
         :level => 0,
-        :show_traffic => false
+        :show_traffic => false,
+        :output => $stdout
       },
       :core => { :devel => 'devel' }
     })
@@ -46,6 +47,7 @@ module Isy
   Config.define 'js.send_log_back', :require => true, :type => :boolean
   Config.define 'logger.level', :require => true, :type => Integer
   Config.define 'logger.show_traffic', :require => true, :type => :boolean
+  Config.define 'logger.output', :require => true
   Config.define 'core.devel', :require => true, :type => String
   Config.resolve!
   
