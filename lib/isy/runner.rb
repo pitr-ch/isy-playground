@@ -7,7 +7,6 @@ module Isy
 
       def run!
         #          encoding
-          
         load_app_files
         Core::Base.run!
         setup_application

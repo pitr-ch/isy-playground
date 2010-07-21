@@ -30,12 +30,7 @@ module Isy
         run_websocket_server
       end
 
-      # @return [Hash] configuration for :websocket
-      def self.config
-        Config[:websocket]
-      end
-
-      @fibers_pool = NeverBlock::Pool::FiberPool.new config[:fibers]
+      @fibers_pool = NeverBlock::Pool::FiberPool.new Config[:websocket][:fibers]
 
       # @return [NeverBlock::Pool::FiberPool]
       def self.fibers_pool
@@ -84,8 +79,8 @@ module Isy
       def self.run_websocket_server
         EM.epoll
         EM.schedule do
-          EventMachine::start_server config[:host], config[:port], WebSocket::Connection,
-              :debug => config[:debug] do |connection|
+          EventMachine::start_server Config[:websocket][:host], Config[:websocket][:port], WebSocket::Connection,
+              :debug => Config[:websocket][:debug] do |connection|
 
             connection.onopen    { Isy.logger.debug "WebSocket connection opened" }
             connection.onmessage { |message| receive_message(message, connection) }
