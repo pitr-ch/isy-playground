@@ -6,9 +6,9 @@ require 'ruby-prof'
 Bundler.setup
 require "isy"
 
-result = RubyProf.profile do
-  Isy::Runner.run!
-end
+Isy::Runner.run!
+
+result = RubyProf.stop
 
 File.open 'profile.html', 'w' do |f|
   RubyProf::GraphHtmlPrinter.new(result).print(f)

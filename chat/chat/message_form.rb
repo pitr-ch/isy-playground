@@ -10,12 +10,12 @@ module Chat
 
     class Widget < Isy::Component::FormPart::Widget
       def content
-        a "Send", :click => [ actualize_form, do_action {
+        cb.a("Send").event(:click).form.action! {
             if message.valid?
               message.time!
               answer!(message)
             end
-          }]
+          }
         widget Isy::Widget::FormPart::Textarea, :value => :text, :options =>
             { :rows => 2, :class => %w[ui-widget-content ui-corner-all] }
         

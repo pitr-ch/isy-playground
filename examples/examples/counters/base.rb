@@ -23,7 +23,7 @@ module Examples
 
       class Widget < Isy::Widget::Collection
         def after
-          a "Add counter", :click => do_action { add }
+          cb.a('Add counter').event(:click).action! { add }
         end
       end
 

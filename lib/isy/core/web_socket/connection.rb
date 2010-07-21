@@ -7,7 +7,7 @@ module Isy
 
         # automatically code Hash messages to JSON and perform logging when active
         def send(hash)
-          Isy.logger.debug "Websocket sending: #{hash}" if Config[:logger][:show_traffic]          
+          Isy.logger.debug "Websocket sending: #{hash}" if Config[:logger][:show_traffic]
           super(JSON[ hash ])
         end
 

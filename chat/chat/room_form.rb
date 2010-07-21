@@ -13,12 +13,12 @@ module Chat
       def content
         widget Isy::Widget::FormPart::Input, :value => :name, :options =>
             { :class => %w[ui-widget-content ui-corner-all] }
-        a "Add", :click => [ actualize_form, do_action {
+        cb.a("Add").event(:click).form.action! {
             if room.valid?
               answer!(room)
             end
-          }]
-        a "Cansel", :click => [ do_action { answer!(nil) }]
+          }
+        cb.a("Cansel").event(:click).action! { answer!(nil) }
       end
     end
 

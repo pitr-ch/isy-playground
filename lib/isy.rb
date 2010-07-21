@@ -10,7 +10,7 @@ unless defined? Isy
   require 'require_all'
   require 'em-websocket'
   require 'configliere'
-  require 'json' # TODO load something faster
+  require 'json'
   require 'benchmark'
   require 'neverblock'
   require 'observer'  

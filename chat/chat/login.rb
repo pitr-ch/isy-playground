@@ -20,7 +20,7 @@ module Chat
           text 'Email:'
           widget Isy::Widget::FormPart::Input, :value => :email, :options =>
               { :class => %w[ui-widget-content ui-corner-all] }
-          a "Log in", :click => [ actualize_form, do_action { answer!(user) if user.valid? } ]
+          cb.a("Log in").event(:click).form.action! { answer!(user) if user.valid? }
         end
       end
     end

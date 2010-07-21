@@ -58,7 +58,7 @@ module Isy
 
             # renders packed form
             def packed
-              a "#{c.label ? c.label + ' ' : nil}#{name}", :click => do_action { switch_packed }
+              cb.a("#{c.label ? c.label + ' ' : nil}#{name}").event(:click).action! { switch_packed }
             end
 
             # renders name of the inspector

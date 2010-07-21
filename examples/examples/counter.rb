@@ -13,8 +13,8 @@ module Examples
         h3 'Counter'
         p do
           text("Value is #{counter} ")
-          a 'Increase', :click => do_action { @counter += 1 }
-          a 'Decrease', :click => do_action { @counter -= 1 }
+          cb.a('Increase').event(:click).action! { @counter += 1 }
+          cb.a('Decrease').event(:click).action! { @counter -= 1 }
           actions
         end
       end

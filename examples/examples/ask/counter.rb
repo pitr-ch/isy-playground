@@ -14,8 +14,8 @@ module Examples
         # to answer nothing.
         # Everything else is as we need.
         def actions
-          a 'Add number', :click => do_action { answer!(counter) }
-          a 'Cancel', :click => do_action { answer! }
+          cb.a('Add number').event(:click).action! { answer!(counter) }
+          cb.a('Cancel').event(:click).action! { answer! }
         end
       end
     end

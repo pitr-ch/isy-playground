@@ -17,7 +17,7 @@ module Examples
 
         # here we overwrite actions and to add Remove link
         def actions
-          a 'Remove', :click => do_action { @counters_collection.remove(self) }
+          cb.a('Remove').event(:click).action! { @counters_collection.remove(self) }
         end
       end
     end

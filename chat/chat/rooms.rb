@@ -16,10 +16,10 @@ module Chat
         h1 "Chat rooms"
 
         Model::Room.rooms.each do |r|
-          a "#{r.name} (#{r.messages.size})", :click => do_action { @room.try :leave!; @room = new Room, r, user }
+          cb.a("#{r.name} (#{r.messages.size})").event(:click).action! { @room.try :leave!; @room = new Room, r, user }
         end
         unless room_form
-          a 'new room', :click => do_action() {
+          cb.a('new room').event(:click).action! {
             @room_form = ask RoomForm, Model::Room.new do |room|
               Model::Room.rooms << room if room
               @room_form = nil

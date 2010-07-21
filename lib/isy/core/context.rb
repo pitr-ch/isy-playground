@@ -51,7 +51,9 @@ module Isy
       # renders actualization for the user and stores it in {#message}
       def actualize
         Isy.benchmark('Actualization') do
+          #          RubyProf.resume do
           message :html => self.to_html
+          #          end
         end
         self
       end

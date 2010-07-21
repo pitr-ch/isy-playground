@@ -14,7 +14,8 @@ module Isy
           def stats
             h1 'Stats'
             ul do
-              objects = ObjectSpace.each_object(Class).map {|c| [c.to_s,  ObjectSpace.each_object(c) {}] }.
+              classes = [ Isy::Core::Container, Isy::Core::Context, Isy::Widget::Base, Isy::Component::Base ]
+              objects = classes.map {|c| [c.to_s,  ObjectSpace.each_object(c) {}] }.
                   sort_by { |c, count| [count, c.to_s] }
               objects.each do |klass, count|
                 li "#{klass}: #{count}"
@@ -26,7 +27,7 @@ module Isy
             h1 'GC'
             ul do
               li do                
-                a "GC::Profiler.enable? => #{GC::Profiler.enabled?}", :click => do_action {
+                cb.a("GC::Profiler.enable? => #{GC::Profiler.enabled?}").event(:click).action! {
                   if GC::Profiler.enabled?
                     GC::Profiler.disable
                     GC::Profiler.clear
@@ -35,7 +36,7 @@ module Isy
                   end
                 }
               end if Isy.v19?
-              li { a "GC.start", :click => do_action { ObjectSpace.garbage_collect; ObjectSpace.garbage_collect }}
+              li { cb.a("GC.start").event(:click).action! { ObjectSpace.garbage_collect; ObjectSpace.garbage_collect }}
             end
 
             pre { code GC::Profiler.result } if Isy.v19?

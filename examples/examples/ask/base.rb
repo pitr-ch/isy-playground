@@ -25,7 +25,7 @@ module Examples
           else
             numbers.each_with_index do |number, index|
               text '+' if index > 0
-              a number.to_s, :click => do_action {
+              cb.a(number.to_s).event(:click).action! {
                 @counter = ask Ask::Counter, number do |answer|
                   if answer
                     @numbers.delete_at(index)
@@ -45,7 +45,7 @@ module Examples
           if counter
             render counter
           else
-            a 'Select Number', :click => do_action {
+            cb.a('Select Number').event(:click).action! {
               # if 'Select Number' is clicked, +counter+ is set and
               # ask-callback is set. Both blocks are evaluated inside
               # the same component.

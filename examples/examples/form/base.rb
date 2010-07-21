@@ -27,7 +27,7 @@ module Examples
             widget Isy::Widget::FormPart::Textarea, :value => :description
           end
 
-          a "Send for the #{counter}th time", :click => [ actualize_form, do_action { @counter += 1 } ]
+          cb.a("Send for the #{counter}th time").event(:click).form.action! { @counter += 1 }
 
           h4 'Values:'
           ul do

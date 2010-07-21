@@ -12,10 +12,10 @@ module Examples
       def content
         strong 'Examples:'
         ul do
-          li { a "Counters", :click => do_action { @example = new Counters::Base } }
-          li { a "#ask", :click => do_action { @example = new Ask::Base } }
-          li { a "form", :click => do_action { @example = new Form::Base } }
-          li { a "none", :click => do_action { @example = nil } }
+          li { cb.a("Counters").event(:click).action! { @example = new Counters::Base } }
+          li { cb.a("#ask").event(:click).action! { @example = new Ask::Base } }
+          li { cb.a("form").event(:click).action! { @example = new Form::Base } }
+          li { cb.a("none").event(:click).action! { @example = nil } }
         end
         hr
 
