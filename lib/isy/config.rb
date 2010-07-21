@@ -21,7 +21,8 @@ unless defined? Isy::Config
         :logger => { 
           :level => 0,
           :show_traffic => false
-        }
+        },
+        :core => { :devel => 'devel' }
       })
 
     Config.use :env_var
@@ -47,6 +48,7 @@ unless defined? Isy::Config
     Config.define 'js.send_log_back', :require => true, :type => :boolean
     Config.define 'logger.level', :require => true, :type => Integer
     Config.define 'logger.show_traffic', :require => true, :type => :boolean
+    Config.define 'core.devel', :require => true, :type => String
     Config.resolve!
   
     Config.use :commandline

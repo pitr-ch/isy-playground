@@ -37,7 +37,7 @@ module Isy
 
       # @return [Class] class of a root component
       def root_class
-        @root_class ||= unless @hash == 'devel'
+        @root_class ||= unless @hash == Config[:core][:devel]
           Config[:root_class].to_s.constantize
         else
           Component::Developer::Tools
@@ -45,7 +45,7 @@ module Isy
       end
 
       def location_hash
-        root_class == Component::Developer::Tools ? 'devel' : ''
+        root_class == Component::Developer::Tools ? Config[:core][:devel] : ''
       end
 
       # renders actualization for the user and stores it in {#message}
