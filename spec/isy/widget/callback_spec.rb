@@ -20,14 +20,14 @@ describe Isy::Widget::Component::Callback do
     subject do
       @widget = Isy::Widget::Component.new(:component => component_mock) do |w|
         w.cb.a("label", :class => 'a').event(:click).action! {}
-        w.cb.span(:class => 'b') { w.text 'content'}.event(:click).form!('id')
+        w.cb.span(:class => 'b') { w.text 'content'}.event(:click).form!(123)
       end
       @widget.to_html
     end
 
     it { should == "<div class=\"isy-widget-component\" id=\"#{@widget.object_id}\">" +
           "<a class=\"a\" data-callback-click=\"{&quot;action&quot;:&quot;id&quot;}\" href=\"#\">label</a>" +
-          "<span class=\"b\" data-callback-click=\"{&quot;form&quot;:&quot;id&quot;}\">content</span></div>" }
+          "<span class=\"b\" data-callback-click=\"{&quot;form&quot;:123}\">content</span></div>" }
     
   end
 
