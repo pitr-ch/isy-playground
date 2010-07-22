@@ -159,7 +159,7 @@
   
   
   <h3 class="inherited">Methods inherited from <a href="../../../Widget/Component.html" title="Isy::Widget::Component (class)">Isy::Widget::Component</a></h3>
-  <p class="inherited"><a href="../../../Widget/Component.html#delegate-class_method" title="Isy::Widget::Component.delegate (method)">delegate</a>, <a href="../../../Widget/Component.html#initialize-instance_method" title="Isy::Widget::Component#initialize (method)">#initialize</a>, <a href="../../../Widget/Component.html#link_to-instance_method" title="Isy::Widget::Component#link_to (method)">#link_to</a>, <a href="../../../Widget/Component.html#register_action-instance_method" title="Isy::Widget::Component#register_action (method)">#register_action</a>, <a href="../../../Widget/Component.html#wrapper_options-instance_method" title="Isy::Widget::Component#wrapper_options (method)">#wrapper_options</a></p>
+  <p class="inherited"><a href="../../../Widget/Component.html#a-instance_method" title="Isy::Widget::Component#a (method)">#a</a>, <a href="../../../Widget/Component.html#callback-instance_method" title="Isy::Widget::Component#callback (method)">#callback</a>, <a href="../../../Widget/Component.html#method_missing-instance_method" title="Isy::Widget::Component#method_missing (method)">#method_missing</a>, <a href="../../../Widget/Component.html#register_action-instance_method" title="Isy::Widget::Component#register_action (method)">#register_action</a>, <a href="../../../Widget/Component.html#respond_to%3F-instance_method" title="Isy::Widget::Component#respond_to? (method)">#respond_to?</a>, <a href="../../../Widget/Component.html#widget-instance_method" title="Isy::Widget::Component#widget (method)">#widget</a></p>
 
   
   
@@ -169,12 +169,16 @@
   
   
   <h3 class="inherited">Methods inherited from <a href="../../../Widget/Base.html" title="Isy::Widget::Base (class)">Isy::Widget::Base</a></h3>
-  <p class="inherited"><a href="../../../Widget/Base.html#_render-instance_method" title="Isy::Widget::Base#_render (method)">#_render</a>, <a href="../../../Widget/Base.html#content_with_wrapper-instance_method" title="Isy::Widget::Base#content_with_wrapper (method)">#content_with_wrapper</a>, <a href="../../../Widget/Base.html#css_class-class_method" title="Isy::Widget::Base.css_class (method)">css_class</a>, <a href="../../../Widget/Base.html#render-instance_method" title="Isy::Widget::Base#render (method)">#render</a>, <a href="../../../Widget/Base.html#wrap_in-class_method" title="Isy::Widget::Base.wrap_in (method)">wrap_in</a>, <a href="../../../Widget/Base.html#wrapped_in-class_method" title="Isy::Widget::Base.wrapped_in (method)">wrapped_in</a>, <a href="../../../Widget/Base.html#wrapper_options-instance_method" title="Isy::Widget::Base#wrapper_options (method)">#wrapper_options</a>, <a href="../../../Widget/Base.html#write_via-instance_method" title="Isy::Widget::Base#write_via (method)">#write_via</a></p>
+  <p class="inherited"><a href="../../../Widget/Base.html#_render_via-instance_method" title="Isy::Widget::Base#_render_via (method)">#_render_via</a>, <a href="../../../Widget/Base.html#content_with_wrapper-instance_method" title="Isy::Widget::Base#content_with_wrapper (method)">#content_with_wrapper</a>, <a href="../../../Widget/Base.html#css_class-class_method" title="Isy::Widget::Base.css_class (method)">css_class</a>, <a href="../../../Widget/Base.html#render-instance_method" title="Isy::Widget::Base#render (method)">#render</a>, <a href="../../../Widget/Base.html#to_html-instance_method" title="Isy::Widget::Base#to_html (method)">#to_html</a>, <a href="../../../Widget/Base.html#wrap_in-class_method" title="Isy::Widget::Base.wrap_in (method)">wrap_in</a>, <a href="../../../Widget/Base.html#wrapped_in-class_method" title="Isy::Widget::Base.wrapped_in (method)">wrapped_in</a>, <a href="../../../Widget/Base.html#wrapper_options-instance_method" title="Isy::Widget::Base#wrapper_options (method)">#wrapper_options</a></p>
 
-  <div id="constructor_details" class="method_details_list">
-  <h2>Constructor Details</h2>
-  
-    <p class="notice">This class inherits a constructor from <a href="../../../Widget/Component.html#initialize-instance_method" title="Isy::Widget::Component#initialize (method)">Isy::Widget::Component</a></p>
+  <div id="method_missing_details" class="method_details_list">
+  <h2>Dynamic Method Handling</h2>
+  <p class="notice super">
+    This class handles dynamic methods through the <tt>method_missing</tt> method
+    
+      in the class <a href="../../../Widget/Component.html#method_missing-instance_method" title="Isy::Widget::Component#method_missing (method)">Isy::Widget::Component</a>
+    
+  </p>
   
 </div>
 
@@ -196,20 +200,26 @@
       <pre class="lines">
 
 
-33
-34
-35
-36
-37
-38
-39
-40</pre>
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/component/developer/log.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/component/developer/log.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id content'>content</span>
   <span class='id h3'>h3</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Log</span><span class='tstring_end'>'</span></span>
+
+  <span class='id p'>p</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>objects observing: </span><span class='embexpr_beg'>#{</span><span class='const'>Isy</span><span class='period'>.</span><span class='id logger'>logger</span><span class='period'>.</span><span class='id count_observers'>count_observers</span><span class='lparen'>(</span><span class='symbol'>:message</span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+
   <span class='id component'>component</span><span class='period'>.</span><span class='id messages'>messages</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id message'>message</span><span class='op'>|</span>
     <span class='id p'>p</span> <span class='symbol'>:class</span> <span class='op'>=&gt;</span> <span class='id odd'>odd</span> <span class='kw'>do</span>
       <span class='id text'>text</span> <span class='id message'>message</span>
@@ -234,12 +244,12 @@
       <pre class="lines">
 
 
-42
-43
-44</pre>
+52
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/component/developer/log.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/component/developer/log.rb', line 52</span>
 
 <span class='kw'>def</span> <span class='id odd'>odd</span>
   <span class='lparen'>(</span><span class='ivar'>@odd</span> <span class='op'>=</span> <span class='op'>!</span><span class='ivar'>@odd</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>odd</span><span class='tstring_end'>'</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>even</span><span class='tstring_end'>'</span></span>
@@ -254,7 +264,7 @@
 </div>
     
     <div id="footer">
-  Generated on Tue Jul  6 16:28:45 2010 by 
+  Generated on Thu Jul 22 09:16:36 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

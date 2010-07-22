@@ -53,7 +53,7 @@
   
     <dt class="r1">Inherits:</dt>
     <dd class="r1">
-      <span class="inheritName"><a href="Object.html" title="Isy::Component::Developer::Inspection::Object (class)">Object</a></span>
+      <span class="inheritName"><a href="Module.html" title="Isy::Component::Developer::Inspection::Module (class)">Module</a></span>
       
         <ul class="fullTree">
           <li>Object</li>
@@ -61,6 +61,8 @@
             <li class="next"><a href="../../Base.html" title="Isy::Component::Base (class)">Isy::Component::Base</a></li>
           
             <li class="next"><a href="Object.html" title="Isy::Component::Developer::Inspection::Object (class)">Object</a></li>
+          
+            <li class="next"><a href="Module.html" title="Isy::Component::Developer::Inspection::Module (class)">Module</a></li>
           
             <li class="next">Isy::Component::Developer::Inspection::Class</li>
           
@@ -83,16 +85,52 @@
 </dl>
 <div class="clear"></div>
 
-<h2>Defined Under Namespace</h2>
-<p class="children">
-   
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
     
-   
+      <a href="#unpack-instance_method" title="#unpack (instance method)">- (Object) <strong>unpack</strong> </a>
     
-      <strong class="classes">Classes:</strong> <a href="Class/Widget.html" title="Isy::Component::Developer::Inspection::Class::Widget (class)">Widget</a>
+
     
+  </span>
   
-</p>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
 
 
   
@@ -103,17 +141,12 @@
   
   
   
-
-
   
   
   
-  
-  
-  <h2>Method Summary</h2>
   
   <h3 class="inherited">Methods inherited from <a href="Object.html" title="Isy::Component::Developer::Inspection::Object (class)">Object</a></h3>
-  <p class="inherited"><a href="Object.html#initialize-instance_method" title="Isy::Component::Developer::Inspection::Object#initialize (method)">#initialize</a>, <a href="Object.html#packed%3F-instance_method" title="Isy::Component::Developer::Inspection::Object#packed? (method)">#packed?</a>, <a href="Object.html#switch_packed-instance_method" title="Isy::Component::Developer::Inspection::Object#switch_packed (method)">#switch_packed</a></p>
+  <p class="inherited"><a href="Object.html#initial_state-instance_method" title="Isy::Component::Developer::Inspection::Object#initial_state (method)">#initial_state</a>, <a href="Object.html#initialize-instance_method" title="Isy::Component::Developer::Inspection::Object#initialize (method)">#initialize</a>, <a href="Object.html#pack-instance_method" title="Isy::Component::Developer::Inspection::Object#pack (method)">#pack</a>, <a href="Object.html#packed%3F-instance_method" title="Isy::Component::Developer::Inspection::Object#packed? (method)">#packed?</a>, <a href="Object.html#switch_packed-instance_method" title="Isy::Component::Developer::Inspection::Object#switch_packed (method)">#switch_packed</a></p>
 
   
   
@@ -123,7 +156,7 @@
   
   
   <h3 class="inherited">Methods inherited from <a href="../../Base.html" title="Isy::Component::Base (class)">Isy::Component::Base</a></h3>
-  <p class="inherited"><a href="../../Base.html#answer%21-instance_method" title="Isy::Component::Base#answer! (method)">#answer!</a>, <a href="../../Base.html#answering%21-instance_method" title="Isy::Component::Base#answering! (method)">#answering!</a>, <a href="../../Base.html#ask-instance_method" title="Isy::Component::Base#ask (method)">#ask</a>, <a href="../../Base.html#create_widget-instance_method" title="Isy::Component::Base#create_widget (method)">#create_widget</a>, <a href="../../Base.html#initial_state-instance_method" title="Isy::Component::Base#initial_state (method)">#initial_state</a>, <a href="../../Base.html#initialize-instance_method" title="Isy::Component::Base#initialize (method)">#initialize</a>, <a href="../../Base.html#inspector-instance_method" title="Isy::Component::Base#inspector (method)">#inspector</a>, <a href="../../Base.html#inspector_class-instance_method" title="Isy::Component::Base#inspector_class (method)">#inspector_class</a>, <a href="../../Base.html#new-instance_method" title="Isy::Component::Base#new (method)">#new</a>, <a href="../../Base.html#to_s-instance_method" title="Isy::Component::Base#to_s (method)">#to_s</a>, <a href="../../Base.html#use_widget_class-class_method" title="Isy::Component::Base.use_widget_class (method)">use_widget_class</a>, <a href="../../Base.html#widget-instance_method" title="Isy::Component::Base#widget (method)">#widget</a>, <a href="../../Base.html#widget_args-instance_method" title="Isy::Component::Base#widget_args (method)">#widget_args</a>, <a href="../../Base.html#widget_class-class_method" title="Isy::Component::Base.widget_class (method)">widget_class</a></p>
+  <p class="inherited"><a href="../../Base.html#answer%21-instance_method" title="Isy::Component::Base#answer! (method)">#answer!</a>, <a href="../../Base.html#answering%21-instance_method" title="Isy::Component::Base#answering! (method)">#answering!</a>, <a href="../../Base.html#ask-instance_method" title="Isy::Component::Base#ask (method)">#ask</a>, <a href="../../Base.html#create_widget-instance_method" title="Isy::Component::Base#create_widget (method)">#create_widget</a>, <a href="../../Base.html#initial_state-instance_method" title="Isy::Component::Base#initial_state (method)">#initial_state</a>, <a href="../../Base.html#initialize-instance_method" title="Isy::Component::Base#initialize (method)">#initialize</a>, <a href="../../Base.html#inspector-instance_method" title="Isy::Component::Base#inspector (method)">#inspector</a>, <a href="../../Base.html#inspector_class-instance_method" title="Isy::Component::Base#inspector_class (method)">#inspector_class</a>, <a href="../../Base.html#new-instance_method" title="Isy::Component::Base#new (method)">#new</a>, <a href="../../Base.html#pass_on-instance_method" title="Isy::Component::Base#pass_on (method)">#pass_on</a>, <a href="../../Base.html#retake_control%21-instance_method" title="Isy::Component::Base#retake_control! (method)">#retake_control!</a>, <a href="../../Base.html#to_html-instance_method" title="Isy::Component::Base#to_html (method)">#to_html</a>, <a href="../../Base.html#use_widget_class-class_method" title="Isy::Component::Base.use_widget_class (method)">use_widget_class</a>, <a href="../../Base.html#widget-instance_method" title="Isy::Component::Base#widget (method)">#widget</a>, <a href="../../Base.html#widget_assigns-instance_method" title="Isy::Component::Base#widget_assigns (method)">#widget_assigns</a>, <a href="../../Base.html#widget_class-class_method" title="Isy::Component::Base.widget_class (method)">widget_class</a></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
@@ -132,10 +165,44 @@
 </div>
 
 
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="unpack-instance_method">
+  
+    - (<tt><a href="Object.html" title="Isy::Component::Developer::Inspection::Object (class)">Object</a></tt>) <strong>unpack</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/isy/component/developer/inspection/class.rb', line 7</span>
+
+<span class='kw'>def</span> <span class='id unpack'>unpack</span>
+  <span class='kw'>super</span> <span class='op'>&lt;&lt;</span> <span class='id inspector'>inspector</span><span class='lparen'>(</span><span class='id obj'>obj</span><span class='period'>.</span><span class='id superclass'>superclass</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>superclass:</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
 </div>
     
     <div id="footer">
-  Generated on Tue Jul  6 16:28:46 2010 by 
+  Generated on Thu Jul 22 09:16:37 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

@@ -125,7 +125,7 @@ Collection with options ability
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">- (OptionableCollection) <strong>initialize</strong>(component, collection = nil, options = {}) </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (OptionableCollection) <strong>initialize</strong>(assigns = {}, &amp;block) </a>
     
 
     
@@ -170,7 +170,7 @@ A new instance of OptionableCollection.
   
   
   <h3 class="inherited">Methods inherited from <a href="Component.html" title="Isy::Widget::Component (class)">Component</a></h3>
-  <p class="inherited"><a href="Component.html#delegate-class_method" title="Isy::Widget::Component.delegate (method)">delegate</a>, <a href="Component.html#link_to-instance_method" title="Isy::Widget::Component#link_to (method)">#link_to</a>, <a href="Component.html#register_action-instance_method" title="Isy::Widget::Component#register_action (method)">#register_action</a>, <a href="Component.html#wrapper_options-instance_method" title="Isy::Widget::Component#wrapper_options (method)">#wrapper_options</a></p>
+  <p class="inherited"><a href="Component.html#a-instance_method" title="Isy::Widget::Component#a (method)">#a</a>, <a href="Component.html#callback-instance_method" title="Isy::Widget::Component#callback (method)">#callback</a>, <a href="Component.html#method_missing-instance_method" title="Isy::Widget::Component#method_missing (method)">#method_missing</a>, <a href="Component.html#register_action-instance_method" title="Isy::Widget::Component#register_action (method)">#register_action</a>, <a href="Component.html#respond_to%3F-instance_method" title="Isy::Widget::Component#respond_to? (method)">#respond_to?</a>, <a href="Component.html#widget-instance_method" title="Isy::Widget::Component#widget (method)">#widget</a></p>
 
   
   
@@ -180,7 +180,7 @@ A new instance of OptionableCollection.
   
   
   <h3 class="inherited">Methods inherited from <a href="Base.html" title="Isy::Widget::Base (class)">Base</a></h3>
-  <p class="inherited"><a href="Base.html#_render-instance_method" title="Isy::Widget::Base#_render (method)">#_render</a>, <a href="Base.html#content_with_wrapper-instance_method" title="Isy::Widget::Base#content_with_wrapper (method)">#content_with_wrapper</a>, <a href="Base.html#css_class-class_method" title="Isy::Widget::Base.css_class (method)">css_class</a>, <a href="Base.html#render-instance_method" title="Isy::Widget::Base#render (method)">#render</a>, <a href="Base.html#wrap_in-class_method" title="Isy::Widget::Base.wrap_in (method)">wrap_in</a>, <a href="Base.html#wrapped_in-class_method" title="Isy::Widget::Base.wrapped_in (method)">wrapped_in</a>, <a href="Base.html#wrapper_options-instance_method" title="Isy::Widget::Base#wrapper_options (method)">#wrapper_options</a>, <a href="Base.html#write_via-instance_method" title="Isy::Widget::Base#write_via (method)">#write_via</a></p>
+  <p class="inherited"><a href="Base.html#_render_via-instance_method" title="Isy::Widget::Base#_render_via (method)">#_render_via</a>, <a href="Base.html#content_with_wrapper-instance_method" title="Isy::Widget::Base#content_with_wrapper (method)">#content_with_wrapper</a>, <a href="Base.html#css_class-class_method" title="Isy::Widget::Base.css_class (method)">css_class</a>, <a href="Base.html#render-instance_method" title="Isy::Widget::Base#render (method)">#render</a>, <a href="Base.html#to_html-instance_method" title="Isy::Widget::Base#to_html (method)">#to_html</a>, <a href="Base.html#wrap_in-class_method" title="Isy::Widget::Base.wrap_in (method)">wrap_in</a>, <a href="Base.html#wrapped_in-class_method" title="Isy::Widget::Base.wrapped_in (method)">wrapped_in</a>, <a href="Base.html#wrapper_options-instance_method" title="Isy::Widget::Base#wrapper_options (method)">#wrapper_options</a></p>
 
   <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
@@ -188,7 +188,7 @@ A new instance of OptionableCollection.
     <div class="method_details first">
   <p class="signature first" id="initialize-instance_method">
   
-    - (<tt><a href="" title="Isy::Widget::OptionableCollection (class)">OptionableCollection</a></tt>) <strong>initialize</strong>(component, collection = nil, options = {}) 
+    - (<tt><a href="" title="Isy::Widget::OptionableCollection (class)">OptionableCollection</a></tt>) <strong>initialize</strong>(assigns = {}, &amp;block) 
   
 
   
@@ -207,7 +207,8 @@ A new instance of OptionableCollection
     <h3>Examples:</h3>
     
       <h4><div class='inline'></div></h4>
-      <pre class="example code"><span class='const'>OCollection</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id users'>users</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span>
+      <pre class="example code"><span class='const'>OCollection</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span>
+  <span class='symbol'>:component</span> <span class='op'>=&gt;</span> <span class='id users'>users</span><span class='comma'>,</span>
   <span class='symbol'>:before</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Users:</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
   <span class='symbol'>:nothing</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>No users.</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
   <span class='symbol'>:after</span> <span class='op'>=&gt;</span> <span class='id lambda'>lambda</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id w'>w</span><span class='op'>|</span> <span class='id w'>w</span><span class='period'>.</span><span class='id p'>p</span> <span class='lbrace'>{</span> <span class='id text'>text</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>count: </span><span class='embexpr_beg'>#{</span><span class='id w'>w</span><span class='period'>.</span><span class='id collection'>collection</span><span class='period'>.</span><span class='id count'>count</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='rbrace'>}</span>
@@ -222,7 +223,7 @@ A new instance of OptionableCollection
         <span class='type'>(<tt>Hash</tt>)</span>
       
       
-        <span class='name'>options</span>
+        <span class='name'>assigns</span>
       
       
         <em class="default">(defaults to: <tt>{}</tt>)</em>
@@ -241,11 +242,7 @@ defines what will be rendered before, after, between or when nothing
   
     
     
-    
-    
-    
-    
-    <h3>Options Hash (<tt>options</tt>):</h3>
+    <h3>Options Hash (<tt>assigns</tt>):</h3>
     <ul class="option">
       
         <li>
@@ -306,6 +303,8 @@ renders when collection is blank
       
     </ul>
   
+    
+    
 
 </div><table class="source_code">
   <tr>
@@ -313,17 +312,15 @@ renders when collection is blank
       <pre class="lines">
 
 
-17
-18
-19
-20</pre>
+21
+22
+23</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/optionable_collection.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/optionable_collection.rb', line 21</span>
 
-<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id component'>component</span><span class='comma'>,</span> <span class='id collection'>collection</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='kw'>super</span> <span class='id component'>component</span><span class='comma'>,</span> <span class='id collection'>collection</span>
-  <span class='ivar'>@options</span> <span class='op'>=</span> <span class='id options'>options</span>
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id assigns'>assigns</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>super</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -331,12 +328,22 @@ renders when collection is blank
 </div>
   
 </div>
+<div id="method_missing_details" class="method_details_list">
+  <h2>Dynamic Method Handling</h2>
+  <p class="notice super">
+    This class handles dynamic methods through the <tt>method_missing</tt> method
+    
+      in the class <a href="Component.html#method_missing-instance_method" title="Isy::Widget::Component#method_missing (method)">Isy::Widget::Component</a>
+    
+  </p>
+  
+</div>
 
 
 </div>
     
     <div id="footer">
-  Generated on Tue Jul  6 16:28:46 2010 by 
+  Generated on Thu Jul 22 09:16:37 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

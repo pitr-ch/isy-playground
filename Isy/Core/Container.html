@@ -232,6 +232,30 @@ A new instance of Container.
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#restart_context-instance_method" title="#restart_context (instance method)">- (Object) <strong>restart_context</strong>(id, hash, connection, warn = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+restarts context when hash has changed or error occurred.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#size-instance_method" title="#size (instance method)">- (Object) <strong>size</strong> </a>
     
 
@@ -283,12 +307,12 @@ A new instance of Container
       <pre class="lines">
 
 
-9
-10
-11</pre>
+11
+12
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/core/container.rb', line 9</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/core/container.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id id'>id</span><span class='rparen'>)</span>
   <span class='ivar'>@id</span><span class='comma'>,</span> <span class='ivar'>@contexts</span> <span class='op'>=</span> <span class='id id'>id</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -330,12 +354,12 @@ Returns the value of attribute id
       <pre class="lines">
 
 
-8
-9
-10</pre>
+10
+11
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/core/container.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/core/container.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id id'>id</span>
   <span class='ivar'>@id</span>
@@ -418,15 +442,15 @@ of a <tt><a href="Base.html" title="Isy::Core::Base (class)">Isy::Core::Base</a>
       <pre class="lines">
 
 
-15
-16
 17
 18
 19
-20</pre>
+20
+21
+22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/core/container.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/core/container.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='id context'>context</span><span class='lparen'>(</span><span class='id id'>id</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id hash'>hash</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='ivar'>@contexts</span><span class='lbracket'>[</span><span class='id id'>id</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='kw'>begin</span>
@@ -463,12 +487,12 @@ drops container when is not needed
       <pre class="lines">
 
 
-29
-30
-31</pre>
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/core/container.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/core/container.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id drop'>drop</span>
   <span class='const'>Base</span><span class='period'>.</span><span class='id drop_container'>drop_container</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
@@ -520,17 +544,136 @@ to drop when is not needed
       <pre class="lines">
 
 
-23
-24
-25
-26</pre>
+37
+38
+39
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/core/container.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/core/container.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id drop_context'>drop_context</span><span class='lparen'>(</span><span class='id context'>context</span><span class='rparen'>)</span>
   <span class='ivar'>@contexts</span><span class='period'>.</span><span class='id delete'>delete</span><span class='lparen'>(</span><span class='id context'>context</span><span class='period'>.</span><span class='id id'>id</span><span class='rparen'>)</span>
   <span class='id drop'>drop</span> <span class='kw'>if</span> <span class='ivar'>@contexts</span><span class='period'>.</span><span class='id empty?'>empty?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="restart_context-instance_method">
+  
+    - (<tt>Object</tt>) <strong>restart_context</strong>(id, hash, connection, warn = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+restarts context when hash has changed or error occurred
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>id</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+of a context
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>hash</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+new or current
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt><a href="WebSocket/Connection.html" title="Isy::Core::WebSocket::Connection (class)">WebSocket::Connection</a></tt>)</span>
+      
+      
+        <span class='name'>connection</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+to the client
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>warn</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>
+warning which will be shown to user
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31
+32
+33
+34</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/isy/core/container.rb', line 29</span>
+
+<span class='kw'>def</span> <span class='id restart_context'>restart_context</span><span class='lparen'>(</span><span class='id id'>id</span><span class='comma'>,</span> <span class='id hash'>hash</span><span class='comma'>,</span> <span class='id connection'>connection</span><span class='comma'>,</span> <span class='id warn'>warn</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id context'>context</span> <span class='op'>=</span> <span class='ivar'>@contexts</span><span class='lbracket'>[</span><span class='id id'>id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Context</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id id'>id</span><span class='comma'>,</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='id hash'>hash</span><span class='rparen'>)</span>
+  <span class='id context'>context</span><span class='period'>.</span><span class='id connection'>connection</span><span class='op'>=</span><span class='lparen'>(</span><span class='id connection'>connection</span><span class='rparen'>)</span>
+  <span class='id context'>context</span><span class='period'>.</span><span class='id schedule'>schedule</span><span class='lparen'>(</span><span class='kw'>false</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id context'>context</span><span class='period'>.</span><span class='id actualize'>actualize</span><span class='period'>.</span><span class='id warn'>warn</span><span class='lparen'>(</span><span class='id warn'>warn</span><span class='rparen'>)</span><span class='period'>.</span><span class='id send!'>send!</span> <span class='rbrace'>}</span>
+  <span class='id context'>context</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -561,12 +704,12 @@ context&#8217;s count
       <pre class="lines">
 
 
-34
-35
-36</pre>
+48
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/core/container.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/core/container.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id size'>size</span>
   <span class='ivar'>@contexts</span><span class='period'>.</span><span class='id size'>size</span>
@@ -581,7 +724,7 @@ context&#8217;s count
 </div>
     
     <div id="footer">
-  Generated on Tue Jul  6 16:28:45 2010 by 
+  Generated on Thu Jul 22 09:16:34 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

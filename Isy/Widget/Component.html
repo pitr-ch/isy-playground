@@ -96,8 +96,18 @@ Abstract class of widgets used to render components
   
 </div><div id="subclasses">
   <h2>Direct Known Subclasses</h2>
-  <p class="children"><a href="../Component/Developer/Log/Widget.html" title="Isy::Component::Developer::Log::Widget (class)">Isy::Component::Developer::Log::Widget</a>, <a href="../Component/Developer/Tools/Widget.html" title="Isy::Component::Developer::Tools::Widget (class)">Isy::Component::Developer::Tools::Widget</a>, <a href="Collection.html" title="Isy::Widget::Collection (class)">Collection</a></p>
+  <p class="children"><a href="../Component/Developer/Gc/Widget.html" title="Isy::Component::Developer::Gc::Widget (class)">Isy::Component::Developer::Gc::Widget</a>, <a href="../Component/Developer/Log/Widget.html" title="Isy::Component::Developer::Log::Widget (class)">Isy::Component::Developer::Log::Widget</a>, <a href="../Component/Developer/Tools/Widget.html" title="Isy::Component::Developer::Tools::Widget (class)">Isy::Component::Developer::Tools::Widget</a>, <a href="Collection.html" title="Isy::Widget::Collection (class)">Collection</a>, <a href="FormPart/Abstract.html" title="Isy::Widget::FormPart::Abstract (class)">FormPart::Abstract</a></p>
 </div>
+<h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+   
+    
+      <strong class="classes">Classes:</strong> <a href="Component/Callback.html" title="Isy::Widget::Component::Callback (class)">Callback</a>
+    
+  
+</p>
 
 
   
@@ -115,6 +125,8 @@ Abstract class of widgets used to render components
     
 
     
+      (also: #c)
+    
   </span>
   
   
@@ -128,7 +140,7 @@ Abstract class of widgets used to render components
 
   
     <span class="summary_desc"><div class='inline'><p>
-component to be rendered.
+Returns the value of attribute component.
 </p>
 </div></span>
   
@@ -140,39 +152,6 @@ component to be rendered.
 
   
     <h2>
-      Class Method Summary
-      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
-    </h2>
-
-    <ul class="summary">
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#delegate-class_method" title="delegate (class method)">+ (Object) <strong>delegate</strong>(*methods) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-sets default delegation to <tt><a href="#component-instance_method" title="Isy::Widget::Component#component (method)">Component#component</a></tt>.
-</p>
-</div></span>
-  
-</li>
-
-      
-    </ul>
-  
-    <h2>
       Instance Method Summary
       <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
     </h2>
@@ -182,13 +161,34 @@ sets default delegation to <tt><a href="#component-instance_method" title="Isy::
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Component) <strong>initialize</strong>(component, assigns = {}, &amp;block) </a>
+      <a href="#a-instance_method" title="#a (instance method)">- (Object) <strong>a</strong>(*args, &amp;block) </a>
     
 
     
   </span>
   
-    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#callback-instance_method" title="#callback (instance method)">- (Object) <strong>callback</strong> </a>
+    
+
+    
+      (also: #cb)
+    
+  </span>
   
   
   
@@ -198,7 +198,7 @@ sets default delegation to <tt><a href="#component-instance_method" title="Isy::
 
   
     <span class="summary_desc"><div class='inline'><p>
-A new instance of Component.
+enters scope for callback definition.
 </p>
 </div></span>
   
@@ -208,7 +208,7 @@ A new instance of Component.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#link_to-instance_method" title="#link_to (instance method)">- (Object) <strong>link_to</strong>(label) { ... }</a>
+      <a href="#method_missing-instance_method" title="#method_missing (instance method)">- (Object) <strong>method_missing</strong>(method, *args, &amp;block) </a>
     
 
     
@@ -222,8 +222,7 @@ A new instance of Component.
 
   
     <span class="summary_desc"><div class='inline'><p>
-renders link with <tt>label</tt> to some action <tt>action</tt> which is
-executed after click on the link.
+calls missing methods on component.
 </p>
 </div></span>
   
@@ -233,7 +232,7 @@ executed after click on the link.
         <li class="private ">
   <span class="summary_signature">
     
-      <a href="#register_action-instance_method" title="#register_action (instance method)">- (Object) <strong>register_action</strong> { ... }</a>
+      <a href="#register_action-instance_method" title="#register_action (instance method)">- (String) <strong>register_action</strong> { ... }</a>
     
 
     
@@ -254,23 +253,47 @@ registers action to <tt><a href="#component-instance_method" title="Isy::Widget:
 </li>
 
       
-        <li class="protected ">
+        <li class="public ">
   <span class="summary_signature">
     
-      <a href="#wrapper_options-instance_method" title="#wrapper_options (instance method)">- (Object) <strong>wrapper_options</strong> </a>
+      <a href="#respond_to%3F-instance_method" title="#respond_to? (instance method)">- (Boolean) <strong>respond_to?</strong>(symbol, include_private = false) </a>
     
 
     
   </span>
   
   
-  <span class="note title protected">protected</span>
+  
   
   
   
 
   
     <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#widget-instance_method" title="#widget (instance method)">- (Object) <strong>widget</strong>(target, assigns = {}, options = {}, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+automatically passes :component assign to child widgets.
+</p>
+</div></span>
   
 </li>
 
@@ -287,67 +310,56 @@ registers action to <tt><a href="#component-instance_method" title="Isy::Widget:
   
   
   <h3 class="inherited">Methods inherited from <a href="Base.html" title="Isy::Widget::Base (class)">Base</a></h3>
-  <p class="inherited"><a href="Base.html#_render-instance_method" title="Isy::Widget::Base#_render (method)">#_render</a>, <a href="Base.html#content_with_wrapper-instance_method" title="Isy::Widget::Base#content_with_wrapper (method)">#content_with_wrapper</a>, <a href="Base.html#css_class-class_method" title="Isy::Widget::Base.css_class (method)">css_class</a>, <a href="Base.html#render-instance_method" title="Isy::Widget::Base#render (method)">#render</a>, <a href="Base.html#wrap_in-class_method" title="Isy::Widget::Base.wrap_in (method)">wrap_in</a>, <a href="Base.html#wrapped_in-class_method" title="Isy::Widget::Base.wrapped_in (method)">wrapped_in</a>, <a href="Base.html#write_via-instance_method" title="Isy::Widget::Base#write_via (method)">#write_via</a></p>
+  <p class="inherited"><a href="Base.html#_render_via-instance_method" title="Isy::Widget::Base#_render_via (method)">#_render_via</a>, <a href="Base.html#content_with_wrapper-instance_method" title="Isy::Widget::Base#content_with_wrapper (method)">#content_with_wrapper</a>, <a href="Base.html#css_class-class_method" title="Isy::Widget::Base.css_class (method)">css_class</a>, <a href="Base.html#render-instance_method" title="Isy::Widget::Base#render (method)">#render</a>, <a href="Base.html#to_html-instance_method" title="Isy::Widget::Base#to_html (method)">#to_html</a>, <a href="Base.html#wrap_in-class_method" title="Isy::Widget::Base.wrap_in (method)">wrap_in</a>, <a href="Base.html#wrapped_in-class_method" title="Isy::Widget::Base.wrapped_in (method)">wrapped_in</a>, <a href="Base.html#wrapper_options-instance_method" title="Isy::Widget::Base#wrapper_options (method)">#wrapper_options</a></p>
 
-  <div id="constructor_details" class="method_details_list">
-  <h2>Constructor Details</h2>
+  <div id="method_missing_details" class="method_details_list">
+  <h2>Dynamic Method Handling</h2>
+  <p class="notice this">
+    This class handles dynamic methods through the <tt>method_missing</tt> method
+    
+  </p>
   
     <div class="method_details first">
-  <p class="signature first" id="initialize-instance_method">
+  <p class="signature first" id="method_missing-instance_method">
   
-    - (<tt><a href="" title="Isy::Widget::Component (class)">Component</a></tt>) <strong>initialize</strong>(component, assigns = {}, &amp;block) 
+    - (<tt>Object</tt>) <strong>method_missing</strong>(method, *args, &amp;block) 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
     <p>
-A new instance of Component
+calls missing methods on component
 </p>
 
 
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
   
-    <li>
-      
-        <span class='type'>(<tt><a href="../Component/Base.html" title="Isy::Component::Base (class)">Component::Base</a></tt>)</span>
-      
-      
-        <span class='name'>component</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-to be rendered
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-11
-12
-13
-14</pre>
+26
+27
+28
+29
+30
+31
+32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/component.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/component.rb', line 26</span>
 
-<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id component'>component</span><span class='comma'>,</span> <span class='id assigns'>assigns</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-  <span class='kw'>super</span><span class='lparen'>(</span><span class='id assigns'>assigns</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-  <span class='ivar'>@component</span> <span class='op'>=</span> <span class='id component'>component</span>
+<span class='kw'>def</span> <span class='id method_missing'>method_missing</span><span class='lparen'>(</span><span class='id method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id component'>component</span><span class='period'>.</span><span class='id respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id method'>method</span><span class='rparen'>)</span>
+    <span class='id component'>component</span><span class='period'>.</span><span class='id __send__'>__send__</span> <span class='id method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span>
+  <span class='kw'>else</span>
+    <span class='kw'>super</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -369,10 +381,14 @@ to be rendered
   
 
   
+    <span class="aliases">Also known as:
+    <span class="names"><span id='c-instance_method'>c</span></span>
+    </span>
+  
 </p><div class="docstring">
   <div class="discussion">
     <p>
-component to be rendered
+Returns the value of attribute component
 </p>
 
 
@@ -386,12 +402,12 @@ component to be rendered
       <pre class="lines">
 
 
-8
-9
-10</pre>
+10
+11
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/component.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/component.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id component'>component</span>
   <span class='ivar'>@component</span>
@@ -404,120 +420,18 @@ component to be rendered
   </div>
 
 
-  <div id="class_method_details" class="method_details_list">
-    <h2>Class Method Details</h2>
-    
-    
-      <div class="method_details first">
-  <p class="signature first" id="delegate-class_method">
-  
-    + (<tt>Object</tt>) <strong>delegate</strong>(*methods) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-sets default delegation to <tt><a href="#component-instance_method" title="Isy::Widget::Component#component (method)">#component</a></tt>
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-32
-33
-34
-35
-36</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/component.rb', line 32</span>
-
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id delegate'>delegate</span><span class='lparen'>(</span><span class='op'>*</span><span class='id methods'>methods</span><span class='rparen'>)</span>
-  <span class='id options'>options</span> <span class='op'>=</span> <span class='id methods'>methods</span><span class='period'>.</span><span class='id extract_options!'>extract_options!</span>
-  <span class='id options'>options</span><span class='period'>.</span><span class='id merge!'>merge!</span><span class='lparen'>(</span><span class='symbol'>:to</span> <span class='op'>=&gt;</span> <span class='symbol'>:component</span><span class='rparen'>)</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id k'>k</span><span class='comma'>,</span> <span class='id old'>old</span><span class='comma'>,</span> <span class='id new'>new</span><span class='op'>|</span> <span class='id old'>old</span> <span class='rbrace'>}</span>
-  <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>*</span><span class='lparen'>(</span><span class='id methods'>methods</span> <span class='op'>&lt;&lt;</span> <span class='id options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-  </div>
-
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
     
     
       <div class="method_details first">
-  <p class="signature first" id="link_to-instance_method">
+  <p class="signature first" id="a-instance_method">
   
-    - (<tt>Object</tt>) <strong>link_to</strong>(label) { ... }
+    - (<tt>Object</tt>) <strong>a</strong>(*args, &amp;block) 
   
 
   
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-renders link with <tt>label</tt> to some action <tt>action</tt> which is
-executed after click on the link
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='type'>(<tt>String</tt>, <tt>Proc</tt>)</span>
-      
-      
-        <span class='name'>label</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-text of the link
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-<h3>Yields:</h3>
-<ul class="yield">
-  
-    <li>
-      
-        <span class='type'></span>
-      
-      
-      
-      
-        
-        <div class='inline'><p>
-action block of code which will be evaluated inside <tt><a href="#component-instance_method" title="Isy::Widget::Component#component (method)">#component</a></tt> after
-click on the link
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
+</p><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
@@ -525,25 +439,67 @@ click on the link
 
 21
 22
-23
-24
-25
-26
-27
-28
-29</pre>
+23</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/isy/widget/component.rb', line 21</span>
 
-<span class='kw'>def</span> <span class='id link_to'>link_to</span><span class='lparen'>(</span><span class='id label'>label</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id action'>action</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id label'>label</span><span class='period'>.</span><span class='id kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>String</span><span class='rparen'>)</span>
-    <span class='id a'>a</span> <span class='id label'>label</span><span class='comma'>,</span> <span class='symbol'>:href</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:data-action-id</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='id register_action'>register_action</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id action'>action</span><span class='rparen'>)</span>
-  <span class='kw'>elsif</span> <span class='id label'>label</span><span class='period'>.</span><span class='id kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='rparen'>)</span>
-    <span class='id a'>a</span> <span class='symbol'>:href</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:data-action-id</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='id register_action'>register_action</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id action'>action</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id label'>label</span>
-  <span class='kw'>else</span>
-    <span class='id raise'>raise</span> <span class='const'>ArgumentError</span>
-  <span class='kw'>end</span>
+<span class='kw'>def</span> <span class='id a'>a</span><span class='lparen'>(</span><span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>super</span> <span class='op'>*</span><span class='id args'>args</span><span class='period'>.</span><span class='id push'>push</span><span class='lparen'>(</span><span class='id args'>args</span><span class='period'>.</span><span class='id extract_options!'>extract_options!</span><span class='period'>.</span><span class='id merge'>merge</span><span class='lparen'>(</span><span class='symbol'>:href</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="callback-instance_method">
+  
+    - (<tt>Object</tt>) <strong>callback</strong> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='cb-instance_method'>cb</span></span>
+    </span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+enters scope for callback definition
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'><p>
+onclick on element span executes action block
+</p>
+</div></h4>
+      <pre class="example code"><span class='id cb'>cb</span><span class='period'>.</span><span class='id span'>span</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>new room</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id event'>event</span><span class='lparen'>(</span><span class='symbol'>:click</span><span class='rparen'>)</span><span class='period'>.</span><span class='id action!'>action!</span> <span class='lbrace'>{</span> <span class='id a_action'>a_action</span> <span class='rbrace'>}</span></pre>
+    
+  </div>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+41
+42
+43</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/component.rb', line 41</span>
+
+<span class='kw'>def</span> <span class='id callback'>callback</span>
+  <span class='ivar'>@callback</span> <span class='op'>||=</span> <span class='const'>Callback</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -553,7 +509,7 @@ click on the link
       <div class="method_details ">
   <p class="signature " id="register_action-instance_method">
   
-    - (<tt>Object</tt>) <strong>register_action</strong> { ... } <span class="extras">(private)</span>
+    - (<tt>String</tt>) <strong>register_action</strong> { ... } <span class="extras">(private)</span>
   
 
   
@@ -586,6 +542,25 @@ action block to register
     </li>
   
 </ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+uuid of the action
+</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -593,12 +568,12 @@ action block to register
       <pre class="lines">
 
 
-48
-49
-50</pre>
+130
+131
+132</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/component.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/component.rb', line 130</span>
 
 <span class='kw'>def</span> <span class='id register_action'>register_action</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='id component'>component</span><span class='period'>.</span><span class='id context'>context</span><span class='period'>.</span><span class='id register_action'>register_action</span><span class='lparen'>(</span><span class='id component'>component</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
@@ -609,27 +584,89 @@ action block to register
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="wrapper_options-instance_method">
+  <p class="signature " id="respond_to?-instance_method">
   
-    - (<tt>Object</tt>) <strong>wrapper_options</strong>  <span class="extras">(protected)</span>
+    - (<tt>Boolean</tt>) <strong>respond_to?</strong>(symbol, include_private = false) 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-40
-41
-42</pre>
+34
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/component.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/component.rb', line 34</span>
 
-<span class='kw'>def</span> <span class='id wrapper_options'>wrapper_options</span>
-  <span class='kw'>super</span><span class='period'>.</span><span class='id merge'>merge</span> <span class='symbol'>:data-component-id</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='id component'>component</span><span class='period'>.</span><span class='id object_id'>object_id</span>
+<span class='kw'>def</span> <span class='id respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id symbol'>symbol</span><span class='comma'>,</span> <span class='id include_private'>include_private</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id component'>component</span><span class='period'>.</span><span class='id respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id symbol'>symbol</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='kw'>super</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="widget-instance_method">
+  
+    - (<tt>Object</tt>) <strong>widget</strong>(target, assigns = {}, options = {}, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+automatically passes :component assign to child widgets
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18
+19</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/component.rb', line 16</span>
+
+<span class='kw'>def</span> <span class='id widget'>widget</span><span class='lparen'>(</span><span class='id target'>target</span><span class='comma'>,</span> <span class='id assigns'>assigns</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id assigns'>assigns</span><span class='period'>.</span><span class='id merge!'>merge!</span><span class='lparen'>(</span><span class='symbol'>:component</span> <span class='op'>=&gt;</span> <span class='ivar'>@component</span><span class='rparen'>)</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id _'>_</span><span class='comma'>,</span><span class='id old'>old</span><span class='comma'>,</span><span class='id _'>_</span><span class='op'>|</span> <span class='id old'>old</span> <span class='rbrace'>}</span> <span class='kw'>if</span> <span class='id target'>target</span><span class='period'>.</span><span class='id is_a?'>is_a?</span> <span class='const'>Class</span>
+  <span class='kw'>super</span> <span class='id target'>target</span><span class='comma'>,</span> <span class='id assigns'>assigns</span><span class='comma'>,</span> <span class='id options'>options</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -641,7 +678,7 @@ action block to register
 </div>
     
     <div id="footer">
-  Generated on Tue Jul  6 16:28:45 2010 by 
+  Generated on Thu Jul 22 09:16:35 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

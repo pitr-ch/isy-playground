@@ -70,7 +70,7 @@
 <p class="children">
    
     
-      <strong class="modules">Modules:</strong> <a href="Core/WebSocket.html" title="Isy::Core::WebSocket (module)">WebSocket</a>
+      <strong class="modules">Modules:</strong> <a href="Core/Observable.html" title="Isy::Core::Observable (module)">Observable</a>, <a href="Core/WebSocket.html" title="Isy::Core::WebSocket (module)">WebSocket</a>
     
    
     
@@ -78,23 +78,6 @@
     
   
 </p>
-
-  <h2>Constant Summary</h2>
-  
-    <dl class="constants">
-      
-        <dt id="REPLACE_BODY-constant" class="">REPLACE_BODY =
-          
-        </dt>
-        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>replaceBody</span><span class='tstring_end'>'</span></span></pre></dd>
-      
-        <dt id="SET_CONTEXT-constant" class="">SET_CONTEXT =
-          
-        </dt>
-        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>setContextId</span><span class='tstring_end'>'</span></span></pre></dd>
-      
-    </dl>
-  
 
 
 
@@ -149,15 +132,17 @@
       <pre class="lines">
 
 
-6
-7
-8</pre>
+9
+10
+11
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/core/base.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/core/base.rb', line 9</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id generate_id'>generate_id</span>
-  <span class='const'>UUID</span><span class='period'>.</span><span class='id generate'>generate</span><span class='lparen'>(</span><span class='symbol'>:compact</span><span class='rparen'>)</span><span class='period'>.</span><span class='id to_i'>to_i</span><span class='lparen'>(</span><span class='int'>16</span><span class='rparen'>)</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='lparen'>(</span><span class='int'>36</span><span class='rparen'>)</span>
+  <span class='comment'>#      UUID.generate(:compact).to_i(16).to_s(36)
+</span>  <span class='lparen'>(</span><span class='ivar'>@last_id</span><span class='op'>+=</span><span class='int'>1</span><span class='rparen'>)</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='lparen'>(</span><span class='int'>36</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -169,7 +154,7 @@
 </div>
     
     <div id="footer">
-  Generated on Tue Jul  6 16:28:44 2010 by 
+  Generated on Thu Jul 22 09:16:34 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

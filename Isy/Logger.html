@@ -71,7 +71,7 @@
   
     
       <dt class="r2">Includes:</dt>
-      <dd class="r2"><a href="Logger/Severity.html" title="Isy::Logger::Severity (module)">Logger::Severity</a>, Observable</dd>
+      <dd class="r2"><a href="Core/Observable.html" title="Isy::Core::Observable (module)">Core::Observable</a>, <a href="Logger/Severity.html" title="Isy::Logger::Severity (module)">Logger::Severity</a></dd>
       
     
   
@@ -105,6 +105,9 @@
   <h3 class="inherited">Constants included from <a href="Logger/Severity.html" title="Isy::Logger::Severity (module)">Logger::Severity</a></h3>
   <p class="inherited"><a href="Logger/Severity.html#DEBUG-constant" title="Isy::Logger::Severity::DEBUG (constant)">DEBUG</a>, <a href="Logger/Severity.html#ERROR-constant" title="Isy::Logger::Severity::ERROR (constant)">ERROR</a>, <a href="Logger/Severity.html#FATAL-constant" title="Isy::Logger::Severity::FATAL (constant)">FATAL</a>, <a href="Logger/Severity.html#INFO-constant" title="Isy::Logger::Severity::INFO (constant)">INFO</a>, <a href="Logger/Severity.html#UNKNOWN-constant" title="Isy::Logger::Severity::UNKNOWN (constant)">UNKNOWN</a>, <a href="Logger/Severity.html#WARN-constant" title="Isy::Logger::Severity::WARN (constant)">WARN</a></p>
 
+  
+  
+  
   
   <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
   <ul class="summary">
@@ -248,7 +251,16 @@ Silences the logger for the duration of the block.
   
   
   
-  <div id="constructor_details" class="method_details_list">
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <a href="Core/Observable.html" title="Isy::Core::Observable (module)">Core::Observable</a></h3>
+  <p class="inherited"><a href="Core/Observable.html#_observers-instance_method" title="Isy::Core::Observable#_observers (method)">#_observers</a>, <a href="Core/Observable.html#add_observer-instance_method" title="Isy::Core::Observable#add_observer (method)">#add_observer</a>, <a href="Core/Observable.html#count_observers-instance_method" title="Isy::Core::Observable#count_observers (method)">#count_observers</a>, <a href="Core/Observable.html#delete_observer-instance_method" title="Isy::Core::Observable#delete_observer (method)">#delete_observer</a>, <a href="Core/Observable.html#included-class_method" title="Isy::Core::Observable.included (method)">included</a>, <a href="Core/Observable.html#notify_observers-instance_method" title="Isy::Core::Observable#notify_observers (method)">#notify_observers</a></p>
+<div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
@@ -275,10 +287,6 @@ A new instance of Logger
       <pre class="lines">
 
 
-37
-38
-39
-40
 41
 42
 43
@@ -288,16 +296,32 @@ A new instance of Logger
 47
 48
 49
-50</pre>
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/logger.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/logger.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id log'>log</span><span class='comma'>,</span> <span class='id level'>level</span> <span class='op'>=</span> <span class='const'>DEBUG</span><span class='rparen'>)</span>
   <span class='ivar'>@level</span> <span class='op'>=</span> <span class='id level'>level</span>
   <span class='ivar'>@start_buffer</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
   <span class='ivar'>@ready</span> <span class='op'>=</span> <span class='kw'>false</span>
-  <span class='ivar'>@log</span> <span class='op'>=</span> <span class='id log'>log</span>
+  <span class='kw'>if</span> <span class='id log'>log</span><span class='period'>.</span><span class='id is_a?'>is_a?</span> <span class='const'>String</span>
+    <span class='ivar'>@log</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id open'>open</span><span class='lparen'>(</span><span class='id log'>log</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>a</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+    <span class='id at_exit'>at_exit</span> <span class='lbrace'>{</span> <span class='ivar'>@log</span><span class='period'>.</span><span class='id close'>close</span> <span class='rbrace'>}</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@log</span> <span class='op'>=</span> <span class='id log'>log</span>
+  <span class='kw'>end</span>
+  
   <span class='comment'>#      EM.schedule do
 </span>  <span class='comment'>#        EM.attach(log) do |connection|
 </span>  <span class='comment'>#          Isy.logger.instance_eval do
@@ -344,12 +368,12 @@ Returns the value of attribute level
       <pre class="lines">
 
 
-35
-36
-37</pre>
+39
+40
+41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/logger.rb', line 35</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/logger.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='id level'>level</span>
   <span class='ivar'>@level</span>
@@ -379,30 +403,28 @@ Returns the value of attribute level
       <pre class="lines">
 
 
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
 62
 63
 64
-65</pre>
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/logger.rb', line 52</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/logger.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='id add'>add</span><span class='lparen'>(</span><span class='id severity'>severity</span><span class='comma'>,</span> <span class='id message'>message</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id progname'>progname</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>if</span> <span class='ivar'>@level</span> <span class='op'>&gt;</span> <span class='id severity'>severity</span>
   <span class='id message'>message</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id message'>message</span> <span class='op'>||</span> <span class='lparen'>(</span><span class='id block'>block</span> <span class='op'>&amp;&amp;</span> <span class='id block'>block</span><span class='period'>.</span><span class='id call'>call</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id progname'>progname</span><span class='rparen'>)</span><span class='period'>.</span><span class='id to_s'>to_s</span>
   <span class='id message'>message</span> <span class='op'>+=</span> <span class='lparen'>(</span><span class='id message'>message</span><span class='lbracket'>[</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='CHAR'>?\n</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='id changed'>changed</span>
-  <span class='id notify_observers'>notify_observers</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span>
+  <span class='id notify_observers'>notify_observers</span><span class='lparen'>(</span><span class='symbol'>:message</span><span class='comma'>,</span> <span class='id message'>message</span><span class='rparen'>)</span>
   <span class='comment'>#      unless @log
 </span>  <span class='comment'>#        @start_buffer &lt;&lt; message
 </span>  <span class='comment'>#        return
@@ -429,12 +451,12 @@ Returns the value of attribute level
       <pre class="lines">
 
 
-83
-84
-85</pre>
+92
+93
+94</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/logger.rb', line 83</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/logger.rb', line 92</span>
 
 <span class='kw'>def</span> <span class='id exception'>exception</span><span class='lparen'>(</span><span class='id e'>e</span><span class='rparen'>)</span>
   <span class='id error'>error</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id e'>e</span><span class='period'>.</span><span class='id class'>class</span><span class='rbrace'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id e'>e</span><span class='period'>.</span><span class='id message'>message</span><span class='rbrace'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='id e'>e</span><span class='period'>.</span><span class='id backtrace'>backtrace</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id line'>line</span><span class='op'>|</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>  </span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='id line'>line</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -468,10 +490,6 @@ Silences the logger for the duration of the block.
       <pre class="lines">
 
 
-22
-23
-24
-25
 26
 27
 28
@@ -479,10 +497,14 @@ Silences the logger for the duration of the block.
 30
 31
 32
-33</pre>
+33
+34
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/logger.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/logger.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='id silence'>silence</span><span class='lparen'>(</span><span class='id temporary_level'>temporary_level</span> <span class='op'>=</span> <span class='const'>ERROR</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id silencer'>silencer</span>
@@ -506,7 +528,7 @@ Silences the logger for the duration of the block.
 </div>
     
     <div id="footer">
-  Generated on Tue Jul  6 16:28:44 2010 by 
+  Generated on Thu Jul 22 09:16:34 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

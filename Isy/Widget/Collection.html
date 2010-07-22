@@ -237,32 +237,6 @@ Obtained collection of widgets/components.
 </li>
 
       
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Collection) <strong>initialize</strong>(component, collection = nil) </a>
-    
-
-    
-  </span>
-  
-    <span class="note title constructor">constructor</span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-A new instance of Collection.
-</p>
-</div></span>
-  
-</li>
-
-      
         <li class="protected ">
   <span class="summary_signature">
     
@@ -299,7 +273,7 @@ overwrite to render stuff when collection is blank.
   
   
   <h3 class="inherited">Methods inherited from <a href="Component.html" title="Isy::Widget::Component (class)">Component</a></h3>
-  <p class="inherited"><a href="Component.html#delegate-class_method" title="Isy::Widget::Component.delegate (method)">delegate</a>, <a href="Component.html#link_to-instance_method" title="Isy::Widget::Component#link_to (method)">#link_to</a>, <a href="Component.html#register_action-instance_method" title="Isy::Widget::Component#register_action (method)">#register_action</a>, <a href="Component.html#wrapper_options-instance_method" title="Isy::Widget::Component#wrapper_options (method)">#wrapper_options</a></p>
+  <p class="inherited"><a href="Component.html#a-instance_method" title="Isy::Widget::Component#a (method)">#a</a>, <a href="Component.html#callback-instance_method" title="Isy::Widget::Component#callback (method)">#callback</a>, <a href="Component.html#method_missing-instance_method" title="Isy::Widget::Component#method_missing (method)">#method_missing</a>, <a href="Component.html#register_action-instance_method" title="Isy::Widget::Component#register_action (method)">#register_action</a>, <a href="Component.html#respond_to%3F-instance_method" title="Isy::Widget::Component#respond_to? (method)">#respond_to?</a>, <a href="Component.html#widget-instance_method" title="Isy::Widget::Component#widget (method)">#widget</a></p>
 
   
   
@@ -309,135 +283,16 @@ overwrite to render stuff when collection is blank.
   
   
   <h3 class="inherited">Methods inherited from <a href="Base.html" title="Isy::Widget::Base (class)">Base</a></h3>
-  <p class="inherited"><a href="Base.html#_render-instance_method" title="Isy::Widget::Base#_render (method)">#_render</a>, <a href="Base.html#content_with_wrapper-instance_method" title="Isy::Widget::Base#content_with_wrapper (method)">#content_with_wrapper</a>, <a href="Base.html#css_class-class_method" title="Isy::Widget::Base.css_class (method)">css_class</a>, <a href="Base.html#render-instance_method" title="Isy::Widget::Base#render (method)">#render</a>, <a href="Base.html#wrap_in-class_method" title="Isy::Widget::Base.wrap_in (method)">wrap_in</a>, <a href="Base.html#wrapped_in-class_method" title="Isy::Widget::Base.wrapped_in (method)">wrapped_in</a>, <a href="Base.html#wrapper_options-instance_method" title="Isy::Widget::Base#wrapper_options (method)">#wrapper_options</a>, <a href="Base.html#write_via-instance_method" title="Isy::Widget::Base#write_via (method)">#write_via</a></p>
+  <p class="inherited"><a href="Base.html#_render_via-instance_method" title="Isy::Widget::Base#_render_via (method)">#_render_via</a>, <a href="Base.html#content_with_wrapper-instance_method" title="Isy::Widget::Base#content_with_wrapper (method)">#content_with_wrapper</a>, <a href="Base.html#css_class-class_method" title="Isy::Widget::Base.css_class (method)">css_class</a>, <a href="Base.html#render-instance_method" title="Isy::Widget::Base#render (method)">#render</a>, <a href="Base.html#to_html-instance_method" title="Isy::Widget::Base#to_html (method)">#to_html</a>, <a href="Base.html#wrap_in-class_method" title="Isy::Widget::Base.wrap_in (method)">wrap_in</a>, <a href="Base.html#wrapped_in-class_method" title="Isy::Widget::Base.wrapped_in (method)">wrapped_in</a>, <a href="Base.html#wrapper_options-instance_method" title="Isy::Widget::Base#wrapper_options (method)">#wrapper_options</a></p>
 
-  <div id="constructor_details" class="method_details_list">
-  <h2>Constructor Details</h2>
-  
-    <div class="method_details first">
-  <p class="signature first" id="initialize-instance_method">
-  
+  <div id="method_missing_details" class="method_details_list">
+  <h2>Dynamic Method Handling</h2>
+  <p class="notice super">
+    This class handles dynamic methods through the <tt>method_missing</tt> method
     
-      <span class="overload">- (<tt>Object</tt>) <strong>initialize</strong>(component) </span>
+      in the class <a href="Component.html#method_missing-instance_method" title="Isy::Widget::Component#method_missing (method)">Isy::Widget::Component</a>
     
-      <span class="overload">- (<tt>Object</tt>) <strong>initialize</strong>(component, collection) </span>
-    
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>
-A new instance of Collection
-</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-  <h3>Overloads:</h3>
-  <ul class="overload">
-    
-      
-      <li class="overload_item">
-        <span class="signature">- (<tt>Object</tt>) <strong>initialize</strong>(component) </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='type'>(<tt><a href="../Component/Base.html" title="Isy::Component::Base (class)">Component::Base</a></tt>)</span>
-      
-      
-        <span class='name'>component</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-which respond_to? #collection
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div>
-      </li>
-    
-      
-      <li class="overload_item">
-        <span class="signature">- (<tt>Object</tt>) <strong>initialize</strong>(component, collection) </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='type'>(<tt><a href="../Component/Base.html" title="Isy::Component::Base (class)">Component::Base</a></tt>)</span>
-      
-      
-        <span class='name'>component</span>
-      
-      
-      
-    </li>
-  
-    <li>
-      
-        <span class='type'>(<tt>Array&lt;Erector::Widget, <a href="../Component/Base.html" title="Isy::Component::Base (class)">Component::Base</a>&gt;</tt>)</span>
-      
-      
-        <span class='name'>collection</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div>
-      </li>
-    
-  </ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-12
-13
-14
-15</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/collection.rb', line 12</span>
-
-<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id component'>component</span><span class='comma'>,</span> <span class='id collection'>collection</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>super</span> <span class='id component'>component</span>
-  <span class='ivar'>@collection</span> <span class='op'>=</span> <span class='id collection'>collection</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
+  </p>
   
 </div>
 
@@ -470,10 +325,10 @@ overwrite to render stuff after collection
       <pre class="lines">
 
 
-43</pre>
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/collection.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/collection.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id after'>after</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -505,10 +360,10 @@ overwrite to render stuff before collection
       <pre class="lines">
 
 
-41</pre>
+35</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/collection.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/collection.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id before'>before</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -540,10 +395,10 @@ overwrite to render stuff between collection&#8217;s elements
       <pre class="lines">
 
 
-45</pre>
+39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/collection.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/collection.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='id between'>between</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -594,12 +449,12 @@ obtained collection of widgets/components
       <pre class="lines">
 
 
-18
-19
-20</pre>
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/collection.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/collection.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id collection'>collection</span>
   <span class='ivar'>@collection</span> <span class='op'>||</span> <span class='id component'>component</span><span class='period'>.</span><span class='id try'>try</span><span class='lparen'>(</span><span class='symbol'>:collection</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>failed to obtain collection</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -622,6 +477,12 @@ obtained collection of widgets/components
       <pre class="lines">
 
 
+16
+17
+18
+19
+20
+21
 22
 23
 24
@@ -630,16 +491,10 @@ obtained collection of widgets/components
 27
 28
 29
-30
-31
-32
-33
-34
-35
-36</pre>
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/collection.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/collection.rb', line 16</span>
 
 <span class='kw'>def</span> <span class='id content'>content</span>
   <span class='id before'>before</span>
@@ -685,10 +540,10 @@ overwrite to render stuff when collection is blank
       <pre class="lines">
 
 
-47</pre>
+41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy/widget/collection.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'lib/isy/widget/collection.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id nothing'>nothing</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -701,7 +556,7 @@ overwrite to render stuff when collection is blank
 </div>
     
     <div id="footer">
-  Generated on Tue Jul  6 16:28:45 2010 by 
+  Generated on Thu Jul 22 09:16:35 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>

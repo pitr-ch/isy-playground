@@ -59,14 +59,25 @@
   
   
     <dt class="r1 last">Defined in:</dt>
-    <dd class="r1 last">lib/isy.rb<span class="defines">,<br />
-  lib/isy/runner.rb,<br /> lib/isy/logger.rb,<br /> lib/isy/config.rb,<br /> lib/isy/core/base.rb,<br /> lib/isy/core/action.rb,<br /> lib/isy/widget/base.rb,<br /> lib/isy/core/context.rb,<br /> lib/isy/widget/layout.rb,<br /> lib/isy/component/base.rb,<br /> lib/isy/core/container.rb,<br /> lib/isy/widget/component.rb,<br /> lib/isy/core/application.rb,<br /> lib/isy/widget/collection.rb,<br /> lib/isy/widget/inspect/string.rb,<br /> lib/isy/widget/inspect/object.rb,<br /> lib/isy/exception/exceptions.rb.rb,<br /> lib/isy/component/developer/log.rb,<br /> lib/isy/component/developer/tools.rb,<br /> lib/isy/core/web_socket/connection.rb,<br /> lib/isy/widget/optionable_collection.rb,<br /> lib/isy/core/application/common_logger.rb,<br /> lib/isy/component/developer/inspection/hash.rb,<br /> lib/isy/component/developer/inspection/class.rb,<br /> lib/isy/component/developer/inspection/object.rb</span>
+    <dd class="r1 last">lib/isy/config.rb<span class="defines">,<br />
+  lib/isy.rb,<br /> lib/isy/runner.rb,<br /> lib/isy/logger.rb,<br /> lib/isy/core/base.rb,<br /> lib/isy/core/action.rb,<br /> lib/isy/widget/base.rb,<br /> lib/isy/core/context.rb,<br /> lib/isy/widget/layout.rb,<br /> lib/isy/core/container.rb,<br /> lib/isy/component/base.rb,<br /> lib/isy/core/application.rb,<br /> lib/isy/widget/component.rb,<br /> lib/isy/widget/collection.rb,<br /> lib/isy/component/form_part.rb,<br /> lib/isy/exception/exceptions.rb,<br /> lib/isy/widget/form_part/input.rb,<br /> lib/isy/component/developer/gc.rb,<br /> lib/isy/widget/form_part/select.rb,<br /> lib/isy/component/developer/log.rb,<br /> lib/isy/component/developer/tools.rb,<br /> lib/isy/widget/form_part/textarea.rb,<br /> lib/isy/widget/form_part/abstract.rb,<br /> lib/isy/core/web_socket/connection.rb,<br /> lib/isy/widget/optionable_collection.rb,<br /> lib/isy/core/application/common_logger.rb,<br /> lib/isy/component/developer/inspection/hash.rb,<br /> lib/isy/component/developer/inspection/array.rb,<br /> lib/isy/component/developer/inspection/class.rb,<br /> lib/isy/component/developer/inspection/object.rb,<br /> lib/isy/component/developer/inspection/module.rb,<br /> lib/isy/component/developer/inspection/symbol.rb,<br /> lib/isy/component/developer/inspection/string.rb,<br /> lib/isy/component/developer/inspection/numeric.rb</span>
 </dd>
   
 </dl>
 <div class="clear"></div>
 
-<h2>Defined Under Namespace</h2>
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+encoding: UTF-8
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><h2>Defined Under Namespace</h2>
 <p class="children">
    
     
@@ -95,15 +106,18 @@
     <span class='symbol'>:host</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>0.0.0.0</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
     <span class='symbol'>:server</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>127.0.0.1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
     <span class='symbol'>:port</span> <span class='op'>=&gt;</span> <span class='int'>3001</span><span class='comma'>,</span>
-    <span class='symbol'>:debug</span> <span class='op'>=&gt;</span> <span class='kw'>false</span>
+    <span class='symbol'>:debug</span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='comma'>,</span>
+    <span class='symbol'>:fibers</span> <span class='op'>=&gt;</span> <span class='int'>10</span><span class='comma'>,</span>
   <span class='rbrace'>}</span><span class='comma'>,</span>
   <span class='symbol'>:layout_class</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Isy::Widget::Layout</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
   <span class='symbol'>:environment</span> <span class='op'>=&gt;</span> <span class='symbol'>:development</span><span class='comma'>,</span>
   <span class='symbol'>:js</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span> <span class='symbol'>:send_log_back</span> <span class='op'>=&gt;</span> <span class='kw'>false</span> <span class='rbrace'>}</span><span class='comma'>,</span>
-  <span class='symbol'>:logger</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span> 
+  <span class='symbol'>:logger</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span>
     <span class='symbol'>:level</span> <span class='op'>=&gt;</span> <span class='int'>0</span><span class='comma'>,</span>
-    <span class='symbol'>:show_traffic</span> <span class='op'>=&gt;</span> <span class='kw'>false</span>
-  <span class='rbrace'>}</span>
+    <span class='symbol'>:show_traffic</span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='comma'>,</span>
+    <span class='symbol'>:output</span> <span class='op'>=&gt;</span> <span class='gvar'>$stdout</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='symbol'>:core</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span> <span class='symbol'>:devel</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>devel</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span>
 <span class='rbrace'>}</span><span class='rparen'>)</span></pre></dd>
       
     </dl>
@@ -161,6 +175,27 @@
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#v19%3F-class_method" title="v19? (class method)">+ (Boolean) <strong>v19?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -183,14 +218,14 @@
       <pre class="lines">
 
 
-24
-25
-26
-27
-28</pre>
+28
+29
+30
+31
+32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/isy.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'lib/isy.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id benchmark'>benchmark</span><span class='lparen'>(</span><span class='id label'>label</span><span class='comma'>,</span> <span class='id req'>req</span> <span class='op'>=</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='id time'>time</span> <span class='op'>=</span> <span class='const'>Benchmark</span><span class='period'>.</span><span class='id realtime'>realtime</span> <span class='lbrace'>{</span> <span class='id block'>block</span><span class='period'>.</span><span class='id call'>call</span> <span class='rbrace'>}</span>
@@ -223,7 +258,56 @@
       <pre class="code"><span class="info file"># File 'lib/isy.rb', line 20</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id logger'>logger</span>
-  <span class='ivar'>@logger</span> <span class='op'>||=</span> <span class='const'>Isy</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='gvar'>$stdout</span><span class='rparen'>)</span>
+  <span class='ivar'>@logger</span> <span class='op'>||=</span> <span class='const'>Isy</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='const'>Config</span><span class='lbracket'>[</span><span class='symbol'>:logger</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:output</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="v19?-class_method">
+  
+    + (<tt>Boolean</tt>) <strong>v19?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+24
+25
+26</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/isy.rb', line 24</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id v19?'>v19?</span>
+  <span class='const'>RUBY_VERSION</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>1.9</span><span class='regexp_end'>/</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -235,7 +319,7 @@
 </div>
     
     <div id="footer">
-  Generated on Tue Jul  6 16:28:44 2010 by 
+  Generated on Thu Jul 22 09:16:34 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.9.2).
 </div>
