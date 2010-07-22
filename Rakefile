@@ -7,7 +7,7 @@ begin
   options = %w[--protected --private --verbose --main=README_FULL.md]
   output = "--output-dir=./yardoc/"
   input = %w[./lib/**/*.rb - MIT-LICENSE README.md] + Dir.glob('docs/**/*')
-  title = "--title=Isy Framework"
+  title = "--title=Ruby Hammer Framework"
   
   YARD::Rake::YardocTask.new(:yard) do |yardoc|
     yardoc.options.push(*options) << output << title
@@ -27,7 +27,7 @@ begin
       hash = /^commit +(\w+)$/.match(commit)[1]
       yardoc.options.push(*options) <<
           "--output-dir=./gh-pages/" <<
-          "--title=Isy Framework | #{hash}"
+          "--title=Ruby Hammer Framework | #{hash}"
           
       yardoc.files.push(*input)
     end
@@ -42,11 +42,11 @@ end
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "isy"
+    gem.name = "hammer"
     gem.summary = %Q{ruby component based state-full web framework}
     gem.description = %Q{ruby component based state-full web framework}
-    #    gem.email = "chalupapetr@post.cz"
-    gem.homepage = "http://isy-pitr.github.com/isy-playground"
+    gem.email = "ruby.hammer.framework@gmail.com"
+    #    gem.homepage = "http://isy-pitr.github.com/isy-playground"
     gem.authors = ["Petr Chalupa"]
 
     gem.add_dependency 'uuid', ">= 0"
@@ -69,10 +69,6 @@ begin
     gem.add_development_dependency "rack-test", ">= 0"
 
     gem.files = FileList['lib/**/*.*', 'examples/**/*.*'].to_a
-
-    #    gem.files = %w[lib docs examples].inject([]) do |files, dir|
-    #      files + Dir.glob("#{File.dirname(__FILE__)}/#{dir}/**/*.*")
-    #    end + %w[README.md README_FULL.md MIT-LICENCE]
 
     gem.test_files = FileList["spec/**/*.*"].to_a
     gem.extra_rdoc_files = FileList["README.md", "README_FULL.md", "MIT-LICENSE", 'docs/**/*.*'].to_a

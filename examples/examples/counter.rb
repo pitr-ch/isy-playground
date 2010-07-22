@@ -1,6 +1,6 @@
 # encoding: UTF-8
 module Examples
-  class Counter < Isy::Component::Base
+  class Counter < Hammer::Component::Base
 
     attr_reader :counter
 
@@ -8,7 +8,7 @@ module Examples
       @counter = 0
     end
 
-    class Widget < Isy::Widget::Component
+    class Widget < Hammer::Widget::Component
       def content
         h3 'Counter'
         p do

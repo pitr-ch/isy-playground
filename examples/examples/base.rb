@@ -1,6 +1,6 @@
 # encoding: UTF-8
 module Examples
-  class Base < Isy::Component::Base
+  class Base < Hammer::Component::Base
 
     attr_reader :example
 
@@ -8,7 +8,7 @@ module Examples
       @example = nil
     end
 
-    class Widget < Isy::Widget::Component
+    class Widget < Hammer::Widget::Component
       def content
         strong 'Examples:'
         ul do

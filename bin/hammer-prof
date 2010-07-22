@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+require "rubygems"
+require "bundler"
+require 'ruby-prof'
+Bundler.setup
+require "hammer"
+
+Hammer::Runner.run!
+
+result = RubyProf.stop
+
+File.open 'profile.html', 'w' do |f|
+  RubyProf::GraphHtmlPrinter.new(result).print(f)
+end

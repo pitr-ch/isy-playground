@@ -6,10 +6,10 @@ require 'benchmark'
 require 'ruby-prof'
 
 describe 'Rendering Benchmar' do
-  include IsyMocks
+  include HammerMocks
 
   before do
-    @context = Isy::Core::Context.new('id', container_mock, 'devel')
+    @context = Hammer::Core::Context.new('id', container_mock, 'devel')
     RubyProf.start
   end
 

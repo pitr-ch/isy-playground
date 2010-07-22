@@ -1,7 +1,7 @@
 # encoding: UTF-8
 module Examples
   module Ask
-    class Base < Isy::Component::Base
+    class Base < Hammer::Component::Base
 
       # +numbers+ - answered numbers
       # +counter+ is place where is counter stored or form would been
@@ -16,7 +16,7 @@ module Examples
         numbers.inject {|sum, num| sum + num }
       end
 
-      class Widget < Isy::Widget::Component
+      class Widget < Hammer::Widget::Component
 
         def content
           strong 'Numbers:'

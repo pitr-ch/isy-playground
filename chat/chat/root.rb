@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 module Chat
-  class Root < Isy::Component::Base
+  class Root < Hammer::Component::Base
 
     attr_reader :user
     def initial_state
@@ -15,7 +15,7 @@ module Chat
       end
     end
 
-    class Widget < Isy::Widget::Component
+    class Widget < Hammer::Widget::Component
       def content
         text user.inspect
       end

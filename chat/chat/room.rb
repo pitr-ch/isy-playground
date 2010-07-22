@@ -1,5 +1,5 @@
 module Chat
-  class Room < Isy::Component::Base
+  class Room < Hammer::Component::Base
 
     attr_reader :room, :user
     def initialize(context, room, user)
@@ -36,7 +36,7 @@ module Chat
       }
     end
 
-    class Widget < Isy::Widget::Component
+    class Widget < Hammer::Widget::Component
       require 'gravatarify'
       include Gravatarify::Helper
       

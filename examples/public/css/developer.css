@@ -1,23 +1,23 @@
-.isy-component-developer-tools-widget * {
+.hammer-component-developer-tools-widget * {
   font-family: sans-serif;
 }
 
-.isy-component-developer-tools-widget a {
+.hammer-component-developer-tools-widget a {
   padding-left: 0.2em;
   padding-right: 0.2em;
 }
 
-.isy-component-developer-log-widget p {
+.hammer-component-developer-log-widget p {
   font-family: monospace;
   font-size: 90%;
   margin: 0;
 }
 
-.isy-component-developer-log-widget .odd{
+.hammer-component-developer-log-widget .odd{
   background-color: #eee;
 }
 
-.isy-component-developer-tools-widget code {
+.hammer-component-developer-tools-widget code {
   font-family: monospace;
 }
 

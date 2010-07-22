@@ -1,5 +1,5 @@
 module Chat
-  class Rooms < Isy::Component::Base
+  class Rooms < Hammer::Component::Base
 
     attr_reader :room, :user
     attr_accessor :room_form
@@ -9,7 +9,7 @@ module Chat
       @user = user
     end
 
-    class Widget < Isy::Widget::Component
+    class Widget < Hammer::Widget::Component
       def content
 #        text Model::Room.rooms.map {|r| r.inspect }
 

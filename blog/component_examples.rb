@@ -112,7 +112,7 @@ class ArticleRow < ArticleComponent
 end
 
 
-class Isy::Component
+class Hammer::Component
 
   # ve widgetu listu prispecku
   link_to "novy prispevek" do

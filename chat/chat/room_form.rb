@@ -1,5 +1,5 @@
 module Chat
-  class RoomForm < Isy::Component::FormPart
+  class RoomForm < Hammer::Component::FormPart
 
     def initialize(context, room)
       super(context)
@@ -8,10 +8,10 @@ module Chat
 
     alias_method(:room, :record)
 
-    class Widget < Isy::Component::FormPart::Widget
+    class Widget < Hammer::Component::FormPart::Widget
       wrap_in(:span)
       def content
-        widget Isy::Widget::FormPart::Input, :value => :name, :options =>
+        widget Hammer::Widget::FormPart::Input, :value => :name, :options =>
             { :class => %w[ui-widget-content ui-corner-all] }
         cb.a("Add").event(:click).form.action! {
             if room.valid?

@@ -1,8 +1,8 @@
 # encoding: UTF-8
 
-require "#{File.dirname(__FILE__)}/../lib/isy"
+require "#{File.dirname(__FILE__)}/../lib/hammer"
 
-module IsyMocks
+module HammerMocks
   def self.included(base)
     base.let(:container_mock) { mock(:container, :drop_context => true) }
     base.let(:context_mock) { mock(:context, :conteiner => container_mock) }

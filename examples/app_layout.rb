@@ -1,11 +1,11 @@
 # encoding: UTF-8
 
-class AppLayout < Isy::Widget::Layout
+class AppLayout < Hammer::Widget::Layout
 
   external :css, "css/basic.css"
 
   def page_title
-    "ISY - examples"
+    "Hammer - examples"
   end
 
 end

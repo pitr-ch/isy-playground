@@ -1,4 +1,4 @@
-Isy::Internationalization.default_locale = :cs
+Hammer::Internationalization.default_locale = :cs
 
 class MyApp
   dt.name 'jméno'

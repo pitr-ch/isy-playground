@@ -1,3 +1,3 @@
 $(function() {
-  $(isy).bind('isy.update', function() { $('a').button() })
+  $(hammer).bind('hammer.update', function() { $('a').button() })
 });

@@ -1,7 +1,7 @@
 module Chat
   module Model
     class Room
-      include Isy::Core::Observable
+      include Hammer::Core::Observable
       observable_events :message
     
       attr_reader  :messages

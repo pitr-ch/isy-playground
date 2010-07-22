@@ -2,7 +2,7 @@
 
 module Examples
   module Form
-    class Base < Isy::Component::FormPart
+    class Base < Hammer::Component::FormPart
 
       attr_reader :counter
       def initial_state
@@ -11,20 +11,20 @@ module Examples
         @record =  Struct.new("Data", :name, :sex, :description).new
       end
 
-      class Widget < Isy::Component::FormPart::Widget
+      class Widget < Hammer::Component::FormPart::Widget
 
         def content
           p do
             text 'name '
-            widget Isy::Widget::FormPart::Input, :value => :name
+            widget Hammer::Widget::FormPart::Input, :value => :name
           end
           p do
             text 'sex '
-            widget Isy::Widget::FormPart::Select, :value => :sex, :select_options => [nil, 'male', 'female']
+            widget Hammer::Widget::FormPart::Select, :value => :sex, :select_options => [nil, 'male', 'female']
           end
           p do
             text 'description '
-            widget Isy::Widget::FormPart::Textarea, :value => :description
+            widget Hammer::Widget::FormPart::Textarea, :value => :description
           end
 
           cb.a("Send for the #{counter}th time").event(:click).form.action! { @counter += 1 }

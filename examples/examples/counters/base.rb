@@ -1,7 +1,7 @@
 # encoding: UTF-8
 module Examples
   module Counters
-    class Base < Isy::Component::Base
+    class Base < Hammer::Component::Base
 
       attr_reader :counters
       alias_method :collection, :counters
@@ -21,7 +21,7 @@ module Examples
         counters.delete(counter)
       end
 
-      class Widget < Isy::Widget::Collection
+      class Widget < Hammer::Widget::Collection
         def after
           cb.a('Add counter').event(:click).action! { add }
         end

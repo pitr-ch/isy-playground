@@ -1,4 +1,4 @@
-# ISY
+# Hammer
 
 Ruby component based state-full web framework.
 
@@ -14,19 +14,30 @@ Goals:
 - Integrated server-side push actualizations.
 
 ## How to run example application
+
 Clone repository
-    git clone git://github.com/isy-pitr/isy-playground.git
-Install jeweler and install isy gem
+
+    git clone git://github.com/ruby-hammer/hammer.git
+
+Install jeweler and install ruby-hammer gem
+
     gem install jeweler
     rake install
+
 Move to examples directory
+
     cd examples
+
 install bundler and run Bundler
+
     gem install bundler
     bundle install
-use Ruby 1.9.(1|2) and run isy
-    isy
-use Chrome browser. It wont work in others. (It should work in Safari, but I did not test it.)
+
+use Ruby 1.9.(1|2) and run ruby-hammer
+
+    hammer
+
+use Chrome browser, it wont yet work in others. (It should work in Safari, but I didn't test it.)
 
 There are some examples on [http://localhost:3000](http://localhost:3000) and real-time log on
 [http://localhost:3000/#devel](http://localhost:3000/#devel)
@@ -38,11 +49,11 @@ a basic implementation. It does not have any persistent backend, messages are li
 dropped from memory after 4 hours of inactivity. You can login in each window as different person, nick and email
 for gravatar is required.
 
+### New name
+
+''Ruby Hammer'' was selected.
+
 ## {file:docs/contribute How to Contribute}
-
-## {file:docs/discussion Developer's discussion}
-
-## {file:docs/name New name}
 
 ## Discussions
 
@@ -54,9 +65,8 @@ on wave.google.com. Wave uses avatar as identification so please select one.
 
 ## Links
 
-- Github: [http://github.com/isy-pitr/isy-playground](http://github.com/isy-pitr/isy-playground)
-- Doc: [http://isy-pitr.github.com/isy-playground/](http://isy-pitr.github.com/isy-playground/)
-- Blog: [http://isyruby.wordpress.com](http://isyruby.wordpress.com)
+- Github: [http://github.com/ruby-hammer/hammer](http://github.com/ruby-hammer/hammer)
+- Doc: [http://ruby-hammer.github.com/hammer/](http://ruby-hammer.github.com/hammer/)
 - Pivotel Tracker: [http://www.pivotaltracker.com/projects/23639](http://www.pivotaltracker.com/projects/23639)
 - License {file:MIT-LICENSE}
 
