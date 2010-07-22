@@ -28,7 +28,15 @@ use Ruby 1.9.(1|2) and run isy
     isy
 use Chrome browser. It wont work in others. (It should work in Safari, but I did not test it.)
 
-There are some examples on http://localhost:3000 and real-time log on http://localhost:3000/#devel
+There are some examples on [http://localhost:3000](http://localhost:3000) and real-time log on
+[http://localhost:3000/#devel](http://localhost:3000/#devel)
+
+### Chat
+
+Test application - Chat is running on [http://pitr.sytes.net:3005/](http://pitr.sytes.net:3005/). It's really
+a basic implementation. It does not have any persistent backend, messages are limited to 50 in each room and rooms are
+dropped from memory after 4 hours of inactivity. You can login in each window as different person, nick and email
+for gravatar is required.
 
 ## {file:docs/contribute How to Contribute}
 
