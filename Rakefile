@@ -45,7 +45,7 @@ begin
     gem.name = "hammer"
     gem.summary = %Q{ruby component based state-full web framework}
     gem.description = %Q{ruby component based state-full web framework}
-    gem.email = "ruby.hammer.framework@gmail.com"
+    gem.email = "hammer.framework@gmail.com"
     #    gem.homepage = "http://isy-pitr.github.com/isy-playground"
     gem.authors = ["Petr Chalupa"]
 
